@@ -1,0 +1,243 @@
+class Sentences
+{
+	class a_hub_090_ambient_special_00_ALPA_0 // 00 = Connor whiteboard guys
+	{
+		text = "$STR_A3_a_hub_090_ambient_special_00_ALPA_0";
+		speech[] = {"\a3\dubbing_f_epa\a_hub\090_ambient_special_00\a_hub_090_ambient_special_00_ALPA_0.ogg"};
+		actor = "Wright";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+	class a_hub_090_ambient_special_00_ALPB_0
+	{
+		text = "$STR_A3_a_hub_090_ambient_special_00_ALPB_0";
+		speech[] = {"\a3\dubbing_f_epa\a_hub\090_ambient_special_00\a_hub_090_ambient_special_00_ALPB_0.ogg"};
+		actor = "Davies";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+	class a_hub_090_ambient_special_00_ALPA_1
+	{
+		text = "$STR_A3_a_hub_090_ambient_special_00_ALPA_1";
+		speech[] = {"\a3\dubbing_f_epa\a_hub\090_ambient_special_00\a_hub_090_ambient_special_00_ALPA_1.ogg"};
+		actor = "Wright";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+	class a_hub_090_ambient_special_00_ALPB_1
+	{
+		text = "$STR_A3_a_hub_090_ambient_special_00_ALPB_1";
+		speech[] = {"\a3\dubbing_f_epa\a_hub\090_ambient_special_00\a_hub_090_ambient_special_00_ALPB_1.ogg"};
+		actor = "Davies";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+	class a_hub_090_ambient_special_00_ALPA_2
+	{
+		text = "$STR_A3_a_hub_090_ambient_special_00_ALPA_2";
+		speech[] = {"\a3\dubbing_f_epa\a_hub\090_ambient_special_00\a_hub_090_ambient_special_00_ALPA_2.ogg"};
+		actor = "Wright";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+	
+	class a_hub_091_ambient_special_01_ALPA_0 // 01 = Connor whiteboard guys 2
+	{
+		text = "$STR_A3_a_hub_091_ambient_special_01_ALPA_0";
+		speech[] = {"\a3\dubbing_f_epa\a_hub\091_ambient_special_01\a_hub_091_ambient_special_01_ALPA_0.ogg"};
+		actor = "Wright";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+	class a_hub_091_ambient_special_01_ALPB_0
+	{
+		text = "$STR_A3_a_hub_091_ambient_special_01_ALPB_0";
+		speech[] = {"\a3\dubbing_f_epa\a_hub\091_ambient_special_01\a_hub_091_ambient_special_01_ALPB_0.ogg"};
+		actor = "Davies";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+	class a_hub_091_ambient_special_01_ALPA_1
+	{
+		text = "$STR_A3_a_hub_091_ambient_special_01_ALPA_1";
+		speech[] = {"\a3\dubbing_f_epa\a_hub\091_ambient_special_01\a_hub_091_ambient_special_01_ALPA_1.ogg"};
+		actor = "Wright";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+	class a_hub_091_ambient_special_01_ALPA_2
+	{
+		text = "$STR_A3_a_hub_091_ambient_special_01_ALPA_2";
+		speech[] = {"\a3\dubbing_f_epa\a_hub\091_ambient_special_01\a_hub_091_ambient_special_01_ALPA_2.ogg"};
+		actor = "Wright";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+	class a_hub_091_ambient_special_01_ALPB_1
+	{
+		text = "$STR_A3_a_hub_091_ambient_special_01_ALPB_1";
+		speech[] = {"\a3\dubbing_f_epa\a_hub\091_ambient_special_01\a_hub_091_ambient_special_01_ALPB_1.ogg"};
+		actor = "Davies";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+	class a_hub_091_ambient_special_01_ALPB_2
+	{
+		text = "$STR_A3_a_hub_091_ambient_special_01_ALPB_2";
+		speech[] = {"\a3\dubbing_f_epa\a_hub\091_ambient_special_01\a_hub_091_ambient_special_01_ALPB_2.ogg"};
+		actor = "Davies";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+	class a_hub_091_ambient_special_01_ALPB_3
+	{
+		text = "$STR_A3_a_hub_091_ambient_special_01_ALPB_3";
+		speech[] = {"\a3\dubbing_f_epa\a_hub\091_ambient_special_01\a_hub_091_ambient_special_01_ALPB_3.ogg"};
+		actor = "Davies";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+	class a_hub_091_ambient_special_01_ALPB_4
+	{
+		text = "$STR_A3_a_hub_091_ambient_special_01_ALPB_4";
+		speech[] = {"\a3\dubbing_f_epa\a_hub\091_ambient_special_01\a_hub_091_ambient_special_01_ALPB_4.ogg"};
+		actor = "Davies";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+	class a_hub_091_ambient_special_01_ALPA_3
+	{
+		text = "$STR_A3_a_hub_091_ambient_special_01_ALPA_3";
+		speech[] = {"\a3\dubbing_f_epa\a_hub\091_ambient_special_01\a_hub_091_ambient_special_01_ALPA_3.ogg"};
+		actor = "Wright";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+	class a_hub_092_ambient_special_02_CHA_0
+	{
+		text = "$STR_A3_a_hub_092_ambient_special_02_CHA_0";
+		speech[] = {"\a3\dubbing_f_epa\a_hub\092_ambient_special_02\a_hub_092_ambient_special_02_CHA_0.ogg"};
+		actor = "Mitchell";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+	class a_hub_092_ambient_special_02_ALP_0
+	{
+		text = "$STR_A3_a_hub_092_ambient_special_02_ALP_0";
+		speech[] = {"\a3\dubbing_f_epa\a_hub\092_ambient_special_02\a_hub_092_ambient_special_02_ALP_0.ogg"};
+		actor = "Conway";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+	class a_hub_092_ambient_special_02_ALP_1
+	{
+		text = "$STR_A3_a_hub_092_ambient_special_02_ALP_1";
+		speech[] = {"\a3\dubbing_f_epa\a_hub\092_ambient_special_02\a_hub_092_ambient_special_02_ALP_1.ogg"};
+		actor = "Conway";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+	class a_hub_092_ambient_special_02_CHA_1
+	{
+		text = "$STR_A3_a_hub_092_ambient_special_02_CHA_1";
+		speech[] = {"\a3\dubbing_f_epa\a_hub\092_ambient_special_02\a_hub_092_ambient_special_02_CHA_1.ogg"};
+		actor = "Mitchell";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+	class a_hub_092_ambient_special_02_ALP_2
+	{
+		text = "$STR_A3_a_hub_092_ambient_special_02_ALP_2";
+		speech[] = {"\a3\dubbing_f_epa\a_hub\092_ambient_special_02\a_hub_092_ambient_special_02_ALP_2.ogg"};
+		actor = "Conway";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+	class a_hub_092_ambient_special_02_ALP_3
+	{
+		text = "$STR_A3_a_hub_092_ambient_special_02_ALP_3";
+		speech[] = {"\a3\dubbing_f_epa\a_hub\092_ambient_special_02\a_hub_092_ambient_special_02_ALP_3.ogg"};
+		actor = "Conway";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+	class a_hub_093_ambient_special_03_CHA_0
+	{
+		text = "$STR_A3_a_hub_093_ambient_special_03_CHA_0";
+		speech[] = {"\a3\dubbing_f_epa\a_hub\093_ambient_special_03\a_hub_093_ambient_special_03_CHA_0.ogg"};
+		actor = "Mitchell";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+	class a_hub_093_ambient_special_03_ALP_0
+	{
+		text = "$STR_A3_a_hub_093_ambient_special_03_ALP_0";
+		speech[] = {"\a3\dubbing_f_epa\a_hub\093_ambient_special_03\a_hub_093_ambient_special_03_ALP_0.ogg"};
+		actor = "Conway";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+	class a_hub_093_ambient_special_03_ALP_1
+	{
+		text = "$STR_A3_a_hub_093_ambient_special_03_ALP_1";
+		speech[] = {"\a3\dubbing_f_epa\a_hub\093_ambient_special_03\a_hub_093_ambient_special_03_ALP_1.ogg"};
+		actor = "Conway";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+	class a_hub_093_ambient_special_03_CHA_1
+	{
+		text = "$STR_A3_a_hub_093_ambient_special_03_CHA_1";
+		speech[] = {"\a3\dubbing_f_epa\a_hub\093_ambient_special_03\a_hub_093_ambient_special_03_CHA_1.ogg"};
+		actor = "Mitchell";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+	class a_hub_093_ambient_special_03_ALP_2
+	{
+		text = "$STR_A3_a_hub_093_ambient_special_03_ALP_2";
+		speech[] = {"\a3\dubbing_f_epa\a_hub\093_ambient_special_03\a_hub_093_ambient_special_03_ALP_2.ogg"};
+		actor = "Conway";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+	class a_hub_093_ambient_special_03_ALP_3
+	{
+		text = "$STR_A3_a_hub_093_ambient_special_03_ALP_3";
+		speech[] = {"\a3\dubbing_f_epa\a_hub\093_ambient_special_03\a_hub_093_ambient_special_03_ALP_3.ogg"};
+		actor = "Conway";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+
+};
+class Arguments{};
+class Special{};
+startWithVocal[] = {hour};
+startWithConsonant[] = {europe, university};

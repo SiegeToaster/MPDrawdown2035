@@ -1,0 +1,878 @@
+class Sentences
+{
+	class a_in_01_wave_ICO_0 // Over here, Kerry!
+	{
+		text = "$STR_A3_a_in_01_wave_ICO_0";
+		speech[] = {"\a3\dubbing_f_epa\a_in\01_Wave\a_in_01_wave_ICO_0.ogg"};
+		actor = "Adams";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+	
+	class a_in_05_load_up_ICO_0 // Hop in.
+	{
+		text = "$STR_A3_a_in_05_load_up_ICO_0";
+		speech[] = {"\a3\dubbing_f_epa\a_in\05_Load_Up\a_in_05_load_up_ICO_0.ogg"};
+		actor = "Adams";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+	
+	class a_in_10_all_in_ICO_0  // We're set, let's go.
+	{
+		text = "$STR_A3_a_in_10_all_in_ICO_0";
+		speech[] = {"\a3\dubbing_f_epa\a_in\10_All_In\a_in_10_all_in_ICO_0.ogg"};
+		actor = "Adams";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+	
+	class a_in_10_all_in_NOV_0  // November's away.
+	{
+		text = "$STR_A3_a_in_10_all_in_NOV_0";
+		speech[] = {"\a3\dubbing_f_epa\a_in\10_All_In\a_in_10_all_in_NOV_0.ogg"};
+		actor = "November";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+	
+	class a_in_15_roads_BRA_0 // beginning of heli conversation
+	{
+		text = "$STR_A3_a_in_15_roads_BRA_0";
+		speech[] = {"\a3\dubbing_f_epa\a_in\15_Roads\a_in_15_roads_BRA_0.ogg"};
+		actor = "Lacey";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+	
+	class a_in_15_roads_ICO_0
+	{
+		text = "$STR_A3_a_in_15_roads_ICO_0";
+		speech[] = {"\a3\dubbing_f_epa\a_in\15_Roads\a_in_15_roads_ICO_0.ogg"};
+		actor = "Adams";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+	
+	class a_in_15_roads_ICO_1
+	{
+		text = "$STR_A3_a_in_15_roads_ICO_1";
+		speech[] = {"\a3\dubbing_f_epa\a_in\15_Roads\a_in_15_roads_ICO_1.ogg"};
+		actor = "Adams";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+	
+	class a_in_15_roads_BRA_1
+	{
+		text = "$STR_A3_a_in_15_roads_BRA_1";
+		speech[] = {"\a3\dubbing_f_epa\a_in\15_Roads\a_in_15_roads_BRA_1.ogg"};
+		actor = "Lacey";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+	
+	class a_in_15_roads_ICO_2
+	{
+		text = "$STR_A3_a_in_15_roads_ICO_2";
+		speech[] = {"\a3\dubbing_f_epa\a_in\15_Roads\a_in_15_roads_ICO_2.ogg"};
+		actor = "Adams";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+	
+	class a_in_20_maxwell_BRA_0
+	{
+		text = "$STR_A3_a_in_20_maxwell_BRA_0";
+		speech[] = {"\a3\dubbing_f_epa\a_in\20_Maxwell\a_in_20_maxwell_BRA_0.ogg"};
+		actor = "Lacey";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+	
+	class a_in_20_maxwell_ICO_0
+	{
+		text = "$STR_A3_a_in_20_maxwell_ICO_0";
+		speech[] = {"\a3\dubbing_f_epa\a_in\20_Maxwell\a_in_20_maxwell_ICO_0.ogg"};
+		actor = "Adams";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+	
+	class a_in_20_maxwell_ICO_1
+	{
+		text = "$STR_A3_a_in_20_maxwell_ICO_1";
+		speech[] = {"\a3\dubbing_f_epa\a_in\20_Maxwell\a_in_20_maxwell_ICO_1.ogg"};
+		actor = "Adams";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+	
+	class a_in_25_mike26_BRA_0
+	{
+		text = "$STR_A3_a_in_25_mike26_BRA_0";
+		speech[] = {"\a3\dubbing_f_epa\a_in\25_Mike26\a_in_25_mike26_BRA_0.ogg"};
+		actor = "Lacey";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+	
+	class a_in_25_mike26_ICO_0
+	{
+		text = "$STR_A3_a_in_25_mike26_ICO_0";
+		speech[] = {"\a3\dubbing_f_epa\a_in\25_Mike26\a_in_25_mike26_ICO_0.ogg"};
+		actor = "Adams";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+	
+	class a_in_25_mike26_BRA_1
+	{
+		text = "$STR_A3_a_in_25_mike26_BRA_1";
+		speech[] = {"\a3\dubbing_f_epa\a_in\25_Mike26\a_in_25_mike26_BRA_1.ogg"};
+		actor = "Lacey";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+	
+	class a_in_25_mike26_ICO_1
+	{
+		text = "$STR_A3_a_in_25_mike26_ICO_1";
+		speech[] = {"\a3\dubbing_f_epa\a_in\25_Mike26\a_in_25_mike26_ICO_1.ogg"};
+		actor = "Adams";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+	
+	class a_in_25_mike26_BRA_2
+	{
+		text = "$STR_A3_a_in_25_mike26_BRA_2";
+		speech[] = {"\a3\dubbing_f_epa\a_in\25_Mike26\a_in_25_mike26_BRA_2.ogg"};
+		actor = "Lacey";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+	
+	class a_in_30_baldy_ICO_0
+	{
+		text = "$STR_A3_a_in_30_baldy_ICO_0";
+		speech[] = {"\a3\dubbing_f_epa\a_in\30_Baldy\a_in_30_baldy_ICO_0.ogg"};
+		actor = "Adams";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+	
+	class a_in_30_baldy_BRA_0
+	{
+		text = "$STR_A3_a_in_30_baldy_BRA_0";
+		speech[] = {"\a3\dubbing_f_epa\a_in\30_Baldy\a_in_30_baldy_BRA_0.ogg"};
+		actor = "Lacey";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+	
+	class a_in_30_baldy_ICO_1
+	{
+		text = "$STR_A3_a_in_30_baldy_ICO_1";
+		speech[] = {"\a3\dubbing_f_epa\a_in\30_Baldy\a_in_30_baldy_ICO_1.ogg"};
+		actor = "Adams";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+	
+	class a_in_30_baldy_BRA_1
+	{
+		text = "$STR_A3_a_in_30_baldy_BRA_1";
+		speech[] = {"\a3\dubbing_f_epa\a_in\30_Baldy\a_in_30_baldy_BRA_1.ogg"};
+		actor = "Lacey";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+	
+	class a_in_30_baldy_BRA_2
+	{
+		text = "$STR_A3_a_in_30_baldy_BRA_2";
+		speech[] = {"\a3\dubbing_f_epa\a_in\30_Baldy\a_in_30_baldy_BRA_2.ogg"};
+		actor = "Lacey";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+	
+	class a_in_30_baldy_ICO_2
+	{
+		text = "$STR_A3_a_in_30_baldy_ICO_2";
+		speech[] = {"\a3\dubbing_f_epa\a_in\30_Baldy\a_in_30_baldy_ICO_2.ogg"};
+		actor = "Adams";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+	
+	class a_in_35_lock_down_BRA_0
+	{
+		text = "$STR_A3_a_in_35_lock_down_BRA_0";
+		speech[] = {"\a3\dubbing_f_epa\a_in\35_Lock_Down\a_in_35_lock_down_BRA_0.ogg"};
+		actor = "Lacey";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+	
+	class a_in_35_lock_down_ICO_0
+	{
+		text = "$STR_A3_a_in_35_lock_down_ICO_0";
+		speech[] = {"\a3\dubbing_f_epa\a_in\35_Lock_Down\a_in_35_lock_down_ICO_0.ogg"};
+		actor = "Adams";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+	
+	class a_in_35_lock_down_BRA_1
+	{
+		text = "$STR_A3_a_in_35_lock_down_BRA_1";
+		speech[] = {"\a3\dubbing_f_epa\a_in\35_Lock_Down\a_in_35_lock_down_BRA_1.ogg"};
+		actor = "Lacey";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+	
+	class a_in_35_lock_down_ICO_1
+	{
+		text = "$STR_A3_a_in_35_lock_down_ICO_1";
+		speech[] = {"\a3\dubbing_f_epa\a_in\35_Lock_Down\a_in_35_lock_down_ICO_1.ogg"};
+		actor = "Adams";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+	
+	class a_in_40_landing_NOV_0
+	{
+		text = "$STR_A3_a_in_40_landing_NOV_0";
+		speech[] = {"\a3\dubbing_f_epa\a_in\40_Landing\a_in_40_landing_NOV_0.ogg"};
+		actor = "November";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+	
+	class a_in_40_landing_NOV_1
+	{
+		text = "$STR_A3_a_in_40_landing_NOV_1";
+		speech[] = {"\a3\dubbing_f_epa\a_in\40_Landing\a_in_40_landing_NOV_1.ogg"};
+		actor = "November";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+	
+	class a_in_40_landed_NOV_0
+	{
+		text = "$STR_A3_a_in_40_landed_NOV_0";
+		speech[] = {"\a3\dubbing_f_epa\a_in\40_Landed\a_in_40_landed_NOV_0.ogg"};
+		actor = "November";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+	
+	class a_in_50_report_ICO_0 // kerry, report to the lieutenant
+	{
+		text = "$STR_A3_a_in_50_report_ICO_0";
+		speech[] = {"\a3\dubbing_f_epa\a_in\50_Report\a_in_50_report_ICO_0.ogg"};
+		actor = "Adams";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+	
+	class a_in_50_report_ICO_1 // lacey make yourself useful
+	{
+		text = "$STR_A3_a_in_50_report_ICO_1";
+		speech[] = {"\a3\dubbing_f_epa\a_in\50_Report\a_in_50_report_ICO_1.ogg"};
+		actor = "Adams";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+	
+	class a_in_55_orders_KER_0 // report to lieutenant
+	{
+		text = "$STR_A3_a_in_55_orders_KER_0";
+		speech[] = {"\a3\dubbing_f_epa\a_in\55_Orders\a_in_55_orders_KER_0.ogg"};
+		actor = "p1";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+	
+	class a_in_55_orders_LOG_0
+	{
+		text = "$STR_A3_a_in_55_orders_LOG_0";
+		speech[] = {"\a3\dubbing_f_epa\a_in\55_Orders\a_in_55_orders_LOG_0.ogg"};
+		actor = "Edwards";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+	
+	class a_in_55_orders_LOG_1
+	{
+		text = "$STR_A3_a_in_55_orders_LOG_1";
+		speech[] = {"\a3\dubbing_f_epa\a_in\55_Orders\a_in_55_orders_LOG_1.ogg"};
+		actor = "Edwards";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+	
+	class a_in_55_orders_LOG_2
+	{
+		text = "$STR_A3_a_in_55_orders_LOG_2";
+		speech[] = {"\a3\dubbing_f_epa\a_in\55_Orders\a_in_55_orders_LOG_2.ogg"};
+		actor = "Edwards";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+	
+	class a_in_55_orders_KER_1
+	{
+		text = "$STR_A3_a_in_55_orders_KER_1";
+		speech[] = {"\a3\dubbing_f_epa\a_in\55_Orders\a_in_55_orders_KER_1.ogg"};
+		actor = "p1";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+	
+	class a_in_55_orders_LOG_3
+	{
+		text = "$STR_A3_a_in_55_orders_LOG_3";
+		speech[] = {"\a3\dubbing_f_epa\a_in\55_Orders\a_in_55_orders_LOG_3.ogg"};
+		actor = "Edwards";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+
+	class a_in_60_understood_KER_0
+	{
+		text = "$STR_A3_a_in_60_understood_KER_0";
+		speech[] = {"\a3\dubbing_f_epa\a_in\60_Understood\a_in_60_understood_KER_0.ogg"};
+		actor = "p1";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+
+	class a_in_65_get_in_ICO_0
+	{
+		text = "$STR_A3_a_in_65_get_in_ICO_0";
+		speech[] = {"\a3\dubbing_f_epa\a_in\65_Get_In\a_in_65_get_in_ICO_0.ogg"};
+		actor = "Adams";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+
+	class a_in_65_get_in_KER_0
+	{
+		text = "$STR_A3_a_in_65_get_in_KER_0";
+		speech[] = {"\a3\dubbing_f_epa\a_in\65_Get_In\a_in_65_get_in_KER_0.ogg"};
+		actor = "p1";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+
+	class a_in_65_get_in_ICO_1
+	{
+		text = "$STR_A3_a_in_65_get_in_ICO_1";
+		speech[] = {"\a3\dubbing_f_epa\a_in\65_Get_In\a_in_65_get_in_ICO_1.ogg"};
+		actor = "Adams";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+
+	class a_in_65_get_in_KER_1
+	{
+		text = "$STR_A3_a_in_65_get_in_KER_1";
+		speech[] = {"\a3\dubbing_f_epa\a_in\65_Get_In\a_in_65_get_in_KER_1.ogg"};
+		actor = "p1";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+
+	class a_in_70_fly_away_NOV_0
+	{
+		text = "$STR_A3_a_in_70_fly_away_NOV_0";
+		speech[] = {"\a3\dubbing_f_epa\a_in\70_Fly_Away\a_in_70_fly_away_NOV_0.ogg"};
+		actor = "November";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+
+	class a_in_70_fly_away_ICO_0
+	{
+		text = "$STR_A3_a_in_70_fly_away_ICO_0";
+		speech[] = {"\a3\dubbing_f_epa\a_in\70_Fly_Away\a_in_70_fly_away_ICO_0.ogg"};
+		actor = "Adams";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+
+	class a_in_73_great_service_ICO_0
+	{
+		text = "$STR_A3_a_in_73_great_service_ICO_0";
+		speech[] = {"\a3\dubbing_f_epa\a_in\73_Great_Service\a_in_73_great_service_ICO_0.ogg"};
+		actor = "Adams";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+
+	class a_in_75_road_ICO_0
+	{
+		text = "$STR_A3_a_in_75_road_ICO_0";
+		speech[] = {"\a3\dubbing_f_epa\a_in\75_Road\a_in_75_road_ICO_0.ogg"};
+		actor = "Adams";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+
+	class a_in_75_road_ICO_1
+	{
+		text = "$STR_A3_a_in_75_road_ICO_1";
+		speech[] = {"\a3\dubbing_f_epa\a_in\75_Road\a_in_75_road_ICO_1.ogg"};
+		actor = "Adams";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+
+	class a_in_76_turn_ICO_0
+	{
+		text = "$STR_A3_a_in_76_turn_ICO_0";
+		speech[] = {"\a3\dubbing_f_epa\a_in\76_Turn\a_in_76_turn_ICO_0.ogg"};
+		actor = "Adams";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+
+	class a_in_76_turn_ICO_1
+	{
+		text = "$STR_A3_a_in_76_turn_ICO_1";
+		speech[] = {"\a3\dubbing_f_epa\a_in\76_Turn\a_in_76_turn_ICO_1.ogg"};
+		actor = "Adams";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+
+	class a_in_76_turn_ICO_2
+	{
+		text = "$STR_A3_a_in_76_turn_ICO_2";
+		speech[] = {"\a3\dubbing_f_epa\a_in\76_Turn\a_in_76_turn_ICO_2.ogg"};
+		actor = "Adams";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+	
+	class a_in_76_turn_KER_0
+	{
+		text = "$STR_A3_a_in_76_turn_KER_0";
+		speech[] = {"\a3\dubbing_f_epa\a_in\76_Turn\a_in_76_turn_KER_0.ogg"};
+		actor = "p1";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+
+	class a_in_80_slow_down_ICO_0
+	{
+		text = "$STR_A3_a_in_80_slow_down_ICO_0";
+		speech[] = {"\a3\dubbing_f_epa\a_in\80_Slow_Down\a_in_80_slow_down_ICO_0.ogg"};
+		actor = "Adams";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+
+	class a_in_80_slow_down_ICO_1
+	{
+		text = "$STR_A3_a_in_80_slow_down_ICO_1";
+		speech[] = {"\a3\dubbing_f_epa\a_in\80_Slow_Down\a_in_80_slow_down_ICO_1.ogg"};
+		actor = "Adams";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+
+	class a_in_90_stop_CHO_0
+	{
+		text = "$STR_A3_a_in_90_stop_CHO_0";
+		speech[] = {"\a3\dubbing_f_epa\a_in\90_Stop\a_in_90_stop_CHO_0.ogg"};
+		actor = "checkOff";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+
+	class a_in_95_inspect_CHO_0
+	{
+		text = "$STR_A3_a_in_95_inspect_CHO_0";
+		speech[] = {"\a3\dubbing_f_epa\a_in\95_Inspect\a_in_95_inspect_CHO_0.ogg"};
+		actor = "checkOff";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+
+	class a_in_95_inspect_CHI_0
+	{
+		text = "$STR_A3_a_in_95_inspect_CHI_0";
+		speech[] = {"\a3\dubbing_f_epa\a_in\95_Inspect\a_in_95_inspect_CHI_0.ogg"};
+		actor = "checkInspector";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+
+	class a_in_97_tense_KER_0
+	{
+		text = "$STR_A3_a_in_97_tense_KER_0";
+		speech[] = {"\a3\dubbing_f_epa\a_in\97_Tense\a_in_97_tense_KER_0.ogg"};
+		actor = "p1";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+
+	class a_in_97_tense_ICO_0
+	{
+		text = "$STR_A3_a_in_97_tense_ICO_0";
+		speech[] = {"\a3\dubbing_f_epa\a_in\97_Tense\a_in_97_tense_ICO_0.ogg"};
+		actor = "Adams";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+
+	class a_in_97_tense_ICO_1
+	{
+		text = "$STR_A3_a_in_97_tense_ICO_1";
+		speech[] = {"\a3\dubbing_f_epa\a_in\97_Tense\a_in_97_tense_ICO_1.ogg"};
+		actor = "Adams";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+
+	class a_in_97_tense_ICO_2
+	{
+		text = "$STR_A3_a_in_97_tense_ICO_2";
+		speech[] = {"\a3\dubbing_f_epa\a_in\97_Tense\a_in_97_tense_ICO_2.ogg"};
+		actor = "Adams";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+
+	class a_in_97_tense_BRA_0
+	{
+		text = "$STR_A3_a_in_97_tense_BRA_0";
+		speech[] = {"\a3\dubbing_f_epa\a_in\97_Tense\a_in_97_tense_BRA_0.ogg"};
+		actor = "Lacey";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+
+	class a_in_97_tense_ICO_3
+	{
+		text = "$STR_A3_a_in_97_tense_ICO_3";
+		speech[] = {"\a3\dubbing_f_epa\a_in\97_Tense\a_in_97_tense_ICO_3.ogg"};
+		actor = "Adams";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+
+	class a_in_100_clear_CHI_0
+	{
+		text = "$STR_A3_a_in_100_clear_CHI_0";
+		speech[] = {"\a3\dubbing_f_epa\a_in\100_Clear\a_in_100_clear_CHI_0.ogg"};
+		actor = "checkInspector";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+
+	class a_in_100_clear_CHO_0
+	{
+		text = "$STR_A3_a_in_100_clear_CHO_0";
+		speech[] = {"\a3\dubbing_f_epa\a_in\100_Clear\a_in_100_clear_CHO_0.ogg"};
+		actor = "checkOff";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+
+	class a_in_105_left_checkpoint_ICO_0
+	{
+		text = "$STR_A3_a_in_105_left_checkpoint_ICO_0";
+		speech[] = {"\a3\dubbing_f_epa\a_in\105_Left_Checkpoint\a_in_105_left_checkpoint_ICO_0.ogg"};
+		actor = "Adams";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+
+	class a_in_105_left_checkpoint_ICO_1
+	{
+		text = "$STR_A3_a_in_105_left_checkpoint_ICO_1";
+		speech[] = {"\a3\dubbing_f_epa\a_in\105_Left_Checkpoint\a_in_105_left_checkpoint_ICO_1.ogg"};
+		actor = "Adams";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+
+	class a_in_105_left_checkpoint_ICO_3
+	{
+		text = "$STR_A3_a_in_105_left_checkpoint_ICO_3";
+		speech[] = {"\a3\dubbing_f_epa\a_in\105_Left_Checkpoint\a_in_105_left_checkpoint_ICO_3.ogg"};
+		actor = "Adams";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+
+	class a_in_110_hazard_ICO_0
+	{
+		text = "$STR_A3_a_in_110_hazard_ICO_0";
+		speech[] = {"\a3\dubbing_f_epa\a_in\110_Hazard\a_in_110_hazard_ICO_0.ogg"};
+		actor = "Adams";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+
+	class a_in_110_hazard_ICO_1
+	{
+		text = "$STR_A3_a_in_110_hazard_ICO_1";
+		speech[] = {"\a3\dubbing_f_epa\a_in\110_Hazard\a_in_110_hazard_ICO_1.ogg"};
+		actor = "Adams";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+
+	class a_in_128_ambient_2_XRA_0
+	{
+		text = "$STR_A3_a_in_128_ambient_2_XRA_0";
+		speech[] = {"\a3\dubbing_f_epa\a_in\128_Ambient_2\a_in_128_ambient_2_XRA_0.ogg"};
+		actor = "xray";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+
+	class a_in_128_ambient_2_BHQ_0
+	{
+		text = "$STR_A3_a_in_128_ambient_2_BHQ_0";
+		speech[] = {"\a3\dubbing_f_epa\a_in\128_Ambient_2\a_in_128_ambient_2_BHQ_0.ogg"};
+		actor = "BHQ";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+
+	class a_in_128_ambient_2_XRA_1
+	{
+		text = "$STR_A3_a_in_128_ambient_2_XRA_1";
+		speech[] = {"\a3\dubbing_f_epa\a_in\128_Ambient_2\a_in_128_ambient_2_XRA_1.ogg"};
+		actor = "xray";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+
+	class a_in_128_ambient_2_XRA_2
+	{
+		text = "$STR_A3_a_in_128_ambient_2_XRA_2";
+		speech[] = {"\a3\dubbing_f_epa\a_in\128_Ambient_2\a_in_128_ambient_2_XRA_2.ogg"};
+		actor = "xray";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+
+	class a_in_115_check_ICO_0
+	{
+		text = "$STR_A3_a_in_115_check_ICO_0";
+		speech[] = {"\a3\dubbing_f_epa\a_in\115_Check\a_in_115_check_ICO_0.ogg"};
+		actor = "Adams";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+
+	class a_in_117_request_help_ICO_0
+	{
+		text = "$STR_A3_a_in_117_request_help_ICO_0";
+		speech[] = {"\a3\dubbing_f_epa\a_in\117_Request_Help\a_in_117_request_help_ICO_0.ogg"};
+		actor = "adams";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+
+	class a_in_117_request_help_ICO_1
+	{
+		text = "$STR_A3_a_in_117_request_help_ICO_1";
+		speech[] = {"\a3\dubbing_f_epa\a_in\117_Request_Help\a_in_117_request_help_ICO_1.ogg"};
+		actor = "adams";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+
+	class a_in_120_range_RAN_0
+	{
+		text = "$STR_A3_a_in_120_range_RAN_0";
+		speech[] = {"\a3\dubbing_f_epa\a_in\120_Range\a_in_120_range_RAN_0.ogg"};
+		actor = "range";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+
+	class a_in_120_range_RAN_1
+	{
+		text = "$STR_A3_a_in_120_range_RAN_1";
+		speech[] = {"\a3\dubbing_f_epa\a_in\120_Range\a_in_120_range_RAN_1.ogg"};
+		actor = "range";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+
+	class a_in_120_range_BHQ_0
+	{
+		text = "$STR_A3_a_in_120_range_BHQ_0";
+		speech[] = {"\a3\dubbing_f_epa\a_in\120_Range\a_in_120_range_BHQ_0.ogg"};
+		actor = "BHQ";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+
+	class a_in_120_range_LOG_0
+	{
+		text = "$STR_A3_a_in_120_range_LOG_0";
+		speech[] = {"\a3\dubbing_f_epa\a_in\120_Range\a_in_120_range_LOG_0.ogg"};
+		actor = "Edwards";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+
+	class a_in_120_range_ICO_0
+	{
+		text = "$STR_A3_a_in_120_range_ICO_0";
+		speech[] = {"\a3\dubbing_f_epa\a_in\120_Range\a_in_120_range_ICO_0.ogg"};
+		actor = "Adams";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+
+	class a_in_120_range_LOG_1
+	{
+		text = "$STR_A3_a_in_120_range_LOG_1";
+		speech[] = {"\a3\dubbing_f_epa\a_in\120_Range\a_in_120_range_LOG_1.ogg"};
+		actor = "Edwards";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+
+
+
+	class a_in_x01_offroading_ICO_0
+	{
+		text = "$STR_A3_a_in_x01_offroading_ICO_0";
+		speech[] = {"\a3\dubbing_f_epa\a_in\x01_Offroading\a_in_x01_offroading_ICO_0.ogg"};
+		actor = "Adams";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+
+	class a_in_x05_slowitdown_ICO_0
+	{
+		text = "$STR_A3_a_in_x05_slowitdown_ICO_0";
+		speech[] = {"\a3\dubbing_f_epa\a_in\x05_SlowItDown\a_in_x05_slowitdown_ICO_0.ogg"};
+		actor = "Adams";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+
+	class a_in_x05_slowitdown_ICO_1
+	{
+		text = "$STR_A3_a_in_x05_slowitdown_ICO_1";
+		speech[] = {"\a3\dubbing_f_epa\a_in\x05_SlowItDown\a_in_x05_slowitdown_ICO_1.ogg"};
+		actor = "Adams";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+
+	class a_in_x10_moveon_ICO_0
+	{
+		text = "$STR_A3_a_in_x10_moveon_ICO_0";
+		speech[] = {"\a3\dubbing_f_epa\a_in\x10_MoveOn\a_in_x10_moveon_ICO_0.ogg"};
+		actor = "Adams";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+};
+class Arguments{};
+class Special{};
+startWithVocal[] = {hour};
+startWithConsonant[] = {europe, university};
