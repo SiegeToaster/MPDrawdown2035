@@ -754,7 +754,7 @@ class Sentences
 	{
 		text = "$STR_A3_a_in_117_request_help_ICO_0";
 		speech[] = {"\a3\dubbing_f_epa\a_in\117_Request_Help\a_in_117_request_help_ICO_0.ogg"};
-		actor = "adams";
+		actor = "Adams";
 		variant = "";
 		variantText = "";
 		class Arguments {};
@@ -764,7 +764,7 @@ class Sentences
 	{
 		text = "$STR_A3_a_in_117_request_help_ICO_1";
 		speech[] = {"\a3\dubbing_f_epa\a_in\117_Request_Help\a_in_117_request_help_ICO_1.ogg"};
-		actor = "adams";
+		actor = "Adams";
 		variant = "";
 		variantText = "";
 		class Arguments {};
@@ -825,6 +825,316 @@ class Sentences
 		text = "$STR_A3_a_in_120_range_LOG_1";
 		speech[] = {"\a3\dubbing_f_epa\a_in\120_Range\a_in_120_range_LOG_1.ogg"};
 		actor = "Edwards";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+
+	class a_in_125_comply_ICO_0
+	{
+		text = "$STR_A3_a_in_125_comply_ICO_0";
+		speech[] = {"\a3\dubbing_f_epa\a_in\125_Comply\a_in_125_comply_ICO_0.ogg"};
+		actor = "Adams";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+
+	class a_in_130_planes_ICO_0
+	{
+		text = "$STR_A3_a_in_130_planes_ICO_0";
+		speech[] = {"\a3\dubbing_f_epa\a_in\130_Planes\a_in_130_planes_ICO_0.ogg"};
+		actor = "Adams";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+
+	class a_in_135_on_foot_ICO_0
+	{
+		text = "$STR_A3_a_in_135_on_foot_ICO_0";
+		speech[] = {"\a3\dubbing_f_epa\a_in\135_On_Foot\a_in_135_on_foot_ICO_0.ogg"};
+		actor = "adams";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+
+	class a_in_135_on_foot_KER_0
+	{
+		text = "$STR_A3_a_in_135_on_foot_KER_0";
+		speech[] = {"\a3\dubbing_f_epa\a_in\135_On_Foot\a_in_135_on_foot_KER_0.ogg"};
+		actor = "p1";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+
+	class a_in_140_enemies_BHQ_0
+	{
+		text = "$STR_A3_a_in_140_enemies_BHQ_0";
+		speech[] = {"\a3\dubbing_f_epa\a_in\140_Enemies\a_in_140_enemies_BHQ_0.ogg"};
+		actor = "BHQ";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+
+	class a_in_127_ambient_1_EVA_0
+	{
+		text = "$STR_A3_a_in_127_ambient_1_EVA_0";
+		speech[] = {"\a3\dubbing_f_epa\a_in\127_Ambient_1\a_in_127_ambient_1_EVA_0.ogg"};
+		actor = "evac";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+
+	class a_in_127_ambient_1_EVA_1
+	{
+		text = "$STR_A3_a_in_127_ambient_1_EVA_1";
+		speech[] = {"\a3\dubbing_f_epa\a_in\127_Ambient_1\a_in_127_ambient_1_EVA_1.ogg"};
+		actor = "evac";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+
+	class a_in_127_ambient_1_BHQ_0
+	{
+		text = "$STR_A3_a_in_127_ambient_1_BHQ_0";
+		speech[] = {"\a3\dubbing_f_epa\a_in\127_Ambient_1\a_in_127_ambient_1_BHQ_0.ogg"};
+		actor = "BHQ";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+
+	class a_in_137_wtf_KER_0
+	{
+		text = "$STR_A3_a_in_137_wtf_KER_0";
+		speech[] = {"\a3\dubbing_f_epa\a_in\137_WTF\a_in_137_wtf_KER_0.ogg"};
+		actor = "p1";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+
+	class a_in_137_wtf_ICO_0
+	{
+		text = "$STR_A3_a_in_137_wtf_ICO_0";
+		speech[] = {"\a3\dubbing_f_epa\a_in\137_WTF\a_in_137_wtf_ICO_0.ogg"};
+		actor = "Adams";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+
+	class a_in_137_wtf_KER_1
+	{
+		text = "$STR_A3_a_in_137_wtf_KER_1";
+		speech[] = {"\a3\dubbing_f_epa\a_in\137_WTF\a_in_137_wtf_KER_1.ogg"};
+		actor = "p1";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+
+	class a_in_145_fubar_ICO_1
+	{
+		text = "$STR_A3_a_in_145_fubar_ICO_1";
+		speech[] = {"\a3\dubbing_f_epa\a_in\145_FUBAR\a_in_145_fubar_ICO_1.ogg"};
+		actor = "Adams";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+
+	class a_in_140_enemies_BHQ_1
+	{
+		text = "$STR_A3_a_in_140_enemies_BHQ_1";
+		speech[] = {"\a3\dubbing_f_epa\a_in\140_Enemies\a_in_140_enemies_BHQ_1.ogg"};
+		actor = "BHQ";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+
+	class a_in_140_enemies_BHQ_2
+	{
+		text = "$STR_A3_a_in_140_enemies_BHQ_2";
+		speech[] = {"\a3\dubbing_f_epa\a_in\140_Enemies\a_in_140_enemies_BHQ_2.ogg"};
+		actor = "BHQ";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+
+	class a_in_145_fubar_KER_0
+	{
+		text = "$STR_A3_a_in_145_fubar_KER_0";
+		speech[] = {"\a3\dubbing_f_epa\a_in\145_FUBAR\a_in_145_fubar_KER_0.ogg"};
+		actor = "p1";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+
+	class a_in_145_fubar_ICO_0
+	{
+		text = "$STR_A3_a_in_145_fubar_ICO_0";
+		speech[] = {"\a3\dubbing_f_epa\a_in\145_FUBAR\a_in_145_fubar_ICO_0.ogg"};
+		actor = "Adams";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+
+	class a_in_137_wtf_ICO_1
+	{
+		text = "$STR_A3_a_in_137_wtf_ICO_1";
+		speech[] = {"\a3\dubbing_f_epa\a_in\137_WTF\a_in_137_wtf_ICO_1.ogg"};
+		actor = "adams";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+
+	class a_in_155_contacts_ICO_0
+	{
+		text = "$STR_A3_a_in_155_contacts_ICO_0";
+		speech[] = {"\a3\dubbing_f_epa\a_in\155_Contacts\a_in_155_contacts_ICO_0.ogg"};
+		actor = "adams";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+
+	class a_in_155_contacts_ICO_1
+	{
+		text = "$STR_A3_a_in_155_contacts_ICO_1";
+		speech[] = {"\a3\dubbing_f_epa\a_in\155_Contacts\a_in_155_contacts_ICO_1.ogg"};
+		actor = "adams";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+
+	class a_in_160_evac_LOG_0
+	{
+		text = "$STR_A3_a_in_160_evac_LOG_0";
+		speech[] = {"\a3\dubbing_f_epa\a_in\160_Evac\a_in_160_evac_LOG_0.ogg"};
+		actor = "Edwards";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+
+	class a_in_160_evac_BHQ_0
+	{
+		text = "$STR_A3_a_in_160_evac_BHQ_0";
+		speech[] = {"\a3\dubbing_f_epa\a_in\160_Evac\a_in_160_evac_BHQ_0.ogg"};
+		actor = "BHQ";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+
+	class a_in_160_evac_BHQ_1
+	{
+		text = "$STR_A3_a_in_160_evac_BHQ_1";
+		speech[] = {"\a3\dubbing_f_epa\a_in\160_Evac\a_in_160_evac_BHQ_1.ogg"};
+		actor = "BHQ";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+
+	class a_in_160_evac_BHQ_2
+	{
+		text = "$STR_A3_a_in_160_evac_BHQ_2";
+		speech[] = {"\a3\dubbing_f_epa\a_in\160_Evac\a_in_160_evac_BHQ_2.ogg"};
+		actor = "BHQ";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+
+	class a_in_160_evac_BHQ_3
+	{
+		text = "$STR_A3_a_in_160_evac_BHQ_3";
+		speech[] = {"\a3\dubbing_f_epa\a_in\160_Evac\a_in_160_evac_BHQ_3.ogg"};
+		actor = "BHQ";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+
+	class a_in_165_aa_KER_0
+	{
+		text = "$STR_A3_a_in_165_aa_KER_0";
+		speech[] = {"\a3\dubbing_f_epa\a_in\165_AA\a_in_165_aa_KER_0.ogg"};
+		actor = "p1";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+
+	class a_in_165_aa_ICO_0
+	{
+		text = "$STR_A3_a_in_165_aa_ICO_0";
+		speech[] = {"\a3\dubbing_f_epa\a_in\165_AA\a_in_165_aa_ICO_0.ogg"};
+		actor = "Adams";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+
+	class a_in_165_aa_ICO_1
+	{
+		text = "$STR_A3_a_in_165_aa_ICO_1";
+		speech[] = {"\a3\dubbing_f_epa\a_in\165_AA\a_in_165_aa_ICO_1.ogg"};
+		actor = "Adams";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+
+	class a_in_170_over_camp_KER_0
+	{
+		text = "$STR_A3_a_in_170_over_camp_KER_0";
+		speech[] = {"\a3\dubbing_f_epa\a_in\170_Over_Camp\a_in_170_over_camp_KER_0.ogg"};
+		actor = "p1";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+
+	class a_in_170_over_camp_ICO_0
+	{
+		text = "$STR_A3_a_in_170_over_camp_ICO_0";
+		speech[] = {"\a3\dubbing_f_epa\a_in\170_Over_Camp\a_in_170_over_camp_ICO_0.ogg"};
+		actor = "Adams";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+
+	class a_in_175_bad_sign_KER_0
+	{
+		text = "$STR_A3_a_in_175_bad_sign_KER_0";
+		speech[] = {"\a3\dubbing_f_epa\a_in\175_Bad_Sign\a_in_175_bad_sign_KER_0.ogg"};
+		actor = "BIS_inf";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+
+	class a_in_180_at_aa_ICO_0
+	{
+		text = "$STR_A3_a_in_180_at_aa_ICO_0";
+		speech[] = {"\a3\dubbing_f_epa\a_in\180_At_AA\a_in_180_at_aa_ICO_0.ogg"};
+		actor = "adams";
 		variant = "";
 		variantText = "";
 		class Arguments {};

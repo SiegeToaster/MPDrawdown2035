@@ -4,21 +4,25 @@
 	_x allowDamage false;
 	_x setCaptive true;
 	_x enableSimulation false;
-	_x hideObject true;
+	_x hideObjectGlobal true;
 } forEach [plane1, plane2, bomber, plane3];
-/*
+
 {
 	_x allowDamage false;
 	_x setCaptive true;
 	_x enableSimulation false;
-	_x hideObject true;
+	_x hideObjectGlobal true;
 
 	_x setVariable ["pos", getPosATL _x];
 	_x setVariable ["dir", direction _x];
 	_x setPos [position _x select 0, position _x select 1, 1000];
 } forEach [enemyHeli1, enemyTruck1, enemyHeli2, enemyHeli3];
-*/
+
 rangeAmbient = [];
+evacTeam = [evac1, evac2, evac3, evac4];
+evacAttack = (units evacAttack1 + units evacAttack2 + units evacDefend1 + units evacDefend2);
+evacRestrict1 = (units evacDefend1 + units evacDefend2);
+evacRestrict2 = (units evacAttack1 + units evacAttack2);
 private _playersArray = [];
 {_playersArray = _playersArray + [_x] + [vehicle _x]} forEach allPlayers;
 
@@ -37,7 +41,7 @@ private _playersArray = [];
 	private _unit = _x;
 
 	if !(_unit in rangeAmbient) then {
-		_unit hideObject true;
+		_unit hideObjectGlobal true;
 	} else {
 		_unit switchMove "AmovPercMstpSlowWrflDnon";
 	};
@@ -53,29 +57,125 @@ private _playersArray = [];
 	};
 
 	_unit setPos [position _unit select 0, position _unit select 1, 1000];
-} forEach (rangeAmbient + units BIS_AA1Group1)
+} forEach ([campAmbient1, campAmbient2, campAmbient6, campAmbient8, plane1D, plane2D, bomberD, plane3D] + units group enemyHeli1D + rangeAmbient + units group enemyHeli2D + units AA1Group1 + units AA1Group2 + units rangeAttackGrp + evacAttack + evacTeam + units retreatGrp1 + units group enemyHeli3D + units retreatGrp2);
+
+campSetup = {
+	params ["_unit", "_marker"];
+
+	if !(alive _unit) exitWith {};
+	if !(isNil {_unit getVariable "animEH"}) then {_unit removeEventHandler ["AnimDone", _unit getVariable "animEH"]};
+	if !(isNil {_unit getVariable "killedEH"}) then {_unit removeEventHandler ["Killed", _unit getVariable "killedEH"]};
+
+	{_unit enableAI _x} forEach ["ANIM", "AUTOTARGET", "FSM", "MOVE", "TARGET"];
+	_unit switchMove "";
+
+	private _pos = markerPos _marker;
+	private _dir = markerDir _marker;
+
+	while {position _unit distance _pos > 1 && round (direction _unit) != round _dir} do {
+		sleep 0.5;
+		_unit setPos _pos;
+		_unit setVelocity [0, 0, 0];
+		_unit setDir _dir;
+	};
+
+	_unit setBehaviour "AWARE";
+	_unit enableAI "MOVE";
+	_unit setCaptive false;
+
+	if (side _unit == WEST) then {
+		private _group = createGroup EAST;
+		_group copyWaypoints group _unit;
+		while {count waypoints _group > 1} do {
+			sleep 0.5;
+			deleteWaypoint (waypoints _group select 0);
+		};
+
+		[_unit] joinSilent _group;
+		_unit allowFleeing 0;
+	};
+};
 
 AA1setup = {
 	params ["_unit", "_marker", "_anim"];
 
-	if (alive _unit) then {
-		if (!(isNil {_unit getVariable "animEH"})) then {_unit removeEventHandler ["AnimDone", _unit getVariable "animEH"]};
-		if (!(isNil {_unit getVariable "killedEH"})) then {_unit removeEventHandler ["Killed", _unit getVariable "killedEH"]};
+	if !(alive _unit) exitWith {};
+	if (!(isNil {_unit getVariable "animEH"})) then {_unit removeEventHandler ["AnimDone", _unit getVariable "animEH"]};
+	if (!(isNil {_unit getVariable "killedEH"})) then {_unit removeEventHandler ["Killed", _unit getVariable "killedEH"]};
+	
+	{_unit enableAI _x} forEach ["ANIM", "AUTOTARGET", "FSM", "MOVE", "TARGET"];
+	_unit switchMove "";
+	private _pos = markerPos _marker;
+	private _dir = markerDir _marker;
+	_unit setDamage 1;
+	while {position _unit distance _pos > 1 && round (direction _unit) != round _dir && animationState _unit != _anim} do {
+		sleep 0.5;
+		_unit setPos _pos;
+		_unit setVelocity [0, 0, 0];
+		_unit setDir _dir;
+		_unit switchMove _anim;
+	};
+};
 
-		{_unit enableAI _x} forEach ["ANIM", "AUTOTARGET", "FSM", "MOVE", "TARGET"];
-		_unit switchMove "";
+AA2setup = {
+	params ["_unit", "_marker"];
 
-		private _pos = markerPos _marker;
-		private _dir = markerDir _marker;
-		_unit setDamage 1;
+	if !(alive _unit) exitWith {};
+	if (!(isNil {_unit getVariable "animEH"})) then {_unit removeEventHandler ["AnimDone", _unit getVariable "animEH"]};
+	if (!(isNil {_unit getVariable "killedEH"})) then {_unit removeEventHandler ["Killed", _unit getVariable "killedEH"]};
 
-		while {position _unit distance _pos > 1 &7 round (direction _unit) != round _dir && animationState _unit != _anim} do {
+	{_unit enableAI _x} forEach ["ANIM", "AUTOTARGET", "FSM", "MOVE", "TARGET"];
+	_unit switchMove "";
+
+	private _pos = markerPos _marker;
+	private _dir = markerDir _marker;
+
+	while {position _unit distance _pos > 1 && round (direction _unit) != round _dir} do {
+		sleep 0.5;
+		_unit setPos _pos;
+		_unit setVelocity [0, 0, 0];
+		_unit setDir _dir;
+	};
+
+	_unit setBehaviour "AWARE";
+	_unit enableAI "MOVE";
+	_unit setCaptive false;
+
+	if (side _unit == WEST) then {
+		private _group = createGroup EAST;
+		_group copyWaypoints group _unit;
+		while {count waypoints _group > 1} do {
 			sleep 0.5;
+			deleteWaypoint (waypoints _group select 0);
+		};
 
-			_unit setPos _pos;
-			_unit setVelocity [0, 0, 0];
-			_unit setDir _dir;
-			_unit switchMove _anim;
+		[_unit] joinSilent _group;
+		_unit allowFleeing 0;
+	};
+};
+
+evacSetup = {
+	private _unit = _this;
+
+	private _spot = selectRandom (1, 2, 3, 4] - evacTaken);
+	evacTaken = evacTaken + [_spot];
+
+	[_unit, _spot] spawn {
+		params ["_unit", "_spot"];
+
+		private _pos = markerPos foramt ["mrk_evac_move%1", _spot];
+		private _target = markerPos format ["mrk_evac_target%1", _spot];
+
+		waitUntil {vehicle _unit == _unit && unitReady _unit};
+		_unit doMove _pos;
+		_unit doWatch _target;
+
+		waitUntil {!(unitReady _unit)};
+		waitUntil {unitReady _unit};
+
+		if (alive _unit) then {
+			_unit setBehaviour "COMBAT";
+			_unit setUnitPos "MIDDLE";
 		};
 	};
 };
@@ -141,7 +241,7 @@ Adams setVariable ["animEH", _animEH];
 			if (damage _unit > 0.1 || !(canMove _unit)) then {hint "court martialed >:("};
 		};
 	}];
-} forEach ([transportHeli] + units group transportHeliD);
+} forEach ([transportHeli] + units group November);
 
 {
 	_x addEventHandler ["HandleDamage", {
@@ -182,7 +282,6 @@ Adams setVariable ["animEH", _animEH];
 	} forEach _array;
 } forEach ["rangeAmbient"];
 
-/*
 {
 	_x addEventHandler ["HandleDamage", {
 		private _damage = _this select 2;
@@ -209,5 +308,3 @@ Adams setVariable ["animEH", _animEH];
 		if (_source in evacRestrict2) then {1} else {_damage};
 	}];
 } forEach units evacDefend2;
-*/
-

@@ -10,11 +10,10 @@ player createDiaryRecord ["Diary", [localize "STR_A3_Diary_Situation_title",
 		"<br/><br/>"]]];
 
 goats = [goat1, goat2, goat3, goat4, goat5, goat6, goat7, goat8, goat9];
-evacTeam = [evac1, evac2, evac3, evac4];
 maxwellHeloMove = false;
 
 execVM "ambientConversations\00.sqf"; // adds ambient conversations between two people near whiteboard at LZ connor
-{_x kbAddTopic ["kb", "kb.bikb"]} forEach [Adams, November, Lacey, Edwards, checkOff, checkInspector, xray, BHQ, range, player]; // setup
+{_x kbAddTopic ["kb", "kb.bikb"]} forEach [Adams, November, Lacey, Edwards, checkOff, checkInspector, xray, BHQ, range, evac, player]; // setup
 
 enableEnvironment false; //disables environment as to not make wind/leave noises in cutscene.
 
@@ -33,7 +32,7 @@ if (isServer) then {
 }; // helicopter landing sequence.
 
 sleep 1;
-player enableSimulation true;
+player enableSimulationGlobal true;
 enableEnvironment true;
 {_x enableAI "MOVE"} forEach [LzCnrAmbient1, LzCnrAmbient2, CnrTruck1D, CnrTruck2D, CnrTruck3D]; // starts up the ambient stuff and lets the players look around.
 
@@ -272,7 +271,7 @@ atRgn = true; // Make players get out & remove cinematic borders & locks heli
 
 if (isServer) then {
 	{_x setDamage 1} forEach [officer, officerTruckD];
-	officerTruck enableSimulation false;
+	officerTruck enableSimulationGlobal false;
 	officerTruck setPos [5690.8989,5313.7993,-0.8];
 	officerTruck setDir 125;
 	[officerTruck, 2, 265] call BIS_fnc_setPitchBank;
@@ -287,8 +286,8 @@ if (isServer) then {
 	truckSmokeSound = createSoundSource ["Sound_SmokeWreck1", [10, 10, 10], [], 0];
 	truckSmokeSound attachTo [smokeLogic, [-1.4, -0.4, 1.6]];
 
-	officer hideObject false;
-	officer enableSimulation true;
+	officer hideObjectGlobal false;
+	officer enableSimulationGlobal true;
 
 	truckMine = "ATMine_Range_Ammo" createVehicle [5680.392,5314.729,0.000];
 }; // sets up crash site
@@ -464,7 +463,7 @@ if (isNil "approachingCheckpoint") then {
 	[] spawn {
 		if (isServer) then {
 			{
-				_x enableSimulation true;
+				_x enableSimulationGlobal true;
 				sleep (0.2 + random 0.8);
 			} forEach goats;
 		};
@@ -703,8 +702,8 @@ if (isServer) then {
 			{_unit enableAI _x} forEach ["ANIM", "AUTOTARGET", "FSM", "MOVE", "TARGET"];
 			_unit allowDamage true;
 			_unit setCaptive false;
-			_unit hideObject false;
-			_unit enableSimulation true;
+			_unit hideObjectGlobal false;
+			_unit enableSimulationGlobal true;
 
 			_group = switch (side _unit) do {
 				case WEST: {createGroup EAST};
@@ -780,7 +779,7 @@ if (isServer) then {
 		{
 			sleep 0.5;
 			deleteVehicle _x;
-		} forEach ([transportHeli] + units group transportHeliD + units group checkOff);
+		} forEach ([transportHeli] + units group November + units group checkOff);
 
 		{_x setDamage 0.7} forEach [AA1, AA1Truck];
 		AA1Truck setHitPointDamage ["HitLFWheel", 1];
@@ -799,7 +798,7 @@ playMusic "LeadTrack03_F_EPA";
 
 if (isServer) then {
 	private _bomb = "Bo_GBU12_LGB" createVehicle [6480.510, 5380.242, 1];
-	_bomb hideObject true;
+	_bomb hideObjectGlobal true;
 	_bomb setVelocity [0, 0, -1];
 	
 	{_x setCombatMode "YELLOW"} forEach rangeAmbient;
@@ -814,7 +813,7 @@ sleep 1;
 
 	wreck1 setDamage 1;
 	sleep 5;
-	wreck2; setDamage 1;
+	wreck2 setDamage 1;
 };
 
 if (isServer) then {
@@ -835,6 +834,43 @@ if (isServer) then {
 
 observe = true;
 
+if (isServer) then {
+	[] spawn {
+		waitUntil {{!(isNil _x)} count ["observing", "stopObserving"] > 0};
+		if (isNil "stopObserving") then {
+			waitUntil {animationState Adams == "AmovPercMstpSlowWrflDnon"};
+			{Adams disableAI _x} forEach ["AUTOTARGET", "FSM", "MOVE", "TARGET"];
+			Adams playMoveNow "Acts_listeningToRadio_In";
+
+			waitUntil {!(isNil "stopObserving")};
+			Adams playMoveNow "Acts_listeningToRadio_Out";
+
+			private _animEH = Adams addEventHandler ["AnimDone", {
+				if (_this select 1 == "Acts_listeningToRadio_Out") then {
+					Adams removeEventHandler ["AnimDone", Adams getVariable "animEH"];
+					Adams playMoveNow "Acts_ShieldFromSun_in";
+				};
+			}];
+			Adams setVariable ["animEH", _animEH];
+
+			waitUntil {!(isNil "toCamp")};
+			Adams setBehaviour "AWARE";
+			Adams doWatch objNull;
+			Adams disableAI "ANIM";
+			Adams playMoveNow "Acts_ShieldFromSun_out";
+
+			private _animEH = Adams addEventHandler ["AnimDone", {
+				if (_this select 1 == "Acts_ShieldFromSun_out") then {
+					Adams removeEventHandler ["AnimDone", Adams getVariable "animEH"];
+					{Adams enableAI _x} forEach ["ANIM", "AUTOTARGET", "FSM", "MOVE", "TARGET"];
+					Adams playMoveNow "AmovPercMstpSrasWrflDnon";
+				};
+			}];
+			Adams setVariable ["animEH", _animEH];
+		};
+	};
+};
+
 range kbTell [player, "kb", "a_in_120_range_RAN_0", "SIDE"];
 waitUntil {range kbWasSaid [player, "kb", "a_in_120_range_RAN_0", 9999]};
 sleep 1;
@@ -842,9 +878,361 @@ range kbTell [player, "kb", "a_in_120_range_RAN_1", "SIDE"];
 waitUntil {range kbWasSaid [player, "kb", "a_in_120_range_RAN_1", 9999]};
 BHQ kbTell [player, "kb", "a_in_120_range_BHQ_0", "SIDE"];
 waitUntil {BHQ kbWasSaid [player, "kb", "a_in_120_range_BHQ_0", 9999]};
+[
+	configFile >> "CfgORBAT" >> "BIS" >> "B_Aegis_A_1",
+	"mil_destroy",
+	[1,0,0,1],
+	1.2,1.2,45
+] call BIS_fnc_ORBATAddGroupOverlay;
+"mrk_kamino" setMarkerColor "ColorIndependent";
+
 Edwards kbTell [player, "kb", "a_in_120_range_LOG_0", "SIDE"];
 waitUntil {Edwards kbWasSaid [player, "kb", "a_in_120_range_LOG_0", 9999]};
 Adams kbTell [player, "kb", "a_in_120_range_ICO_0", "SIDE"];
 waitUntil {Adams kbWasSaid [player, "kb", "a_in_120_range_ICO_0", 9999]};
 Edwards kbTell [player, "kb", "a_in_120_range_LOG_1", "SIDE"];
 waitUntil {Edwards kbWasSaid [player, "kb", "a_in_120_range_LOG_1", 9999]};
+if (isServer) then {
+	{plane1D enableAI _x} forEach ["ANIM", "AUTOTARGET", "FSM", "MOVE", "TARGET"];
+	{
+		_x enableSimulationGlobal true;
+		_x hideObjectGlobal false;
+		_x allowDamage true;
+	} forEach [plane1, plane1D];
+};
+assignTskReturn = true;
+Adams kbTell [player, "kb", "a_in_125_comply_ICO_0", "SIDE"];
+waitUntil {Adams kbWasSaid [player, "kb", "a_in_125_comply_ICO_0", 9999]};
+stopObserving = true;
+
+sleep 2;
+Adams kbTell [player, "kb", "a_in_130_planes_ICO_0", "DIRECT"];
+waitUntil {Adams kbWasSaid [player, "kb", "a_in_130_planes_ICO_0", 9999]};
+
+sleep 3;
+[player] joinSilent Adams;
+toCamp = true;
+{_x setCaptive false} forEach [Adams, player];
+
+if (isServer) then {
+	[] spawn {
+		sleep 4;
+		{
+			if (((side _x) == civilian) || ((side _x) == resistance)) then {
+				_x setSkill ["aimingShake", 0.01];
+				_x setSkill ["aimingAccuracy", 0.01];
+				_x setSkill ["aimingSpeed", 0.3];
+			};
+		} forEach allUnits;
+
+		forestAttack = true;
+		{_x removeEventHandler ["HandleDamage", _x getVariable "damageEH"]} forEach units forestGroup;
+
+		{
+			private _unit = _x;
+
+			if (vehicle _unit == _unit) then {
+				_unit setPosATL (_unit getVariable ["pos", getPosATL _unit]);
+				_unit setDir (_unit getVariable ["dir", direction _unit]);
+			};
+
+			{_unit enableAI _x} forEach ["ANIM", "AUTOTARGET", "FSM", "MOVE", "TARGET"];
+			_unit enableSimulationGlobal true;
+			_unit hideObjectGlobal false;
+			_unit setCaptive false;
+			_unit allowDamage true;
+		} forEach (units forestGroup + units AA1Group1 + units AA1Group2);
+
+
+		// enemyHeli1 stuff here (Through the forest FSM ID 65)
+		sleep 12;
+		{
+			private _fire = "test_EmptyObjectForFireBig" createVehicle position _x;
+			_fire setPos position _x;
+
+			deleteVehicle _x;
+		} forEach [wreck1, wreck2];
+	};
+	if (isNil "p0" || !(p0 in (call BIS_fnc_listPlayers))) then {
+		p0 = selectRandom (call BIS_fnc_listPlayers);
+		publicVariable "p0";
+	};	
+};
+
+waitUntil {!(isNil "p0")};
+Adams kbTell [player, "kb", "a_in_135_on_foot_ICO_0", "GROUP"];
+waitUntil {Adams kbWasSaid [player, "kb", "a_in_135_on_foot_ICO_0", 9999]};
+p0 kbTell [player, "kb", "a_in_135_on_foot_KER_0", "GROUP"];
+waitUntil {p0 kbWasSaid [player, "kb", "a_in_135_on_foot_KER_0", 9999]};
+BHQ kbTell [player, "kb", "a_in_140_enemies_BHQ_0", "SIDE"];
+waitUntil {BHQ kbWasSaid [player, "kb", "a_in_140_enemies_BHQ_0", 9999]};
+evac kbTell [player, "kb", "a_in_127_ambient_1_EVA_0", "SIDE"];
+waitUntil {evac kbWasSaid [player, "kb", "a_in_127_ambient_1_EVA_0", 9999]};
+evac kbTell [player, "kb", "a_in_127_ambient_1_EVA_1", "SIDE"];
+waitUntil {evac kbWasSaid [player, "kb", "a_in_127_ambient_1_EVA_1", 9999]};
+BHQ kbTell [player, "kb", "a_in_127_ambient_1_BHQ_0", "SIDE"];
+waitUntil {BHQ kbWasSaid [player, "kb", "a_in_127_ambient_1_BHQ_0", 9999]};
+p0 kbTell [player, "kb", "a_in_137_wtf_KER_0", "GROUP"];
+waitUntil {p0 kbWasSaid [player, "kb", "a_in_137_wtf_KER_0", 9999]};
+Adams kbTell [player, "kb", "a_in_137_wtf_ICO_0", "GROUP"];
+waitUntil {Adams kbWasSaid [player, "kb", "a_in_137_wtf_ICO_0", 9999]};
+p0 kbTell [player, "kb", "a_in_137_wtf_KER_1", "GROUP"];
+waitUntil {p0 kbWasSaid [player, "kb", "a_in_137_wtf_KER_1", 9999]};
+Adams kbTell [player, "kb", "a_in_145_fubar_ICO_1", "GROUP"];
+waitUntil {Adams kbWasSaid [player, "kb", "a_in_145_fubar_ICO_1", 9999]};
+
+waitUntil {behaviour Adams == "COMBAT"};
+sleep 2;
+BHQ kbTell [player, "kb", "a_in_140_enemies_BHQ_1", "SIDE"];
+waitUntil {BHQ kbWasSaid [player, "kb", "a_in_140_enemies_BHQ_1", 9999]};
+BHQ kbTell [player, "kb", "a_in_140_enemies_BHQ_2", "SIDE"];
+waitUntil {BHQ kbWasSaid [player, "kb", "a_in_140_enemies_BHQ_2", 9999]};
+
+waitUntil {({alive _x} count units forestGroup) == 0};
+if (isServer) then {
+	if (isNil "p0" || !(p0 in (call BIS_fnc_listPlayers))) then {
+			p0 = selectRandom (call BIS_fnc_listPlayers);
+			publicVariable "p0";
+	};
+};
+sleep (5 + random 5);
+waitUntil {!(isNil "p0")};
+
+p0 kbTell [player, "kb", "a_in_145_fubar_KER_0", "GROUP"];
+waitUntil {p0 kbWasSaid [player, "kb", "a_in_145_fubar_KER_0", 9999]};
+Adams kbTell [player, "kb", "a_in_145_fubar_ICO_0", "GROUP"];
+waitUntil {Adams kbWasSaid [player, "kb", "a_in_145_fubar_ICO_0", 9999]};
+Adams kbTell [player, "kb", "a_in_137_wtf_ICO_1", "GROUP"];
+waitUntil {Adams kbWasSaid [player, "kb", "a_in_137_wtf_ICO_1", 9999]};
+Adams kbTell [player, "kb", "a_in_155_contacts_ICO_0", "SIDE"];
+waitUntil {Adams kbWasSaid [player, "kb", "a_in_155_contacts_ICO_0", 9999]};
+sleep 2;
+Adams kbTell [player, "kb", "a_in_155_contacts_ICO_1", "SIDE"];
+waitUntil {Adams kbWasSaid [player, "kb", "a_in_155_contacts_ICO_1", 9999]};
+
+if (isServer) then {
+	{if (alive _x) then {_x setDamage 1}} forEach rangeAmbient;
+	// BIS_campSetup
+	Edwards hideObjectGlobal true;
+	Edwards enableSimulationGlobal false;
+	Edwards allowDamage false;
+	Edwards setCaptive true;
+	{Edwards disableAI _x} forEach ["ANIM", "AUTOTARGET", "FSM", "MOVE", "TARGET"];
+	Edwards setPos [7093.7,5965.62,0.0014205];
+
+	{deleteVehicle _x} forEach ([Conway, Mitchell, campDriver1, Lacey, rgnHeliGuide, rgnLogic, campCrew1, campCrew2, campCrew3, campTruck1, campGuard1, campGuard2] + goats);
+
+	truckSec setPos (markerPos "mrk_truckSecPos");
+	truckSec setDir (markerDir "mrk_truckSecPos");
+
+	{_x setDamage 1} forEach [truckSec, campTruck2];
+
+	enemyTruck1 setPosATL (enemyTruck1 getVariable ["pos", getPosATL enemyTruck1]);
+	enemyTruck1 setDir (enemyTruck1 getVariable ["dir", direction enemyTruck1]);
+	enemyTruck1 enableSimulationGlobal true;
+	enemyTruck1 hideObjectGlobal false;
+	enemyTruck1 allowDamage true;
+
+	{
+		private _unit = _x;
+
+		if (vehicle _unit == _unit) then {
+			_unit setPosATL (_unit getVariable ["pos", getPosATL _unit]);
+			_unit setDir (_unit getVariable ["dir", direction _unit]);
+			{_unit enableAI _x} forEach ["ANIM", "AUTOTARGET", "FSM", "MOVE", "TARGET"];
+			_unit enableSimulationGlobal true;
+			_unit hideObjectGlobal false;
+			_unit setCaptive false;
+			_unit allowDamage true;
+		};
+	} forEach [campAmbient1, campAmbient2, campAmbient6, campAmbient8];
+
+	"test_EmptyObjectForSmoke" createVehicle [4967.898,5899.229,0.000];
+
+	[campAmbient1, "mrk_campPos1"] spawn campSetup;
+	[campAmbient2, "mrk_campPos2"] spawn campSetup;
+	[campAmbient3, "mrk_campPos3"] spawn campSetup;
+	[campAmbient4, "mrk_campPos4"] spawn campSetup;
+	[campAmbient5, "mrk_campPos5"] spawn campSetup;
+	[campAmbient6, "mrk_campPos6"] spawn campSetup;
+	[campAmbient7, "mrk_campPos7"] spawn campSetup;
+	[campAmbient8, "mrk_campPos8"] spawn campSetup;
+
+	campFight = true;
+
+	// BIS_AA2Setup
+	private _fire = createVehicle ["test_EmptyObjectForFireBig", position AA2, [], 0, "NONE"];
+	_fire setPos position AA2;
+	{deleteVehicle _x} forEach [AA2C, AA2G, AA2D, AA2, AA2Crate];
+
+	[AA2Ambient1, "mrk_AA2Pos1"] spawn AA2setup;
+	[AA2Ambient2, "mrk_AA2Pos2"] spawn AA2setup;
+	[AA2Ambient3, "mrk_AA2Pos3"] spawn AA2setup;
+	[AA2Ambient4, "mrk_AA2Pos4"] spawn AA2setup;
+
+	assignTskEvac = true;
+};
+
+Edwards kbTell [player, "kb", "a_in_160_evac_LOG_0", "SIDE"];
+waitUntil {Edwards kbWasSaid [player, "kb", "a_in_160_evac_LOG_0", 9999]};
+sleep 0.5;
+BHQ kbTell [player, "kb", "a_in_160_evac_BHQ_0", "SIDE"];
+waitUntil {BHQ kbWasSaid [player, "kb", "a_in_160_evac_BHQ_0", 9999]};
+BHQ kbTell [player, "kb", "a_in_160_evac_BHQ_1", "SIDE"];
+waitUntil {BHQ kbWasSaid [player, "kb", "a_in_160_evac_BHQ_1", 9999]};
+BHQ kbTell [player, "kb", "a_in_160_evac_BHQ_2", "SIDE"];
+waitUntil {BHQ kbWasSaid [player, "kb", "a_in_160_evac_BHQ_2", 9999]};
+BHQ kbTell [player, "kb", "a_in_160_evac_BHQ_3", "SIDE"];
+waitUntil {BHQ kbWasSaid [player, "kb", "a_in_160_evac_BHQ_3", 9999]};
+
+{
+	[
+		_x,
+		"mil_destroy",
+		[1,0,0,1],
+		1.2,1.2,45
+	] call BIS_fnc_ORBATAddGroupOverlay;
+} forEach [
+	configFile >> "CfgORBAT" >> "BIS" >> "B_Aegis_A_2",
+	configFile >> "CfgORBAT" >> "BIS" >> "B_Aegis_HelicopterSquadron",
+	configFile >> "CfgORBAT" >> "BIS" >> "B_Aegis_HQCompany",
+	configFile >> "CfgORBAT" >> "BIS" >> "B_Aegis_ACompany",
+	configFile >> "CfgORBAT" >> "BIS" >> "B_Aegis_A_3",
+	configFile >> "CfgORBAT" >> "BIS" >> "B_Aegis_A_4"
+];
+{_x setMarkerColor "ColorIndependent"} forEach ["mrk_rogain", "mrk_airBase"];
+
+if (isServer) then {
+	if (isNil "p0" || !(p0 in (call BIS_fnc_listPlayers))) then {
+			p0 = selectRandom (call BIS_fnc_listPlayers);
+			publicVariable "p0";
+	};
+};
+
+p0 kbTell [player, "kb", "a_in_165_aa_KER_0", "GROUP"];
+waitUntil {p0 kbWasSaid [player, "kb", "a_in_165_aa_KER_0", 9999]};
+Adams kbTell [player, "kb", "a_in_165_aa_ICO_0", "GROUP"];
+waitUntil {Adams kbWasSaid [player, "kb", "a_in_165_aa_ICO_0", 9999]};
+Adams kbTell [player, "kb", "a_in_165_aa_ICO_1", "GROUP"];
+waitUntil {Adams kbWasSaid [player, "kb", "a_in_165_aa_ICO_1", 9999]};
+
+waitUntil {triggerActivated t_overCampTrig};
+[] spawn {
+	if (isServer) then {
+		Adams doWatch markerPos "mrk_camp";
+		waitUntil {{!(isNil _x)} count ["watching", "toAA"] > 0};
+		if !(isNil "toAA") exitWith {};
+		{_x setBehaviour "CARELESS"} forEach ([Adams] + allPlayers);
+		
+		waitUntil {animationState Adams == "AmovPercMstpSlowWrflDnon"};
+		{Adams disableAI _x} forEach ["AUTOTARGET", "FSM", "MOVE", "TARGET"];
+		Adams playMoveNow "Acts_ShieldFromSun_in";
+
+		waitUntil {!(isNil "toAA")};
+		{_x setBehaviour "AWARE"} forEach ([Adams] + allPlayers);
+		Adams doWatch objNull;
+		Adams disableAI "ANIM";
+		Adams playMoveNow "Acts_ShieldFromSun_out";
+
+		private _animEH = Adams addEventHandler ["AnimDone", {
+			if (_this select 1 == "Acts_ShieldFromSun_out") then {
+				Adams removeEventHandler ["AnimDone", Adams getVariable "animEH"];
+				{Adams enableAI _x} forEach ["ANIM", "AUTOTARGET", "FSM", "MOVE", "TARGET"];
+				Adams playMoveNow "AmovPercMstpSrasWrflDnon";
+			};
+		}];
+		Adams setVariable ["animEH", _animEH];
+	};
+};
+
+waitUntil {{_x distance Adams < 10} forEach allPlayers};
+enemyHeli2 setPosATL (enemyHeli2 getVariable ["pos", getPosATL enemyHeli2]);
+enemyHeli2 setDir (enemyHeli2 getVariable ["dir", direction enemyHeli2]);
+
+{
+	_x enableSimulationGlobal true;
+	_x hideObjectGlobal false;
+	_x allowDamage true;
+} forEach [plane2, enemyHeli2];
+
+{
+	private _unit = _x;
+	
+	{_unit enableAI _x} forEach ["ANIM", "AUTOTARGET", "FSM", "MOVE", "TARGET"];
+	_unit enableSimulationGlobal true;
+	_unit hideObjectGlobal false;
+	_unit allowDamage true;
+} forEach ([plane2D] + units group enemyHeli2D);
+planeSwap1 = true;
+
+if (isServer) then {
+	if (isNil "p0" || !(p0 in (call BIS_fnc_listPlayers))) then {
+			p0 = selectRandom (call BIS_fnc_listPlayers);
+			publicVariable "p0";
+	};
+};
+
+p0 kbTell [player, "kb", "a_in_170_over_camp_KER_0", "GROUP"];
+waitUntil {p0 kbWasSaid [player, "kb", "a_in_170_over_camp_KER_0", 9999]};
+sleep 4;
+Adams kbTell [player, "kb", "a_in_170_over_camp_ICO_0", "GROUP"];
+waitUntil {Adams kbWasSaid [player, "kb", "a_in_170_over_camp_ICO_0", 9999]};
+toAA = true;
+
+[] spawn {
+	waitUntil {Adams distance markerPos "mrk_AA1" <= 40};
+	{if (alive _x && _x distance markerPos "mrk_AA1" > 40) then {_x setDamage 1}} forEach (units AA1Group1 + units AA1Group2);
+};
+
+waitUntil {{alive _x} count (units AA1Group1 + units AA1Group2) == 0};
+
+[] spawn {
+	if (isServer) then {
+		Adams setUnitPos "UP";
+		planeSwap2 = true;
+
+		sleep (6 + random 10);
+		evacInbound = true;
+
+		maxHeli setPos [
+			markerPos "evacHeliPos" select 0,
+			markerPos "evacHeliPos" select 1,
+			50
+		];
+		maxHeli setDir markerDir "evacHeliPos";
+		maxHeli enableSimulationGlobal true;
+		maxHeli hideObjectGlobal false;
+		maxHeli setVelocity [0, 0, 0];
+
+		{
+			_unit = _x;
+			{_unit enableAI _x} forEach ["ANIM", "AUTOTARGET", "FSM", "MOVE", "TARGET"];
+			_unit enableSimulationGlobal true;
+			_unit hideObjectGlobal false;
+		} forEach (units group maxHeliD + evacTeam);
+
+		{
+			_x setCaptive false;
+			_x allowDamage true;
+			_x assignAsCargo maxHeli;
+			_x moveInCargo maxHeli;
+		} forEach evacTeam;
+
+		evacTaken = [];
+		{_x call evacSetup} forEach evacTeam;
+	};
+};
+
+p0 kbTell [player, "kb", "a_in_175_bad_sign_KER_0", "GROUP"];
+
+[] spawn {
+	waitUntil {triggerActivated t_AATrig};
+	if (isServer) then {
+		Adams doWatch [5366.165,5248.340,0.000];
+	};
+
+	waitUntil {{_x distance Adams < 10} forEach allPlayers};
+	Adams kbTell [player, "kb", "a_in_180_at_aa_ICO_0", "GROUP"];
+};
+
+waitUntil {maxHeli distance markerPos "mrk_AA1" <= 350};
