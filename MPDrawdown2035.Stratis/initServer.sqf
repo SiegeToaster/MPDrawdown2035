@@ -221,7 +221,7 @@ Adams setVariable ["_damageEH", _damageEH];
 		
 		detach _unit;
 
-		if (if (driver _source == _source) then {_source in allPlayers} else {driver _source in allPlayers}) then {
+		if (driver _source in allPlayers) then {
 			if (isNil "toCamp" || _unit == Adams) then {
 				hint "court martialed >:(";
 			};
@@ -256,7 +256,7 @@ Adams setVariable ["_damageEH", _damageEH];
 		private _damage = _this select 2;
 		private _source = _this select 3;
 
-		if (if (driver _source == _source) then {_source in allPlayers} else {driver _source in allPlayers}) then {hint "court martialed <:("};
+		if (driver _source in allPlayers) then {hint "court martialed <:("};
 		_damage
 	}];
 
