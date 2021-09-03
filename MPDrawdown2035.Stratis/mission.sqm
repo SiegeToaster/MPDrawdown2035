@@ -12,22 +12,22 @@ class EditorData
 	};
 	class ItemIDProvider
 	{
-		nextID=1146;
+		nextID=1147;
 	};
 	class MarkerIDProvider
 	{
-		nextID=41;
+		nextID=42;
 	};
 	class LayerIndexProvider
 	{
-		nextID=278;
+		nextID=322;
 	};
 	class Camera
 	{
-		pos[]={4605.6875,154.72624,5270.9795};
-		dir[]={0,-0.70710683,0.70710683};
-		up[]={0,0.70710677,0.70710677};
-		aside[]={0.99999994,0,-0};
+		pos[]={5298.3252,267.76877,5329.3096};
+		dir[]={0.45945242,-0.69527733,0.55272937};
+		up[]={0.44446245,0.71871686,0.53469712};
+		aside[]={0.76902103,-7.9380698e-008,-0.63924295};
 	};
 };
 binarizationWanted=0;
@@ -570,7 +570,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=262;
+		items=263;
 		class Item0
 		{
 			dataType="Group";
@@ -592,7 +592,7 @@ class Mission
 					{
 						skill=0.60010713;
 						rank="CORPORAL";
-						init="call{this setGroupID [localize ""STR_A3_CFGIDENTITIES_KERRY0""]; this setCaptive true;}";
+						init="this setGroupID [localize ""STR_A3_CFGIDENTITIES_KERRY0""]; this setCaptive true;";
 						name="p1";
 						description="Kerry_p1@Kerry";
 						isPlayable=1;
@@ -778,7 +778,7 @@ class Mission
 														"STRING"
 													};
 												};
-												value="\a3\ui_f\data\igui\cfg\holdactions\holdaction_revive_ca.paa";
+												value="";
 											};
 										};
 										class Item2
@@ -792,7 +792,7 @@ class Mission
 														"STRING"
 													};
 												};
-												value="\a3\ui_f\data\igui\cfg\holdactions\holdaction_revive_ca.paa";
+												value="";
 											};
 										};
 										class Item3
@@ -1009,7 +1009,7 @@ class Mission
 				class Attribute0
 				{
 					property="groupID";
-					expression="[_this, _value] call CBA_fnc_setCallsign";
+					expression="                            if (isNil 'CBA_fnc_setCallsign') then {                                _this setGroupID [_value];                            } else {                                [_this, _value] call CBA_fnc_setCallsign;                            };                        ";
 					class Value
 					{
 						class data
@@ -8450,7 +8450,7 @@ class Mission
 														"STRING"
 													};
 												};
-												value="\a3\ui_f\data\igui\cfg\holdactions\holdaction_revive_ca.paa";
+												value="";
 											};
 										};
 										class Item2
@@ -8464,7 +8464,7 @@ class Mission
 														"STRING"
 													};
 												};
-												value="\a3\ui_f\data\igui\cfg\holdactions\holdaction_revive_ca.paa";
+												value="";
 											};
 										};
 										class Item3
@@ -11545,7 +11545,7 @@ class Mission
 					{
 						skill=0.60010713;
 						rank="CORPORAL";
-						init="call{this setGroupID [localize ""STR_A3_CFGIDENTITIES_KERRY0""]; this setCaptive true;}";
+						init="this setGroupID [localize ""STR_A3_CFGIDENTITIES_KERRY0""]; this setCaptive true;";
 						name="p2";
 						description="Kerry_p2@Kerry";
 						isPlayable=1;
@@ -11731,7 +11731,7 @@ class Mission
 														"STRING"
 													};
 												};
-												value="\a3\ui_f\data\igui\cfg\holdactions\holdaction_revive_ca.paa";
+												value="";
 											};
 										};
 										class Item2
@@ -11745,7 +11745,7 @@ class Mission
 														"STRING"
 													};
 												};
-												value="\a3\ui_f\data\igui\cfg\holdactions\holdaction_revive_ca.paa";
+												value="";
 											};
 										};
 										class Item3
@@ -11962,7 +11962,7 @@ class Mission
 				class Attribute0
 				{
 					property="groupID";
-					expression="[_this, _value] call CBA_fnc_setCallsign";
+					expression="                            if (isNil 'CBA_fnc_setCallsign') then {                                _this setGroupID [_value];                            } else {                                [_this, _value] call CBA_fnc_setCallsign;                            };                        ";
 					class Value
 					{
 						class data
@@ -12002,7 +12002,7 @@ class Mission
 					{
 						skill=0.60010713;
 						rank="CORPORAL";
-						init="call{this setGroupID [localize ""STR_A3_CFGIDENTITIES_KERRY0""]; this setCaptive true;}";
+						init="this setGroupID [localize ""STR_A3_CFGIDENTITIES_KERRY0""]; this setCaptive true;";
 						name="p3";
 						description="Kerry_p3@Kerry";
 						isPlayable=1;
@@ -12188,7 +12188,7 @@ class Mission
 														"STRING"
 													};
 												};
-												value="\a3\ui_f\data\igui\cfg\holdactions\holdaction_revive_ca.paa";
+												value="";
 											};
 										};
 										class Item2
@@ -12202,7 +12202,7 @@ class Mission
 														"STRING"
 													};
 												};
-												value="\a3\ui_f\data\igui\cfg\holdactions\holdaction_revive_ca.paa";
+												value="";
 											};
 										};
 										class Item3
@@ -12419,7 +12419,7 @@ class Mission
 				class Attribute0
 				{
 					property="groupID";
-					expression="[_this, _value] call CBA_fnc_setCallsign";
+					expression="                            if (isNil 'CBA_fnc_setCallsign') then {                                _this setGroupID [_value];                            } else {                                [_this, _value] call CBA_fnc_setCallsign;                            };                        ";
 					class Value
 					{
 						class data
@@ -12459,7 +12459,7 @@ class Mission
 					{
 						skill=0.60010713;
 						rank="CORPORAL";
-						init="call{this setGroupID [localize ""STR_A3_CFGIDENTITIES_KERRY0""]; this setCaptive true;}";
+						init="this setGroupID [localize ""STR_A3_CFGIDENTITIES_KERRY0""]; this setCaptive true;";
 						name="p4";
 						description="Kerry_p4@Kerry";
 						isPlayable=1;
@@ -12645,7 +12645,7 @@ class Mission
 														"STRING"
 													};
 												};
-												value="\a3\ui_f\data\igui\cfg\holdactions\holdaction_revive_ca.paa";
+												value="";
 											};
 										};
 										class Item2
@@ -12659,7 +12659,7 @@ class Mission
 														"STRING"
 													};
 												};
-												value="\a3\ui_f\data\igui\cfg\holdactions\holdaction_revive_ca.paa";
+												value="";
 											};
 										};
 										class Item3
@@ -12876,7 +12876,7 @@ class Mission
 				class Attribute0
 				{
 					property="groupID";
-					expression="[_this, _value] call CBA_fnc_setCallsign";
+					expression="                            if (isNil 'CBA_fnc_setCallsign') then {                                _this setGroupID [_value];                            } else {                                [_this, _value] call CBA_fnc_setCallsign;                            };                        ";
 					class Value
 					{
 						class data
@@ -18182,7 +18182,7 @@ class Mission
 					{
 						skill=0.59774923;
 						rank="LIEUTENANT";
-						init="call{this setGroupID [localize ""STR_A3_Group_Rogain""]; this setName localize ""STR_A3_NATOMen_lastNames39""; BIS_BLU_group2 = group this; this setBehaviour ""CARELESS""; this attachTo [rgnLogic, [0,0,0]]; 0 = this spawn {waitUntil {time > 0}; _this switchMove ""Acts_SittingJumpingSaluting_loop""}}";
+						init="call{this setGroupID [localize ""STR_A3_Group_Rogain""]; this setName localize ""STR_A3_NATOMen_lastNames39""; this setBehaviour ""CARELESS""; this attachTo [rgnLogic, [0,0,0]]; 0 = this spawn {waitUntil {time > 0}; _this switchMove ""Acts_SittingJumpingSaluting_loop""}}";
 						name="Edwards";
 					};
 					id=618;
@@ -18836,7 +18836,7 @@ class Mission
 					{
 						skill=0.60010713;
 						rank="CORPORAL";
-						init="call{this setGroupID [localize ""STR_A3_CFGIDENTITIES_KERRY0""]; this setCaptive true;}";
+						init="this setGroupID [localize ""STR_A3_CFGIDENTITIES_KERRY0""]; this setCaptive true;";
 						name="p5";
 						description="Kerry_p5@Kerry";
 						isPlayable=1;
@@ -19022,7 +19022,7 @@ class Mission
 														"STRING"
 													};
 												};
-												value="\a3\ui_f\data\igui\cfg\holdactions\holdaction_revive_ca.paa";
+												value="";
 											};
 										};
 										class Item2
@@ -19036,7 +19036,7 @@ class Mission
 														"STRING"
 													};
 												};
-												value="\a3\ui_f\data\igui\cfg\holdactions\holdaction_revive_ca.paa";
+												value="";
 											};
 										};
 										class Item3
@@ -19253,7 +19253,7 @@ class Mission
 				class Attribute0
 				{
 					property="groupID";
-					expression="[_this, _value] call CBA_fnc_setCallsign";
+					expression="                            if (isNil 'CBA_fnc_setCallsign') then {                                _this setGroupID [_value];                            } else {                                [_this, _value] call CBA_fnc_setCallsign;                            };                        ";
 					class Value
 					{
 						class data
@@ -19905,7 +19905,7 @@ class Mission
 				class Attribute0
 				{
 					property="groupID";
-					expression="[_this, _value] call CBA_fnc_setCallsign";
+					expression="                            if (isNil 'CBA_fnc_setCallsign') then {                                _this setGroupID [_value];                            } else {                                [_this, _value] call CBA_fnc_setCallsign;                            };                        ";
 					class Value
 					{
 						class data
@@ -20117,7 +20117,7 @@ class Mission
 				class Attribute0
 				{
 					property="groupID";
-					expression="[_this, _value] call CBA_fnc_setCallsign";
+					expression="                            if (isNil 'CBA_fnc_setCallsign') then {                                _this setGroupID [_value];                            } else {                                [_this, _value] call CBA_fnc_setCallsign;                            };                        ";
 					class Value
 					{
 						class data
@@ -21603,8 +21603,8 @@ class Mission
 			position[]={3347.042,234.48456,2908.3091};
 			class Attributes
 			{
-				condition="call{maxwellHeloMove}";
-				onActivation="call{maxHeli flyInHeight 50;}";
+				condition="maxwellHeloMove";
+				onActivation="maxHeli flyInHeight 50;";
 				sizeA=0;
 				sizeB=0;
 				type="SWITCH";
@@ -30621,7 +30621,7 @@ class Mission
 			position[]={2991.604,171.34492,1866.048};
 			class Attributes
 			{
-				condition="call{!(isNil ""loadUp"")}";
+				condition="!(isNil ""loadUp"")";
 				sizeA=0;
 				sizeB=0;
 				type="SWITCH";
@@ -30637,7 +30637,7 @@ class Mission
 			position[]={5042.1611,208.98325,5918.2158};
 			class Attributes
 			{
-				condition="call{!(isNil ""backToTruck"")}";
+				condition="!(isNil ""backToTruck"")";
 				sizeA=0;
 				sizeB=0;
 				interuptable=1;
@@ -30655,8 +30655,8 @@ class Mission
 			class Attributes
 			{
 				name="t_connor";
-				condition="call{isNil ""leftLZConnor"" && triggerActivated t_enterConnor}";
-				onActivation="call{hint ""court marshal"";}";
+				condition="isNil ""leftLZConnor"" && triggerActivated t_enterConnor && this";
+				onActivation="hint ""court marshal"";";
 				sizeA=500;
 				sizeB=500;
 				interuptable=1;
@@ -30948,7 +30948,7 @@ class Mission
 			position[]={2981.4231,171.39825,1863.307};
 			class Attributes
 			{
-				condition="call{!(isNil ""heliFull"")}";
+				condition="!(isNil ""heliFull"")";
 				sizeA=0;
 				sizeB=0;
 				isServerOnly=1;
@@ -31240,7 +31240,7 @@ class Mission
 			position[]={5031.0078,208.73061,5904.0762};
 			class Attributes
 			{
-				condition="call{atRgn}";
+				condition="atRgn";
 				sizeA=0;
 				sizeB=0;
 				isServerOnly=1;
@@ -31254,7 +31254,7 @@ class Mission
 			position[]={4114.9961,221.81973,4572.2339};
 			class Attributes
 			{
-				condition="call{!(isNil ""AA2Fight"")}";
+				condition="!(isNil ""AA2Fight"")";
 				sizeA=0;
 				sizeB=0;
 				interuptable=1;
@@ -31673,7 +31673,7 @@ class Mission
 			position[]={4998.7852,208.40456,5910.8208};
 			class Attributes
 			{
-				condition="call{!(isNil ""ordersRecieved"")}";
+				condition="!(isNil ""ordersRecieved"")";
 				sizeA=0;
 				sizeB=0;
 				interuptable=1;
@@ -31731,7 +31731,7 @@ class Mission
 			position[]={5032.3931,208.89523,5928.458};
 			class Attributes
 			{
-				condition="call{!(isNil ""toCheckpoint"")}";
+				condition="!(isNil ""toCheckpoint"")";
 				sizeA=0;
 				sizeB=0;
 				interuptable=1;
@@ -31747,7 +31747,7 @@ class Mission
 			position[]={5013.459,208.1244,5895.0928};
 			class Attributes
 			{
-				condition="call{!(isNil ""LaceyAmbientBoard"")}";
+				condition="!(isNil ""LaceyAmbientBoard"")";
 				sizeA=0;
 				sizeB=0;
 				interuptable=1;
@@ -31780,7 +31780,7 @@ class Mission
 			class Attributes
 			{
 				name="t_offroadArea";
-				condition="call{truck in thisList}";
+				condition="truck in thisList";
 				sizeA=160;
 				sizeB=20;
 				activationBy="ANY";
@@ -31794,7 +31794,7 @@ class Mission
 			position[]={2986.5349,171.39366,1869.306};
 			class Attributes
 			{
-				condition="call{!(isNil ""heliFull"")}";
+				condition="!(isNil ""heliFull"")";
 				sizeA=0;
 				sizeB=0;
 				type="SWITCH";
@@ -32087,7 +32087,7 @@ class Mission
 			position[]={5160.917,145.87766,5708.4941};
 			class Attributes
 			{
-				condition="call{!(isNil ""courtMartial"")}";
+				condition="!(isNil ""courtMartial"")";
 				sizeA=0;
 				sizeB=0;
 				isServerOnly=1;
@@ -32310,7 +32310,7 @@ class Mission
 			position[]={5026.9932,208.87927,5931.71};
 			class Attributes
 			{
-				condition="call{{driver truck == _x} forEach allPlayers}";
+				condition="{driver truck == _x} forEach allPlayers";
 				sizeA=0;
 				sizeB=0;
 				isServerOnly=1;
@@ -32704,7 +32704,7 @@ class Mission
 			position[]={5237.1138,155.96277,5815.8418};
 			class Attributes
 			{
-				condition="call{!(isNil ""checkPass"")}";
+				condition="!(isNil ""checkPass"")";
 				sizeA=0;
 				sizeB=0;
 				isServerOnly=1;
@@ -33099,7 +33099,7 @@ class Mission
 			position[]={6422.2651,7.4649243,5420.6401};
 			class Attributes
 			{
-				condition="call{!(isNil ""observe"")}";
+				condition="!(isNil ""observe"")";
 				sizeA=0;
 				sizeB=0;
 				interuptable=1;
@@ -33120,10 +33120,11 @@ class Mission
 		class Item168
 		{
 			dataType="Marker";
-			position[]={5361.1538,175.35396,5409.4468};
+			position[]={5014.1021,175.354,5909.7368};
 			name="mrk_camp";
 			type="Empty";
 			id=855;
+			atlOffset=-33.174088;
 		};
 		class Item169
 		{
@@ -33140,7 +33141,7 @@ class Mission
 			position[]={5223.04,158.37598,5801.3428};
 			class Attributes
 			{
-				condition="call{!(isNil ""checkFailed"")}";
+				condition="!(isNil ""checkFailed"")";
 				sizeA=0;
 				sizeB=0;
 				type="SWITCH";
@@ -33296,7 +33297,7 @@ class Mission
 			class Attributes
 			{
 				name="checkZoneExt";
-				condition="call{truck in thisList}";
+				condition="truck in thisList";
 				sizeA=100;
 				sizeB=20;
 				repeatable=1;
@@ -33312,7 +33313,7 @@ class Mission
 			position[]={5027.2739,208.67993,5905.9609};
 			class Attributes
 			{
-				condition="call{!(isNil ""flyAway"")}";
+				condition="!(isNil ""flyAway"")";
 				sizeA=0;
 				sizeB=0;
 				type="SWITCH";
@@ -33327,7 +33328,7 @@ class Mission
 			position[]={5499.0332,120.81781,5463.4048};
 			class Attributes
 			{
-				condition="call{!(isNil ""crashSpotted"")}";
+				condition="!(isNil ""crashSpotted"")";
 				sizeA=0;
 				sizeB=0;
 				interuptable=1;
@@ -33344,7 +33345,7 @@ class Mission
 			position[]={5436.5898,156.76315,5441.144};
 			class Attributes
 			{
-				condition="call{!(isNil ""forestAttack"")}";
+				condition="!(isNil ""forestAttack"")";
 				sizeA=0;
 				sizeB=0;
 				interuptable=1;
@@ -33360,7 +33361,7 @@ class Mission
 			position[]={5690.2612,100.63391,5308.4121};
 			class Attributes
 			{
-				condition="call{!(isNil ""observe"")}";
+				condition="!(isNil ""observe"")";
 				sizeA=0;
 				sizeB=0;
 				interuptable=1;
@@ -33377,7 +33378,7 @@ class Mission
 			position[]={5701.084,100.49781,5307.063};
 			class Attributes
 			{
-				condition="call{!(isNil ""toCamp"")}";
+				condition="!(isNil ""toCamp"")";
 				sizeA=0;
 				sizeB=0;
 				interuptable=1;
@@ -33394,7 +33395,7 @@ class Mission
 			position[]={5289.6938,191.17216,5329.043};
 			class Attributes
 			{
-				condition="call{!(isNil ""toAA"")}";
+				condition="!(isNil ""toAA"")";
 				sizeA=0;
 				sizeB=0;
 				interuptable=1;
@@ -33411,7 +33412,7 @@ class Mission
 			class Attributes
 			{
 				name="t_leaderMoveTrig";
-				condition="call{truck in thisList}";
+				condition="truck in thisList";
 				sizeA=25;
 				sizeB=25;
 				interuptable=1;
@@ -33430,7 +33431,7 @@ class Mission
 			class Attributes
 			{
 				name="t_offTrig";
-				condition="call{truck in thisList && !(isNil ""crashSpotted"")}";
+				condition="truck in thisList && !(isNil ""crashSpotted"")";
 				sizeA=5;
 				sizeB=5;
 				activationBy="ANY";
@@ -34739,7 +34740,7 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={419.409,50.189236,350.13498};
+						position[]={419.28601,50.156559,350.36499};
 					};
 					side="Independent";
 					flags=2;
@@ -34749,7 +34750,7 @@ class Mission
 					};
 					id=924;
 					type="I_Fighter_Pilot_F";
-					atlOffset=173.668;
+					atlOffset=173.658;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -34819,25 +34820,25 @@ class Mission
 				};
 			};
 			id=922;
-			atlOffset=173.65753;
+			atlOffset=173.658;
 		};
 		class Item198
 		{
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={419.12317,52.569801,350.42542};
+				position[]={419.12299,52.570229,350.42569};
 			};
 			side="Independent";
 			flags=2;
 			class Attributes
 			{
-				init="call{this setBehaviour ""CARELESS""}";
+				init="this setBehaviour ""CARELESS""";
 				name="bomber";
 			};
 			id=923;
 			type="I_Plane_Fighter_03_dynamicLoadout_F";
-			atlOffset=173.65753;
+			atlOffset=173.658;
 		};
 		class Item199
 		{
@@ -34845,7 +34846,7 @@ class Mission
 			position[]={6231.0132,-0.24563789,6357.126};
 			class Attributes
 			{
-				condition="call{!(isNil ""planeSwap1"")}";
+				condition="!(isNil ""planeSwap1"")";
 				sizeA=0;
 				sizeB=0;
 				interuptable=1;
@@ -34862,7 +34863,7 @@ class Mission
 			position[]={4442.2129,154.50798,4790.0142};
 			class Attributes
 			{
-				condition="call{!(isNil ""planeSwap2"")}";
+				condition="!(isNil ""planeSwap2"")";
 				sizeA=0;
 				sizeB=0;
 				interuptable=1;
@@ -35331,7 +35332,7 @@ class Mission
 			position[]={5547.0479,119.9585,5354.2529};
 			class Attributes
 			{
-				condition="call{!(isNil ""assignTskReturn"")}";
+				condition="!(isNil ""assignTskReturn"")";
 				sizeA=0;
 				sizeB=0;
 				isServerOnly=1;
@@ -35450,7 +35451,7 @@ class Mission
 			position[]={5545.1489,120.33357,5354.0132};
 			class Attributes
 			{
-				condition="call{!(isNil ""assignTskEvac"")}";
+				condition="!(isNil ""assignTskEvac"")";
 				sizeA=0;
 				sizeB=0;
 				interuptable=1;
@@ -36020,7 +36021,7 @@ class Mission
 			position[]={5360.2612,174.39549,5417.814};
 			class Attributes
 			{
-				condition="call{false}";
+				condition="false";
 				sizeA=0;
 				sizeB=0;
 				interuptable=1;
@@ -36365,7 +36366,7 @@ class Mission
 			position[]={4618.8672,130.45956,5298.9229};
 			class Attributes
 			{
-				condition="call{false}";
+				condition="false";
 				sizeA=0;
 				sizeB=0;
 				interuptable=1;
@@ -36475,7 +36476,6 @@ class Mission
 					flags=5;
 					class Attributes
 					{
-						health=0.47037244;
 						skill=0.2;
 						name="campGuard2";
 					};
@@ -37014,7 +37014,7 @@ class Mission
 			position[]={4988.0181,205.24071,5864.855};
 			class Attributes
 			{
-				condition="call{!(isNil ""campFight"")}";
+				condition="!(isNil ""campFight"")";
 				sizeA=0;
 				sizeB=0;
 				type="SWITCH";
@@ -37079,7 +37079,7 @@ class Mission
 			position[]={5034.9282,174.894,5918.7651};
 			name="mrk_campPos6";
 			type="Empty";
-			angle=220.85388;
+			angle=220.85382;
 			id=1018;
 			atlOffset=-33.984879;
 		};
@@ -37160,7 +37160,7 @@ class Mission
 			class Attributes
 			{
 				name="t_overCampTrig";
-				condition="call{Adams in thisList}";
+				condition="Adams in thisList";
 				sizeA=10;
 				sizeB=10;
 				repeatable=1;
@@ -37182,7 +37182,7 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={4894.6948,172.03299,5319.7837};
+						position[]={4895.9199,172.07205,5321.1479};
 						angles[]={0,5.7111363,0};
 					};
 					side="Independent";
@@ -37193,7 +37193,7 @@ class Mission
 					};
 					id=1029;
 					type="I_helipilot_F";
-					atlOffset=50;
+					atlOffset=49.57399;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -37242,7 +37242,7 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={4894.6948,172.03299,5319.7837};
+						position[]={4895.9199,172.07205,5321.1479};
 						angles[]={0,5.7111363,0};
 					};
 					side="Independent";
@@ -37251,7 +37251,7 @@ class Mission
 					};
 					id=1030;
 					type="I_helipilot_F";
-					atlOffset=50;
+					atlOffset=49.57399;
 				};
 				class Item2
 				{
@@ -37259,8 +37259,7 @@ class Mission
 					loiterAltitude=-3.4028235e+038;
 					position[]={2434.509,-0.22299194,198.31};
 					combatMode="BLUE";
-					expCond="call{true}";
-					expActiv="call{enemyHeli1 allowDamage false; " \n "enemyHeli1 setCaptive true; " \n "enemyHeli1 enableSimulation false; " \n "enemyHeli1 hideObject true; " \n "{ " \n "    _unit = _x; " \n "    _unit allowDamage false; " \n "    _unit setCaptive true; " \n "    _unit enableSimulation false; " \n "    _unit hideObject true; " \n "    {_unit disableAI _x} forEach [""ANIM"", ""AUTOTARGET"", ""FSM"", ""MOVE"", ""TARGET""]; " \n "} forEach units group enemyHeli1D; " \n "enemyHeli1 setPos [markerPos ""enemyHeli1Pos"" select 0, markerPos ""enemyHeli1Pos"" select 1, 1000]; " \n "enemyHeli1 setDir markerDir ""enemyHeli1Pos""; " \n "{ " \n "    _x assignAsCargo enemyHeli1; " \n "    _x moveInCargo enemyHeli1 " \n "} forEach units rangeAttackGrp;}";
+					expActiv="enemyHeli1 allowDamage false; " \n "enemyHeli1 setCaptive true; " \n "enemyHeli1 enableSimulation false; " \n "enemyHeli1 hideObject true; " \n "{ " \n "    _unit = _x; " \n "    _unit allowDamage false; " \n "    _unit setCaptive true; " \n "    _unit enableSimulation false; " \n "    _unit hideObject true; " \n "    {_unit disableAI _x} forEach [""ANIM"", ""AUTOTARGET"", ""FSM"", ""MOVE"", ""TARGET""]; " \n "} forEach units group enemyHeli1D; " \n "enemyHeli1 setPos [markerPos ""enemyHeli1Pos"" select 0, markerPos ""enemyHeli1Pos"" select 1, 1000]; " \n "enemyHeli1 setDir markerDir ""enemyHeli1Pos""; " \n "{ " \n "    _x assignAsCargo enemyHeli1; " \n "    _x moveInCargo enemyHeli1 " \n "} forEach units rangeAttackGrp;";
 					class Effects
 					{
 					};
@@ -37396,26 +37395,26 @@ class Mission
 				};
 			};
 			id=1027;
-			atlOffset=49.574425;
+			atlOffset=49.57399;
 		};
 		class Item237
 		{
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={4894.8345,175.51848,5320.7397};
+				position[]={4894.834,175.51791,5320.7397};
 				angles[]={0,5.7111363,0};
 			};
 			side="Independent";
 			flags=2;
 			class Attributes
 			{
-				init="call{this setBehaviour ""CARELESS""}";
+				init="this setBehaviour ""CARELESS""";
 				name="enemyHeli1";
 			};
 			id=1028;
 			type="I_Heli_Transport_02_F";
-			atlOffset=49.574425;
+			atlOffset=49.57399;
 		};
 		class Item238
 		{
@@ -37803,8 +37802,8 @@ class Mission
 			position[]={5351.1362,218.61707,5244.1069};
 			class Attributes
 			{
-				name="AATrig";
-				condition="call{Adams in thisList}";
+				name="t_AATrig";
+				condition="Adams in thisList";
 				sizeA=20;
 				sizeB=20;
 				interuptable=1;
@@ -37836,7 +37835,7 @@ class Mission
 					{
 						skill=0.47;
 						rank="SERGEANT";
-						init="call{rangeAttackGrp = group this}";
+						init="rangeAttackGrp = group this";
 					};
 					id=1062;
 					type="I_Soldier_SL_F";
@@ -39240,7 +39239,7 @@ class Mission
 			position[]={4611.5518,129.88239,5302.3999};
 			class Attributes
 			{
-				condition="call{!(isNil ""findShelter"")}";
+				condition="!(isNil ""findShelter"")";
 				sizeA=0;
 				sizeB=0;
 				type="SWITCH";
@@ -40383,7 +40382,7 @@ class Mission
 			position[]={5350.6812,218.32591,5254.708};
 			class Attributes
 			{
-				condition="call{!(isNil ""toEvac"")}";
+				condition="!(isNil ""toEvac"")";
 				sizeA=0;
 				sizeB=0;
 				type="SWITCH";
@@ -40399,7 +40398,7 @@ class Mission
 			position[]={523.05499,-0.16456604,7600.9771};
 			class Attributes
 			{
-				condition="call{!(isNil ""evacInbound"")}";
+				condition="!(isNil ""evacInbound"")";
 				sizeA=0;
 				sizeB=0;
 				type="SWITCH";
@@ -40480,6 +40479,16 @@ class Mission
 			type="Empty";
 			id=1145;
 			atlOffset=-3.3805313;
+		};
+		class Item262
+		{
+			dataType="Marker";
+			position[]={4671.188,100.366,6089.396};
+			name="mrk_enemyHeli1Pos";
+			type="Empty";
+			angle=128.70198;
+			id=1146;
+			atlOffset=11.191345;
 		};
 	};
 	class Connections

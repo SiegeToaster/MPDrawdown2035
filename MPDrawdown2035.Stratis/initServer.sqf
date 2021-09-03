@@ -23,8 +23,6 @@ evacTeam = [evac1, evac2, evac3, evac4];
 evacAttack = (units evacAttack1 + units evacAttack2 + units evacDefend1 + units evacDefend2);
 evacRestrict1 = (units evacDefend1 + units evacDefend2);
 evacRestrict2 = (units evacAttack1 + units evacAttack2);
-private _playersArray = [];
-{_playersArray = _playersArray + [_x] + [vehicle _x]} forEach allPlayers;
 
 {
 	private _i = 1;
@@ -157,13 +155,13 @@ AA2setup = {
 evacSetup = {
 	private _unit = _this;
 
-	private _spot = selectRandom (1, 2, 3, 4] - evacTaken);
+	private _spot = selectRandom ([1, 2, 3, 4] - evacTaken);
 	evacTaken = evacTaken + [_spot];
 
 	[_unit, _spot] spawn {
 		params ["_unit", "_spot"];
 
-		private _pos = markerPos foramt ["mrk_evac_move%1", _spot];
+		private _pos = markerPos format ["mrk_evac_move%1", _spot];
 		private _target = markerPos format ["mrk_evac_target%1", _spot];
 
 		waitUntil {vehicle _unit == _unit && unitReady _unit};
@@ -203,16 +201,16 @@ evacSetup = {
 	};
 } forEach allUnits;
 
-private _animEH = Adams addEventHandler ["HandleDamage", {
+private _damageEH = Adams addEventHandler ["HandleDamage", {
 	private _damage = _this select 2;
 	private _source = _this select 3;
-	
-	if (_source in _playersArray) then {_damage} else {0};
+
+	if !(driver _source in allPlayers) then {0};
 }];
-Adams setVariable ["animEH", _animEH];
+Adams setVariable ["_damageEH", _damageEH];
 {
 	_x addEventHandler ["Killed", {
-		Adams removeEventHandler ["HandleDamage", Adams getVariable "animEH"];
+		Adams removeEventHandler ["HandleDamage", Adams getVariable "_damageEH"];
 	}];
 } forEach allPlayers;
 
@@ -223,7 +221,7 @@ Adams setVariable ["animEH", _animEH];
 		
 		detach _unit;
 
-		if (_source in _playersArray) then {
+		if (if (driver _source == _source) then {_source in allPlayers} else {driver _source in allPlayers}) then {
 			if (isNil "toCamp" || _unit == Adams) then {
 				hint "court martialed >:(";
 			};
@@ -237,7 +235,7 @@ Adams setVariable ["animEH", _animEH];
 		private _damage = _this select 2;
 		private _source = _this select 3;
 
-		if (_source in _playersArray) then {
+		if (driver _source in allPlayers) then {
 			if (damage _unit > 0.1 || !(canMove _unit)) then {hint "court martialed >:("};
 		};
 	}];
@@ -248,7 +246,7 @@ Adams setVariable ["animEH", _animEH];
 		private _damage = _this select 2;
 		private _source = _this select 3;
 
-		if (_source in _playersArray) then {checkDamaged = true};
+		if (driver _source in allPlayers) then {checkDamaged = true};
 		_damage
 	}];
 } forEach units group checkOff;
@@ -258,7 +256,7 @@ Adams setVariable ["animEH", _animEH];
 		private _damage = _this select 2;
 		private _source = _this select 3;
 
-		if (_source in _playersArray) then {hint "court martialed <:("};
+		if (if (driver _source == _source) then {_source in allPlayers} else {driver _source in allPlayers}) then {hint "court martialed <:("};
 		_damage
 	}];
 

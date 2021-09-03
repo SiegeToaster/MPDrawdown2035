@@ -1,0 +1,10 @@
+Bugs:
+	the ifs and waitUntils in initServer.sqf return null, might work, but I think once p1 is in it will go regardless of whether other players are in.  Must test
+	only p1 exits walk into LZ connor animation
+	Adams doesn't wave
+	ambient special at LZ connor needs to be fixed; initMission.hpp, line 848
+	helicopter teleports direction when taking off from LZ connor
+	Adams needs to wait longer before getting out of helicopter (until player cinema borders are gone)
+	jets do not fly overhead for Kamino explosion
+	
+Stops after getting to Point X-Ray

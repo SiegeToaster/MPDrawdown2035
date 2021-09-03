@@ -1,0 +1,55 @@
+The East Wind, Drawdown 2035 - Multiplayer
+By: Siege
+MM/DD/YYYY
+
+Version 1 - Played 06/02/2020:
+- intro video
+- LZ Connor built
+- walk into LZ Connor
+- Adams voice
+- Helicopter flight
+- heli flight conversations & credits
+- Camp Rogain & heli landing guide
+
+Version 1.1 - Played 06/04/2020:
+- created intro text in bottom right (doesn't really work)
+- made ambient conversations at LZ Connor
+- built goat block thing near Camp Rogain
+- added another player slot (total 5)
+- built AAF checkpoint near Camp Rogain
+- built CTRG team + helicopter at Camp Maxwell
+- built both AAA sites & the patrol that attacks in forest
+- added ORBAT and map markers
+- bug fixes
+	- (test)fixed the thing where players except p1 can't move
+	- (test)fixed the heli guide not stopping his movements
+	- (test)players are now able to exit the helicopter after it lands
+	- (test) fixed conversations being broadcasted once per player for all players
+	- fixed floating whiteboard at Camp Rogain
+	
+Version 1.2 - ??/??/2020:
+- added officer truck leaving rogain
+- created Kamino soldiers
+- updated point x-ray
+- updated LZ Connor
+- removed some file that hopefully did nothing
+- fixed the intro text again
+- p1 is no longer required
+- added tasks
+
+Version 1.3 - ??/??/202?
+- changeLog.txt date format updated from MM/DD/YY to MM/DD/YYYY
+- removed all mod dependencies except CBA
+- updated Point Zulu
+	- added waypoints
+	- added betrayal trigger
+
+Version 1.4 - 09/02/2021
+- added modpack preset to folder
+- removed changelog.txt and todo.txt from .gitignore
+- Player does not wait for Adams to stop talking before initiating conversation with Edwards (Rogain officer)
+- Edwards animation fix
+- added enemyHeli1 and rangeAttackGrp - A helicopter flies over player while engaged with first contact in forest to drop off units outside of Kamino
+- removed _playersArray since allPlayers is a thing
+- updated event handlers that used _playersArray to use allPlayers (accounts for driver of vehicle too)
+- Progress now stops once Adams arrives at Point X-Ray

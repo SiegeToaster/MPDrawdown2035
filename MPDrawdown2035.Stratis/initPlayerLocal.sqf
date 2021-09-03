@@ -224,7 +224,7 @@ if (isServer) then {
 
 sleep 1.5;
 November kbTell [player, "kb", "a_in_40_landed_NOV_0", "SIDE"]; // end of heli flight commentary
-sleep 0.5;
+sleep 1;
 transportHeli lock false; // unlock heli
 transportHeli action ["EngineOff", transportHeli]; // turn off heli engine
 showHUD true;// remove fake cinema borders
@@ -294,7 +294,41 @@ if (isServer) then {
 
 waitUntil {!(isNil "atRgn")};
 1 fadeMusic 0.2;
-playMusic "EventTrack01_F_EPA";// makes sure players are at camp rogain and plays music quietly
+playMusic "EventTrack01_F_EPA"; // makes sure players are at camp rogain and plays music quietly
+
+[] spawn {
+	waitUntil {{_x distance Edwards < 5} forEach allPlayers}; // waits until p0 are within 5 meters of logi dude
+	{
+		if (_x in allPlayers) then {
+			p0 = _x;
+			publicVariable "p0";
+		};
+	} forEach (nearestObjects [Edwards, ["man"], 5]);
+
+	p0 kbTell [player, "kb", "a_in_55_orders_KER_0", "DIRECT"]; // orders start
+	waitUntil {player kbWasSaid [player, "kb", "a_in_55_orders_KER_0", 9999]};
+
+	[] spawn {Edwards playMoveNow "Acts_SittingJumpingSaluting_out"}; // spawn needed because animation would make unneeded silence.
+	Edwards say3D "Acts_SittingJumpingSaluting_out";
+	{Edwards enableAI _x} forEach ["ANIM", "FSM"];
+	[] spawn {
+		sleep 2;
+		detach Edwards;
+	}; //makes logi dude jump down and salute
+
+	Edwards kbTell [player, "kb", "a_in_55_orders_LOG_0", "DIRECT"];
+	waitUntil {Edwards kbWasSaid [player, "kb", "a_in_55_orders_LOG_0", 9999]};
+	Edwards kbTell [player, "kb", "a_in_55_orders_LOG_1", "DIRECT"];
+	waitUntil {Edwards kbWasSaid [player, "kb", "a_in_55_orders_LOG_1", 9999]};
+	Edwards kbTell [player, "kb", "a_in_55_orders_LOG_2", "DIRECT"];
+	waitUntil {Edwards kbWasSaid [player, "kb", "a_in_55_orders_LOG_2", 9999]};
+	p0 kbTell [player, "kb", "a_in_55_orders_KER_1", "DIRECT"];
+	waitUntil {p0 kbWasSaid [player, "kb", "a_in_55_orders_KER_1", 9999]};
+	Edwards kbTell [player, "kb", "a_in_55_orders_LOG_3", "DIRECT"];
+	waitUntil {Edwards kbWasSaid [player, "kb", "a_in_55_orders_LOG_3", 9999]}; // orders end
+	ordersRecieved = true;
+	p0 kbTell [player, "kb", "a_in_60_understood_KER_0", "DIRECT"];
+};
 
 Adams kbTell [player, "kb", "a_in_50_report_ICO_0", "SIDE"];
 waitUntil {Adams kbWasSaid [player, "kb", "a_in_50_report_ICO_0", 9999]};
@@ -318,35 +352,7 @@ if (isServer) then {
 	};
 };
 
-waitUntil {{_x distance Edwards < 5} forEach allPlayers}; // waits until p0 are within 5 meters of logi dude
-{
-	if (_x in allPlayers) then {
-		p0 = _x;
-		publicVariable "p0";
-	};
-} forEach (nearestObjects [Edwards, ["man"], 5]);
-
-p0 kbTell [player, "kb", "a_in_55_orders_KER_0", "DIRECT"]; // orders start
-// sleep 1;
-Edwards playMoveNow "Acts_SittingJumpingSaluting_out";
-Edwards say3D "Acts_SittingJumpingSaluting_out";
-{Edwards enableAI _x} forEach ["ANIM", "FSM"];
-detach Edwards; //makes logi dude jump down and salute
-
-waitUntil {player kbWasSaid [player, "kb", "a_in_55_orders_KER_0", 9999]};
-Edwards kbTell [player, "kb", "a_in_55_orders_LOG_0", "DIRECT"];
-waitUntil {Edwards kbWasSaid [player, "kb", "a_in_55_orders_LOG_0", 9999]};
-Edwards kbTell [player, "kb", "a_in_55_orders_LOG_1", "DIRECT"];
-waitUntil {Edwards kbWasSaid [player, "kb", "a_in_55_orders_LOG_1", 9999]};
-Edwards kbTell [player, "kb", "a_in_55_orders_LOG_2", "DIRECT"];
-waitUntil {Edwards kbWasSaid [player, "kb", "a_in_55_orders_LOG_2", 9999]};
-p0 kbTell [player, "kb", "a_in_55_orders_KER_1", "DIRECT"];
-waitUntil {p0 kbWasSaid [player, "kb", "a_in_55_orders_KER_1", 9999]};
-Edwards kbTell [player, "kb", "a_in_55_orders_LOG_3", "DIRECT"];
-waitUntil {Edwards kbWasSaid [player, "kb", "a_in_55_orders_LOG_3", 9999]}; // orders end
-ordersRecieved = true;
-p0 kbTell [player, "kb", "a_in_60_understood_KER_0", "DIRECT"];
-
+waitUntil {!isNil "ordersRecieved"};
 waitUntil {(p0 distance Adams <= 10) || p0 distance truck <= 10};
 if (isServer) then {
 	truck lock false;
@@ -943,8 +949,37 @@ if (isServer) then {
 			_unit allowDamage true;
 		} forEach (units forestGroup + units AA1Group1 + units AA1Group2);
 
+		enemyHeli1 setPos [
+			markerPos "mrk_enemyHeli1Pos" select 0,
+			markerPos "mrk_enemyHeli1Pos" select 1,
+			50
+		];
+		enemyHeli1 setDir markerDir "mrk_enemyHeli1Pos";
+		
+		{
+			_x assignAsCargo enemyHeli1;
+			_x moveInCargo enemyHeli1;
+		} forEach units rangeAttackGrp;
+		
+		while {count waypoints group enemyHeli1D > 7} do {
+			deleteWaypoint (waypoints group enemyHeli1D select 0);
+		};
+		
+		enemyHeli1 enableSimulation true;
+		enemyHeli1 hideObject false;
+		enemyHeli1 allowDamage true;
+		
+		{
+			private _unit = _x;
+			{_unit enableAI _x} forEach ["ANIM", "AUTOTARGET", "FSM", "MOVE", "TARGET"];
+			
+			_unit enableSimulation true;
+			_unit hideObject false;
+			_unit allowDamage true;
+		} forEach (units group enemyHeli1D + units rangeAttackGrp);
 
-		// enemyHeli1 stuff here (Through the forest FSM ID 65)
+		{_x setCaptive false} forEach units rangeAttackGrp;
+
 		sleep 12;
 		{
 			private _fire = "test_EmptyObjectForFireBig" createVehicle position _x;
