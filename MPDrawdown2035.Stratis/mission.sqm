@@ -20,14 +20,14 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=322;
+		nextID=330;
 	};
 	class Camera
 	{
-		pos[]={5298.3252,267.76877,5329.3096};
-		dir[]={0.45945242,-0.69527733,0.55272937};
-		up[]={0.44446245,0.71871686,0.53469712};
-		aside[]={0.76902103,-7.9380698e-008,-0.63924295};
+		pos[]={4838.0044,200.46977,5377.0791};
+		dir[]={0.43546796,-0.24876165,-0.86515045};
+		up[]={0.11184356,0.96856463,-0.2222012};
+		aside[]={-0.89322925,0,-0.44960123};
 	};
 };
 binarizationWanted=0;
@@ -37193,7 +37193,7 @@ class Mission
 					};
 					id=1029;
 					type="I_helipilot_F";
-					atlOffset=49.57399;
+					atlOffset=49.574005;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -37251,7 +37251,7 @@ class Mission
 					};
 					id=1030;
 					type="I_helipilot_F";
-					atlOffset=49.57399;
+					atlOffset=49.574005;
 				};
 				class Item2
 				{
@@ -37320,7 +37320,6 @@ class Mission
 					showWP="NEVER";
 					id=1035;
 					type="Move";
-					atlOffset=7.6293945e-006;
 				};
 				class Item7
 				{
@@ -40486,7 +40485,7 @@ class Mission
 			position[]={4671.188,100.366,6089.396};
 			name="mrk_enemyHeli1Pos";
 			type="Empty";
-			angle=128.70198;
+			angle=128.70197;
 			id=1146;
 			atlOffset=11.191345;
 		};

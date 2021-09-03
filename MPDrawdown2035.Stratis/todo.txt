@@ -3,8 +3,7 @@ Bugs:
 	only p1 exits walk into LZ connor animation
 	Adams doesn't wave
 	ambient special at LZ connor needs to be fixed; initMission.hpp, line 848
-	helicopter teleports direction when taking off from LZ connor
-	Adams needs to wait longer before getting out of helicopter (until player cinema borders are gone)
-	jets do not fly overhead for Kamino explosion
+	helicopter teleports direction when taking off from LZ connor - this is in the official campaign too, custom fix would be required (lol no)
+	Edwards speech waits for a few seconds at different places, sometimes right after saying at ease, sometimes right before saying he has no idea why.
 	
 Stops after getting to Point X-Ray

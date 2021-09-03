@@ -224,23 +224,12 @@ if (isServer) then {
 
 sleep 1.5;
 November kbTell [player, "kb", "a_in_40_landed_NOV_0", "SIDE"]; // end of heli flight commentary
-sleep 1;
+sleep 0.5;
 transportHeli lock false; // unlock heli
 transportHeli action ["EngineOff", transportHeli]; // turn off heli engine
 showHUD true;// remove fake cinema borders
-
-// Fix animations (ToDo: remove when fixed) // (no idea how this works)
-{
-	_x spawn {
-		private _unit = _this;
-		
-		scriptName format ["BIS_flight: animation fix - [%1]", _unit];
-		
-		waitUntil {!(_unit in transportHeli)};
-		
-		_unit switchMove "";
-	};
-} forEach [Adams, Lacey];
+[1, nil, false] spawn BIS_fnc_cinemaBorder;
+sleep 1;
 
 // Make SSG Adams disembark
 if (isServer) then {
@@ -262,7 +251,6 @@ if (isServer) then {
 unassignVehicle player;
 player action ["GetOut", vehicle player];
 [player] orderGetIn false;
-[1, nil, false] spawn BIS_fnc_cinemaBorder;
 sleep 0.25;
 player action ["WeaponOnBack", player]; // make players lower weapons
 sleep 0.75;
@@ -306,15 +294,12 @@ playMusic "EventTrack01_F_EPA"; // makes sure players are at camp rogain and pla
 	} forEach (nearestObjects [Edwards, ["man"], 5]);
 
 	p0 kbTell [player, "kb", "a_in_55_orders_KER_0", "DIRECT"]; // orders start
+	[] spawn {Edwards playMoveNow "Acts_SittingJumpingSaluting_out"}; // spawn needed because animation would make unneeded silence.
 	waitUntil {player kbWasSaid [player, "kb", "a_in_55_orders_KER_0", 9999]};
 
-	[] spawn {Edwards playMoveNow "Acts_SittingJumpingSaluting_out"}; // spawn needed because animation would make unneeded silence.
 	Edwards say3D "Acts_SittingJumpingSaluting_out";
 	{Edwards enableAI _x} forEach ["ANIM", "FSM"];
-	[] spawn {
-		sleep 2;
-		detach Edwards;
-	}; //makes logi dude jump down and salute
+	detach Edwards; //makes Edwards jump down and salute
 
 	Edwards kbTell [player, "kb", "a_in_55_orders_LOG_0", "DIRECT"];
 	waitUntil {Edwards kbWasSaid [player, "kb", "a_in_55_orders_LOG_0", 9999]};
@@ -960,23 +945,23 @@ if (isServer) then {
 			_x assignAsCargo enemyHeli1;
 			_x moveInCargo enemyHeli1;
 		} forEach units rangeAttackGrp;
-		
-		while {count waypoints group enemyHeli1D > 7} do {
-			deleteWaypoint (waypoints group enemyHeli1D select 0);
-		};
-		
-		enemyHeli1 enableSimulation true;
-		enemyHeli1 hideObject false;
-		enemyHeli1 allowDamage true;
-		
+
 		{
 			private _unit = _x;
 			{_unit enableAI _x} forEach ["ANIM", "AUTOTARGET", "FSM", "MOVE", "TARGET"];
 			
-			_unit enableSimulation true;
-			_unit hideObject false;
+			_unit enableSimulationGlobal true;
+			_unit hideObjectGlobal false;
 			_unit allowDamage true;
 		} forEach (units group enemyHeli1D + units rangeAttackGrp);
+
+		while {count waypoints group enemyHeli1D > 7} do {
+			deleteWaypoint (waypoints group enemyHeli1D select 0);
+		};
+		
+		enemyHeli1 enableSimulationGlobal true;
+		enemyHeli1 hideObjectGlobal false;
+		enemyHeli1 allowDamage false;
 
 		{_x setCaptive false} forEach units rangeAttackGrp;
 

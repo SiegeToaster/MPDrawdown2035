@@ -53,3 +53,8 @@ Version 1.4 - 09/02/2021
 - removed _playersArray since allPlayers is a thing
 - updated event handlers that used _playersArray to use allPlayers (accounts for driver of vehicle too)
 - Progress now stops once Adams arrives at Point X-Ray
+
+Version 1.4.1 - 09/03/2021
+- fixed Adams getting out of helicopter too early
+- Made improvements to Edwards receiving orders interaction (still slightly buggy)
+- added enemy helicopter flying to Kamino
