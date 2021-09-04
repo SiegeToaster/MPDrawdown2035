@@ -1124,7 +1124,7 @@ class Sentences
 	{
 		text = "$STR_A3_a_in_175_bad_sign_KER_0";
 		speech[] = {"\a3\dubbing_f_epa\a_in\175_Bad_Sign\a_in_175_bad_sign_KER_0.ogg"};
-		actor = "BIS_inf";
+		actor = "p1";
 		variant = "";
 		variantText = "";
 		class Arguments {};
@@ -1134,12 +1134,71 @@ class Sentences
 	{
 		text = "$STR_A3_a_in_180_at_aa_ICO_0";
 		speech[] = {"\a3\dubbing_f_epa\a_in\180_At_AA\a_in_180_at_aa_ICO_0.ogg"};
-		actor = "adams";
+		actor = "Adams";
 		variant = "";
 		variantText = "";
 		class Arguments {};
 	};
 
+	class a_in_185_evac_spotted_ICO_0
+	{
+		text = "$STR_A3_a_in_185_evac_spotted_ICO_0";
+		speech[] = {"\a3\dubbing_f_epa\a_in\185_Evac_Spotted\a_in_185_evac_spotted_ICO_0.ogg"};
+		actor = "Adams";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+
+	class a_in_183_evac_confirmed_ICO_0
+	{
+		text = "$STR_A3_a_in_183_evac_confirmed_ICO_0";
+		speech[] = {"\a3\dubbing_f_epa\a_in\183_Evac_Confirmed\a_in_183_evac_confirmed_ICO_0.ogg"};
+		actor = "Adams";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+
+	class a_in_185_request_evac_EVA_0
+	{
+		text = "$STR_A3_a_in_185_request_evac_EVA_0";
+		speech[] = {"\a3\dubbing_f_epa\a_in\185_Request_Evac\a_in_185_request_evac_EVA_0.ogg"};
+		actor = "evac";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+
+	class a_in_185_request_evac_ICO_0
+	{
+		text = "$STR_A3_a_in_185_request_evac_ICO_0";
+		speech[] = {"\a3\dubbing_f_epa\a_in\185_Request_Evac\a_in_185_request_evac_ICO_0.ogg"};
+		actor = "Adams";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+
+	class a_in_185_request_evac_EVA_1
+	{
+		text = "$STR_A3_a_in_185_request_evac_EVA_1";
+		speech[] = {"\a3\dubbing_f_epa\a_in\185_Request_Evac\a_in_185_request_evac_EVA_1.ogg"};
+		actor = "evac";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+
+	class a_in_185_request_evac_ICO_1
+	{
+		text = "$STR_A3_a_in_185_request_evac_ICO_1";
+		speech[] = {"\a3\dubbing_f_epa\a_in\185_Request_Evac\a_in_185_request_evac_ICO_1.ogg"};
+		actor = "Adams";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
 
 
 	class a_in_x01_offroading_ICO_0

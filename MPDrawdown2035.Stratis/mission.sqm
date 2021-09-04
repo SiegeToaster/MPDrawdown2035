@@ -12,7 +12,7 @@ class EditorData
 	};
 	class ItemIDProvider
 	{
-		nextID=1147;
+		nextID=1164;
 	};
 	class MarkerIDProvider
 	{
@@ -20,14 +20,14 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=330;
+		nextID=338;
 	};
 	class Camera
 	{
-		pos[]={4838.0044,200.46977,5377.0791};
-		dir[]={0.43546796,-0.24876165,-0.86515045};
-		up[]={0.11184356,0.96856463,-0.2222012};
-		aside[]={-0.89322925,0,-0.44960123};
+		pos[]={4847.1499,310.57587,5421.3813};
+		dir[]={0.90164477,-0.37742552,0.21115591};
+		up[]={0.36748278,0.92603993,0.08606068};
+		aside[]={0.22802031,7.4505806e-009,-0.97365648};
 	};
 };
 binarizationWanted=0;
@@ -570,7 +570,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=263;
+		items=270;
 		class Item0
 		{
 			dataType="Group";
@@ -10429,7 +10429,7 @@ class Mission
 			side="West";
 			class Entities
 			{
-				items=22;
+				items=30;
 				class Item0
 				{
 					dataType="Object";
@@ -11132,6 +11132,107 @@ class Mission
 					showWP="NEVER";
 					id=1131;
 					type="Move";
+				};
+				class Item22
+				{
+					dataType="Waypoint";
+					loiterAltitude=-3.4028235e+038;
+					position[]={5162.854,192.43057,5261.3901};
+					class Effects
+					{
+					};
+					showWP="NEVER";
+					id=1147;
+					type="Move";
+				};
+				class Item23
+				{
+					dataType="Waypoint";
+					loiterAltitude=-3.4028235e+038;
+					position[]={5064.2251,165.21521,5292.335};
+					class Effects
+					{
+					};
+					showWP="NEVER";
+					id=1148;
+					type="Move";
+				};
+				class Item24
+				{
+					dataType="Waypoint";
+					loiterAltitude=-3.4028235e+038;
+					position[]={4974.7598,143.03308,5325.3198};
+					class Effects
+					{
+					};
+					showWP="NEVER";
+					id=1149;
+					type="Move";
+					atlOffset=1.5258789e-005;
+				};
+				class Item25
+				{
+					dataType="Waypoint";
+					loiterAltitude=-3.4028235e+038;
+					position[]={4607.2451,129.74077,5298.457};
+					class Effects
+					{
+					};
+					showWP="NEVER";
+					id=1150;
+					type="Move";
+					atlOffset=1.5258789e-005;
+				};
+				class Item26
+				{
+					dataType="Waypoint";
+					loiterAltitude=-3.4028235e+038;
+					position[]={4875.2842,118.5643,5297.3662};
+					class Effects
+					{
+					};
+					showWP="NEVER";
+					id=1151;
+					type="Move";
+				};
+				class Item27
+				{
+					dataType="Waypoint";
+					loiterAltitude=-3.4028235e+038;
+					position[]={4762.417,139.81467,5198.5391};
+					speed="NORMAL";
+					class Effects
+					{
+					};
+					showWP="NEVER";
+					id=1152;
+					type="Move";
+				};
+				class Item28
+				{
+					dataType="Waypoint";
+					loiterAltitude=-3.4028235e+038;
+					position[]={4715.9648,93.041733,4893.5498};
+					class Effects
+					{
+					};
+					showWP="NEVER";
+					id=1153;
+					type="Move";
+					atlOffset=-7.6293945e-006;
+				};
+				class Item29
+				{
+					dataType="Waypoint";
+					loiterAltitude=-3.4028235e+038;
+					position[]={4831.2109,149.17378,4559.2012};
+					class Effects
+					{
+					};
+					showWP="NEVER";
+					id=1154;
+					type="Move";
+					atlOffset=-1.5258789e-005;
 				};
 			};
 			class Attributes
@@ -21396,8 +21497,7 @@ class Mission
 					dataType="Waypoint";
 					position[]={457.862,0.051429749,7570.4199};
 					combatMode="BLUE";
-					expCond="call{true}";
-					expActiv="call{maxHeli allowDamage false; maxHeli setCaptive true; maxHeli enableSimulation false; maxHeli hideObject true; {_unit = _x; _unit allowDamage false; _unit setCaptive true; _unit enableSimulation false; _unit hideObject true; {_unit disableAI _x} forEach [""ANIM"", ""AUTOTARGET"", ""FSM"", ""MOVE"", ""TARGET""]} forEach units group maxHeliD; maxHeli setPos [markerPos ""evacHeliPos"" select 0, markerPos ""evacHeliPos"" select 1, 50]; maxHeli setDir markerDir ""evacHeliPos""; maxHeli setVelocity [0,0,0]; {_x assignAsCargo maxHeli; _x moveInCargo maxHeli} forEach evacTeam}";
+					expActiv="maxHeli allowDamage false; maxHeli setCaptive true; maxHeli enableSimulation false; maxHeli hideObject true; {_unit = _x; _unit allowDamage false; _unit setCaptive true; _unit enableSimulation false; _unit hideObject true; {_unit disableAI _x} forEach [""ANIM"", ""AUTOTARGET"", ""FSM"", ""MOVE"", ""TARGET""]} forEach units group maxHeliD; maxHeli setPos [markerPos ""evacHeliPos"" select 0, markerPos ""evacHeliPos"" select 1, 50]; maxHeli setDir markerDir ""evacHeliPos""; maxHeli setVelocity [0,0,0]; {_x assignAsCargo maxHeli; _x moveInCargo maxHeli} forEach evacTeam";
 					class Effects
 					{
 					};
@@ -37160,11 +37260,10 @@ class Mission
 			class Attributes
 			{
 				name="t_overCampTrig";
-				condition="Adams in thisList";
 				sizeA=10;
 				sizeB=10;
+				interuptable=1;
 				repeatable=1;
-				activationBy="ANY";
 				isServerOnly=1;
 			};
 			id=1026;
@@ -37182,7 +37281,7 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={4895.9199,172.07205,5321.1479};
+						position[]={4895.6948,180.41202,5478.7646};
 						angles[]={0,5.7111363,0};
 					};
 					side="Independent";
@@ -37193,7 +37292,7 @@ class Mission
 					};
 					id=1029;
 					type="I_helipilot_F";
-					atlOffset=49.574005;
+					atlOffset=50;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -37242,7 +37341,7 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={4895.9199,172.07205,5321.1479};
+						position[]={4895.6948,180.41202,5478.7646};
 						angles[]={0,5.7111363,0};
 					};
 					side="Independent";
@@ -37251,7 +37350,7 @@ class Mission
 					};
 					id=1030;
 					type="I_helipilot_F";
-					atlOffset=49.574005;
+					atlOffset=50;
 				};
 				class Item2
 				{
@@ -37320,6 +37419,7 @@ class Mission
 					showWP="NEVER";
 					id=1035;
 					type="Move";
+					atlOffset=7.6293945e-006;
 				};
 				class Item7
 				{
@@ -37394,14 +37494,14 @@ class Mission
 				};
 			};
 			id=1027;
-			atlOffset=49.57399;
+			atlOffset=49.736374;
 		};
 		class Item237
 		{
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={4894.834,175.51791,5320.7397};
+				position[]={4894.6089,183.85789,5478.3564};
 				angles[]={0,5.7111363,0};
 			};
 			side="Independent";
@@ -37413,7 +37513,7 @@ class Mission
 			};
 			id=1028;
 			type="I_Heli_Transport_02_F";
-			atlOffset=49.57399;
+			atlOffset=49.736374;
 		};
 		class Item238
 		{
@@ -37802,7 +37902,6 @@ class Mission
 			class Attributes
 			{
 				name="t_AATrig";
-				condition="Adams in thisList";
 				sizeA=20;
 				sizeB=20;
 				interuptable=1;
@@ -40144,6 +40243,11 @@ class Mission
 					showWP="NEVER";
 					id=1121;
 					atlOffset=0.5;
+					class AttachedTo
+					{
+						id=1161;
+						offset[]={0,0.5,0};
+					};
 				};
 				class Item3
 				{
@@ -40239,7 +40343,7 @@ class Mission
 					{
 						skill=0.57999998;
 						rank="CORPORAL";
-						init="call{retreatGrp1 = group this}";
+						init="retreatGrp1 = group this";
 					};
 					id=1117;
 					type="I_Soldier_AR_F";
@@ -40489,16 +40593,134 @@ class Mission
 			id=1146;
 			atlOffset=11.191345;
 		};
+		class Item263
+		{
+			dataType="Trigger";
+			position[]={4611.1821,122.26193,4884.6802};
+			angle=0.92041665;
+			class Attributes
+			{
+				name="t_nearForestTrig";
+				sizeA=400;
+				sizeB=300;
+				interuptable=1;
+				repeatable=1;
+				isServerOnly=1;
+			};
+			id=1155;
+			type="EmptyDetector";
+		};
+		class Item264
+		{
+			dataType="Trigger";
+			position[]={4758.7822,113.42677,4796.4829};
+			class Attributes
+			{
+				name="t_retreatTrig";
+				sizeA=500;
+				sizeB=500;
+				interuptable=1;
+				repeatable=1;
+				activationByOwner="MEMBER";
+				isServerOnly=1;
+			};
+			id=1156;
+			type="EmptyDetector";
+			atlOffset=7.6293945e-006;
+		};
+		class Item265
+		{
+			dataType="Trigger";
+			position[]={4777.3262,113.51412,4747.1401};
+			class Attributes
+			{
+				name="t_forestTrig";
+				sizeA=150;
+				sizeB=220;
+				interuptable=1;
+				repeatable=1;
+				isRectangle=1;
+				isServerOnly=1;
+			};
+			id=1157;
+			type="EmptyDetector";
+		};
+		class Item266
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={4790.1621,130.72745,4953.501};
+				angles[]={0,2.6967256,0};
+			};
+			side="Empty";
+			flags=5;
+			class Attributes
+			{
+			};
+			id=1158;
+			type="Land_Sign_WarningUnexplodedAmmo_F";
+			atlOffset=0.057998657;
+		};
+		class Item267
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={4701.1709,139.05867,4774.6572};
+				angles[]={0,1.0331128,0};
+			};
+			side="Empty";
+			flags=5;
+			class Attributes
+			{
+			};
+			id=1159;
+			type="Land_Sign_WarningUnexplodedAmmo_F";
+			atlOffset=0.048995972;
+		};
+		class Item268
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={4921.811,180.42149,4488.9268};
+				angles[]={0,5.9595137,0};
+			};
+			side="Empty";
+			flags=5;
+			class Attributes
+			{
+			};
+			id=1160;
+			type="Land_Sign_WarningUnexplodedAmmo_F";
+			atlOffset=0.0019989014;
+		};
+		class Item269
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={4220.3999,158.60635,4874.0151};
+				angles[]={0.10955431,0,6.1539087};
+			};
+			side="Empty";
+			class Attributes
+			{
+			};
+			id=1161;
+			type="Land_HelipadEmpty_F";
+		};
 	};
 	class Connections
 	{
 		class LinkIDProvider
 		{
-			nextID=81;
+			nextID=87;
 		};
 		class Links
 		{
-			items=81;
+			items=87;
 			class Item0
 			{
 				linkID=0;
@@ -41307,6 +41529,66 @@ class Mission
 				class CustomData
 				{
 					type="WaypointActivation";
+				};
+			};
+			class Item81
+			{
+				linkID=81;
+				item0=1094;
+				item1=1150;
+				class CustomData
+				{
+					type="WaypointActivation";
+				};
+			};
+			class Item82
+			{
+				linkID=82;
+				item0=1052;
+				item1=506;
+				class CustomData
+				{
+					type="TriggerOwner";
+				};
+			};
+			class Item83
+			{
+				linkID=83;
+				item0=1155;
+				item1=506;
+				class CustomData
+				{
+					type="TriggerOwner";
+				};
+			};
+			class Item84
+			{
+				linkID=84;
+				item0=1156;
+				item1=506;
+				class CustomData
+				{
+					type="TriggerOwner";
+				};
+			};
+			class Item85
+			{
+				linkID=85;
+				item0=1157;
+				item1=506;
+				class CustomData
+				{
+					type="TriggerOwner";
+				};
+			};
+			class Item86
+			{
+				linkID=86;
+				item0=1026;
+				item1=506;
+				class CustomData
+				{
+					type="TriggerOwner";
 				};
 			};
 		};

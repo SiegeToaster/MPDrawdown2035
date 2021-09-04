@@ -961,7 +961,7 @@ if (isServer) then {
 		
 		enemyHeli1 enableSimulationGlobal true;
 		enemyHeli1 hideObjectGlobal false;
-		enemyHeli1 allowDamage false;
+		enemyHeli1 allowDamage true;
 
 		{_x setCaptive false} forEach units rangeAttackGrp;
 
@@ -1220,6 +1220,7 @@ waitUntil {{alive _x} count (units AA1Group1 + units AA1Group2) == 0};
 			50
 		];
 		maxHeli setDir markerDir "evacHeliPos";
+
 		maxHeli enableSimulationGlobal true;
 		maxHeli hideObjectGlobal false;
 		maxHeli setVelocity [0, 0, 0];
@@ -1253,6 +1254,76 @@ p0 kbTell [player, "kb", "a_in_175_bad_sign_KER_0", "GROUP"];
 
 	waitUntil {{_x distance Adams < 10} forEach allPlayers};
 	Adams kbTell [player, "kb", "a_in_180_at_aa_ICO_0", "GROUP"];
+	// "BIS_AA1Cross" setMarkerAlpha 1;
+	// supposed to cross out mrk_AA1, but there is no marker named so even in official
+	planeSwap2 = true;
 };
 
 waitUntil {maxHeli distance markerPos "mrk_AA1" <= 350};
+
+Adams kbTell [player, "kb", "a_in_185_evac_spotted_ICO_0", "GROUP"];
+waitUntil {Adams kbWasSaid [player, "kb", "a_in_185_evac_spotted_ICO_0", 9999]};
+sleep 2;
+
+// cross out mrk_AA1
+
+if (isServer) then {
+	{
+		private _unit = _x;
+		if (vehicle _unit == _unit) then {
+			_unit setPosATL (_unit getVariable ["pos", getPosATL _unit]);
+			_unit setDir (_unit getVariable ["dir", direction _unit]);
+		};
+
+		{_unit enableAI _x} forEach ["ANIM", "AUTOTARGET", "FSM", "MOVE", "TARGET"];
+
+		_unit enableSimulationGlobal true;
+		_unit hideObjectGlobal false;
+		_unit setCaptive false;
+		_unit allowDamage true;
+	} forEach evacAttack;
+};
+
+0 fadeMusic 0.6;
+playMusic "LeadTrack03_F";
+
+Adams doWatch maxHeli;
+Adams reveal maxHeli;
+
+toEvac = true;
+
+[] spawn {
+	// Hurry up w/ condition #112
+};
+
+[] spawn {
+	// Bomb run w/ condition #118
+	
+
+	// Warn evac heli w/ condition #120
+};
+
+
+
+Adams kbTell [player, "kb", "a_in_183_evac_confirmed_ICO_0", "GROUP"];
+waitUntil {Adams kbWasSaid [player, "kb", "a_in_183_evac_confirmed_ICO_0", 9999]};
+Adams doWatch objNull;
+
+sleep 1;
+
+evac kbTell [player, "kb", "a_in_185_request_evac_EVA_0", "SIDE"];
+waitUntil {evac kbWasSaid [player, "kb", "a_in_185_request_evac_EVA_0", 9999]};
+Adams kbTell [player, "kb", "a_in_185_request_evac_ICO_0", "SIDE"];
+waitUntil {Adams kbWasSaid [player, "kb", "a_in_185_request_evac_ICO_0", 9999]};
+evac kbTell [player, "kb", "a_in_185_request_evac_EVA_1", "SIDE"];
+waitUntil {evac kbWasSaid [player, "kb", "a_in_185_request_evac_EVA_1", 9999]};
+Adams kbTell [player, "kb", "a_in_185_request_evac_ICO_1", "SIDE"];
+waitUntil {Adams kbWasSaid [player, "kb", "a_in_185_request_evac_ICO_1", 9999]};
+
+if (isServer) then {
+	execVM "unitPlay\distantBombing.sqf";
+};
+
+"SmokeShellPurple" createVehicle [4600.353, 5300.814, 0.000];
+
+waitUntil {!alive maxHeli};

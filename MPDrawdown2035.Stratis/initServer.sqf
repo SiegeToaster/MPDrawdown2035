@@ -57,6 +57,13 @@ evacRestrict2 = (units evacAttack1 + units evacAttack2);
 	_unit setPos [position _unit select 0, position _unit select 1, 1000];
 } forEach ([campAmbient1, campAmbient2, campAmbient6, campAmbient8, plane1D, plane2D, bomberD, plane3D] + units group enemyHeli1D + rangeAmbient + units group enemyHeli2D + units AA1Group1 + units AA1Group2 + units rangeAttackGrp + evacAttack + evacTeam + units retreatGrp1 + units group enemyHeli3D + units retreatGrp2);
 
+// landing = compile preprocessFile "unitPlay\landing.sqf";
+// flight = compile preprocessFile "unitPlay\flight.sqf";
+// truckMove = compile preprocessFile "unitPlay\truckMove.sqf";
+// distantBombing = compile preprocessFile "unitPlay\distantBombing.sqf";
+// planeAttack = compile preprocessFile "unitPlay\planeAttack.sqf";
+// might need these if execVM doesn't work out.
+
 enemyHeli1D assignAsDriver enemyHeli1;
 enemyHeli1D moveInDriver enemyHeli1;
 
