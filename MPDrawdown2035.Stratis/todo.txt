@@ -6,6 +6,7 @@ Bugs:
 	helicopter teleports direction when taking off from LZ connor - this is in the official campaign too, custom fix would be required (lol no)
 	Edwards speech waits for a few seconds at different places, sometimes right after saying at ease, sometimes right before saying he has no idea why.
 		This is most likely not related to the ambient conversation
-	plane1 bugged
+	stand at point x-ray for long time, maybe spawn in ghost hawk earlier?
+	kamino attack group helicopter just kinda hovers?  check where it is supposed to go.
 	
 Stops after getting to Point X-Ray

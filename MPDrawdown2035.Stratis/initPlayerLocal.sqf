@@ -890,6 +890,7 @@ if (isServer) then {
 		_x hideObjectGlobal false;
 		_x allowDamage true;
 	} forEach [plane1, plane1D];
+	if (!isEngineOn plane1) then { plane1 engineOn true; };
 };
 assignTskReturn = true;
 Adams kbTell [player, "kb", "a_in_125_comply_ICO_0", "SIDE"];
@@ -1174,6 +1175,7 @@ enemyHeli2 setDir (enemyHeli2 getVariable ["dir", direction enemyHeli2]);
 	_x hideObjectGlobal false;
 	_x allowDamage true;
 } forEach [plane2, enemyHeli2];
+if (!isEngineOn plane2) then { plane2 engineOn true; };
 
 {
 	private _unit = _x;
@@ -1293,14 +1295,29 @@ Adams reveal maxHeli;
 toEvac = true;
 
 [] spawn {
-	// Hurry up w/ condition #112
+	waitUntil {bomber distance maxHeli < 250 || {alive _x} count units evacAttack1 == 0 || {vehicle _x distance markerPos "mrk_LZ2" <= 435} count ([Adams] + allPlayers) > 0};
+	if !({alive _x} count units evacAttack1 == 0 || {vehicle _x distance markerPos "mrk_LZ2" <= 435} count ([Adams] + allPlayers) > 0) then {
+		sleep 3;
+		evac kbTell [player, "kb", "a_in_190_fly_over_EVA_0", "SIDE"];
+	};
 };
 
 [] spawn {
-	// Bomb run w/ condition #118
-	
+	waitUntil {{alive _x} count units evacAttack1 == 0 || {vehicle _x distance markerPos "mrk_LZ2" <= 435} count ([Adams] + allPlayers) > 0};
+	if (isServer) then {
+		{if (alive _x) then {_x setDamage 1}} forEach units evacDefend2;
+		execVM "unitPlay\planeAttack.sqf";
+	};
 
-	// Warn evac heli w/ condition #120
+	waitUntil {bomber distance markerPos "mrk_LZ2" <= 800};
+	Adams reveal bomber;
+	Adams doWatch bomber;
+
+	[] spawn {
+		Adams kbTell [player, "kb", "a_in_195_bomber_spotted_ICO_0", "GROUP"];
+		waitUntil {Adams kbWasSaid [player, "kb", "a_in_195_bomber_spotted_ICO_0", 9999]};
+		Adams kbTell [player, "kb", "a_in_200_bomb_inbound_ICO_0", "SIDE"];
+	};
 };
 
 
@@ -1327,3 +1344,102 @@ if (isServer) then {
 "SmokeShellPurple" createVehicle [4600.353, 5300.814, 0.000];
 
 waitUntil {!alive maxHeli};
+0 fadeMusic 0.4;
+playMusic "EventTrack01a_F_EPA";
+
+if (isServer) then {
+	Adams doWatch objNull;
+};
+
+sleep 1;
+Adams kbTell [player, "kb", "a_in_205_heli_dead_ICO_0", "GROUP"];
+waitUntil {Adams kbWasSaid [player, "kb", "a_in_205_heli_dead_ICO_0", 9999]};
+Adams kbTell [player, "kb", "a_in_210_check_in_ICO_0", "SIDE"];
+
+if (isServer) then {
+	if (isNil "p0" || !(p0 in (call BIS_fnc_listPlayers))) then {
+			p0 = selectRandom (call BIS_fnc_listPlayers);
+			publicVariable "p0";
+	};
+};
+
+waitUntil {Adams kbWasSaid [player, "kb", "a_in_210_check_in_ICO_0", 9999]};
+p0 kbTell [player, "kb", "a_in_215_now_what_KER_0", "GROUP"];
+waitUntil {p0 kbWasSaid [player, "kb", "a_in_215_now_what_KER_0", 9999]};
+Adams kbTell [player, "kb", "a_in_215_now_what_ICO_0", "GROUP"];
+waitUntil {Adams kbWasSaid [player, "kb", "a_in_215_now_what_ICO_0", 9999]};
+
+if (isServer) then {
+	findShelter = true;
+};
+
+Adams kbTell [player, "kb", "a_in_220_find_shelter_ICO_0", "GROUP"];
+waitUntil {Adams kbWasSaid [player, "kb", "a_in_220_find_shelter_ICO_0", 9999]};
+Adams kbTell [player, "kb", "a_in_220_find_shelter_ICO_1", "GROUP"];
+waitUntil {Adams kbWasSaid [player, "kb", "a_in_220_find_shelter_ICO_1", 9999]};
+Adams kbTell [player, "kb", "a_in_220_find_shelter_ICO_2", "GROUP"];
+waitUntil {Adams kbWasSaid [player, "kb", "a_in_220_find_shelter_ICO_2", 9999]};
+p0 kbTell [player, "kb", "a_in_220_find_shelter_KER_0", "GROUP"];
+waitUntil {p0 kbWasSaid [player, "kb", "a_in_220_find_shelter_KER_0", 9999]};
+Adams kbTell [player, "kb", "a_in_220_find_shelter_ICO_3", "GROUP"];
+waitUntil {Adams kbWasSaid [player, "kb", "a_in_220_find_shelter_ICO_3", 9999]};
+
+sleep 1;
+0 fadeMusic 0.4;
+playMusic "LeadTrack02b_F_EPA";
+
+if (isServer) then {
+	[] spawn {
+		waitUntil {triggerActivated t_retreatTrig};
+
+		enemyHeli3 setPosATL (enemyHeli3 getVariable ["pos", getPosATL enemyHeli3]);
+		enemyHeli3 setDir (enemyHeli3 getVariable ["dir", direction enemyHeli3]);
+
+		enemyHeli3 enableSimulationGlobal true;
+		enemyHeli3 hideObjectGlobal false;
+		enemyHeli3 allowDamage true;
+
+		{
+			private _unit = _x;
+
+			if (vehicle _unit == _unit) then {
+				_unit setPosATL (_unit getVariable ["pos", getPosATL _unit]);
+				_unit setDir (_unit getVariable ["dir", direction _unit]);
+			};
+
+			{_unit enableAI _x} forEach ["ANIM", "AUTOTARGET", "FSM", "MOVE", "TARGET"];
+
+			_unit enableSimulationGlobal true;
+			_unit hideObjectGlobal false;
+			_unit allowDamage true;
+		} forEach (units retreatGrp1 + units group enemyHeli3D + units retreatGrp2);
+
+		{_x setCaptive false} forEach units retreatGrp1;
+	};
+};
+
+waitUntil {triggerActivated t_nearForestTrig};
+Adams kbTell [player, "kb", "a_in_225_near_forest_ICO_0", "GROUP"];
+waitUntil {Adams kbWasSaid [player, "kb", "a_in_225_near_forest_ICO_0", 9999]};
+
+waitUntil {triggerActivated t_forestTrig};
+{_x setCaptive true} forEach ([Adams] + allPlayers);
+
+0 fadeMusic 0.4;
+playMusic "EventTrack02a_F_EPA";
+
+sleep 8;
+if (isServer) then {enteredForest = true};
+sleep 1;
+
+Adams kbTell [player, "kb", "a_in_230_in_forest_ICO_0", "GROUP"];
+waitUntil {Adams kbWasSaid [player, "kb", "a_in_230_in_forest_ICO_0", 9999]};
+
+sleep 19;
+6 fadeSound 0;
+7 fadeMusic 0;
+titleCut ["", "BLACK OUT", 6];
+
+sleep 8;
+
+endMission "A_in2_1";

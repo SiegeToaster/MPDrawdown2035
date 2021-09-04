@@ -1200,6 +1200,146 @@ class Sentences
 		class Arguments {};
 	};
 
+	class a_in_190_fly_over_EVA_0
+	{
+		text = "$STR_A3_a_in_190_fly_over_EVA_0";
+		speech[] = {"\a3\dubbing_f_epa\a_in\190_Fly_Over\a_in_190_fly_over_EVA_0.ogg"};
+		actor = "evac";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+
+	class a_in_195_bomber_spotted_ICO_0
+	{
+		text = "$STR_A3_a_in_195_bomber_spotted_ICO_0";
+		speech[] = {"\a3\dubbing_f_epa\a_in\195_Bomber_Spotted\a_in_195_bomber_spotted_ICO_0.ogg"};
+		actor = "Adams";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+
+	class a_in_200_bomb_inbound_ICO_0
+	{
+		text = "$STR_A3_a_in_200_bomb_inbound_ICO_0";
+		speech[] = {"\a3\dubbing_f_epa\a_in\200_Bomb_Inbound\a_in_200_bomb_inbound_ICO_0.ogg"};
+		actor = "Adams";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+
+	class a_in_205_heli_dead_ICO_0
+	{
+		text = "$STR_A3_a_in_205_heli_dead_ICO_0";
+		speech[] = {"\a3\dubbing_f_epa\a_in\205_Heli_Dead\a_in_205_heli_dead_ICO_0.ogg"};
+		actor = "Adams";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+
+	class a_in_210_check_in_ICO_0
+	{
+		text = "$STR_A3_a_in_210_check_in_ICO_0";
+		speech[] = {"\a3\dubbing_f_epa\a_in\210_Check_In\a_in_210_check_in_ICO_0.ogg"};
+		actor = "Adams";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+
+	class a_in_215_now_what_KER_0
+	{
+		text = "$STR_A3_a_in_215_now_what_KER_0";
+		speech[] = {"\a3\dubbing_f_epa\a_in\215_Now_What\a_in_215_now_what_KER_0.ogg"};
+		actor = "p1";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+
+	class a_in_215_now_what_ICO_0
+	{
+		text = "$STR_A3_a_in_215_now_what_ICO_0";
+		speech[] = {"\a3\dubbing_f_epa\a_in\215_Now_What\a_in_215_now_what_ICO_0.ogg"};
+		actor = "Adams";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+
+	class a_in_220_find_shelter_ICO_0
+	{
+		text = "$STR_A3_a_in_220_find_shelter_ICO_0";
+		speech[] = {"\a3\dubbing_f_epa\a_in\220_Find_Shelter\a_in_220_find_shelter_ICO_0.ogg"};
+		actor = "Adams";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+
+	class a_in_220_find_shelter_ICO_1
+	{
+		text = "$STR_A3_a_in_220_find_shelter_ICO_1";
+		speech[] = {"\a3\dubbing_f_epa\a_in\220_Find_Shelter\a_in_220_find_shelter_ICO_1.ogg"};
+		actor = "Adams";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+
+	class a_in_220_find_shelter_ICO_2
+	{
+		text = "$STR_A3_a_in_220_find_shelter_ICO_2";
+		speech[] = {"\a3\dubbing_f_epa\a_in\220_Find_Shelter\a_in_220_find_shelter_ICO_2.ogg"};
+		actor = "Adams";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+
+	class a_in_220_find_shelter_KER_0
+	{
+		text = "$STR_A3_a_in_220_find_shelter_KER_0";
+		speech[] = {"\a3\dubbing_f_epa\a_in\220_Find_Shelter\a_in_220_find_shelter_KER_0.ogg"};
+		actor = "p1";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+
+	class a_in_220_find_shelter_ICO_3
+	{
+		text = "$STR_A3_a_in_220_find_shelter_ICO_3";
+		speech[] = {"\a3\dubbing_f_epa\a_in\220_Find_Shelter\a_in_220_find_shelter_ICO_3.ogg"};
+		actor = "Adams";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+
+	class a_in_225_near_forest_ICO_0
+	{
+		text = "$STR_A3_a_in_225_near_forest_ICO_0";
+		speech[] = {"\a3\dubbing_f_epa\a_in\225_Near_Forest\a_in_225_near_forest_ICO_0.ogg"};
+		actor = "Adams";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+
+	class a_in_230_in_forest_ICO_0
+	{
+		text = "$STR_A3_a_in_230_in_forest_ICO_0";
+		speech[] = {"\a3\dubbing_f_epa\a_in\230_In_Forest\a_in_230_in_forest_ICO_0.ogg"};
+		actor = "Adams";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+
 
 	class a_in_x01_offroading_ICO_0
 	{

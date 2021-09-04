@@ -66,6 +66,8 @@ evacRestrict2 = (units evacAttack1 + units evacAttack2);
 
 enemyHeli1D assignAsDriver enemyHeli1;
 enemyHeli1D moveInDriver enemyHeli1;
+plane1D assignAsDriver plane1;
+plane1D moveInDriver plane1;
 
 campSetup = {
 	params ["_unit", "_marker"];

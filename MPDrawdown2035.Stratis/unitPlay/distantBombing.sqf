@@ -10,10 +10,10 @@ private _movementData = [[0,[1771.77,3560.62,99.3693],[0.770592,0.637329,0.00047
 
 // Start sequence
 private _unitPlay = [bomber, _movementData] spawn BIS_fnc_UnitPlay;
+if (!isEngineOn bomber) then { bomber engineOn true; };
 
 sleep 13;
-
-private _pos = [3496.152,4915.581,0.000];
+private _pos = [3496.152, 4915.581, 0];
 
 // Drop bomb
 private _bomb = "Bo_GBU12_LGB" createVehicle [
@@ -21,7 +21,6 @@ private _bomb = "Bo_GBU12_LGB" createVehicle [
 	_pos select 1,
 	1
 ];
-
 _bomb setVelocity [0,0,-1];
 _bomb hideObjectGlobal true;
 
