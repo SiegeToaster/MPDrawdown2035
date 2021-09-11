@@ -133,6 +133,24 @@ sleep 5;
 titleFadeOut 0.5;
 execVM "credits.sqf"; // credits
 
+if (isServer) then {
+	enemyHeli1 setPosATL (enemyHeli1 getVariable ["pos", getPosATL enemyHeli1]);
+	enemyHeli1 setDir (enemyHeli1 getVariable ["dir", direction enemyHeli1]);
+
+	enemyHeli1 enableSimulationGlobal true;
+	enemyHeli1 hideObjectGlobal false;
+	enemyHeli1 allowDamage true;
+
+	{
+		private _unit = _x;
+		{_unit enableAI _x} forEach ["ANIM", "AUTOTARGET", "FSM", "MOVE", "TARGET"];
+
+		_unit enableSimulationGlobal true;
+		_unit hideObjectGlobal false;
+		_unit allowDamage true;
+	} forEach units group enemyHeli1D;
+};
+
 sleep 1; // beginning of heli flight commentary
 Lacey kbTell [player, "kb", "a_in_15_roads_BRA_0", "SIDE"]; // roads start; should be pretty much over first road
 waitUntil {Lacey kbWasSaid [player, "kb", "a_in_15_roads_BRA_0", 9999]};

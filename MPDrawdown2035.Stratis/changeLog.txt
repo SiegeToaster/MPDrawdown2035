@@ -69,3 +69,8 @@ Version 1.6 - 09/03/2021
 - added evac heli bombing
 - added escape to forest and ending
 - plane1 pilot not in plane fix
+- Complete to end!
+	- still needs bug fixes and dedicated server testing
+
+Version 1.7 - 09/11/2021
+- added AAF helicopter air traffic while en route to camp rogain
