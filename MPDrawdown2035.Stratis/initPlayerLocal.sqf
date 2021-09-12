@@ -312,12 +312,33 @@ playMusic "EventTrack01_F_EPA"; // makes sure players are at camp rogain and pla
 	} forEach (nearestObjects [Edwards, ["man"], 5]);
 
 	p0 kbTell [player, "kb", "a_in_55_orders_KER_0", "DIRECT"]; // orders start
-	[] spawn {Edwards playMoveNow "Acts_SittingJumpingSaluting_out"}; // spawn needed because animation would make unneeded silence.
-	waitUntil {player kbWasSaid [player, "kb", "a_in_55_orders_KER_0", 9999]};
+	if (isServer) then {
+		detach Edwards; 
+		Edwards disableAI "ANIM";
+		Edwards playMoveNow "Acts_SittingJumpingSaluting_out";
+		private _animEH = Edwards addEventHandler ["AnimDone", {
+			if (_this select 1 == "Acts_SittingJumpingSaluting_out") then {
+				Edwards removeEventHandler ["AnimDone", Edwards getVariable "animEH"];
+				{Edwards enableAI _x} forEach ["ANIM", "FSM"];
+			};
+		}];
+		Edwards setVariable ["animEH", _animEH];
+	}; //makes Edwards jump down and salute
 
-	Edwards say3D "Acts_SittingJumpingSaluting_out";
-	{Edwards enableAI _x} forEach ["ANIM", "FSM"];
-	detach Edwards; //makes Edwards jump down and salute
+	[] spawn {
+		private _effect = "#particlesource" createVehicleLocal position Edwards;
+		_effect attachTo [Edwards, [-0.1,0.4,0.0]];
+		sleep 0.8;
+		waitUntil {p0 kbWasSaid [player, "kb", "a_in_55_orders_KER_0", 9999]};
+
+		Edwards say3D "Acts_SittingJumpingSaluting_out";
+		sleep 2;
+
+		_effect setParticleClass "DustMan";
+		sleep 0.8;
+
+		deleteVehicle _effect;
+	}; // creates dust particle and makes Edwards say "at ease"
 
 	Edwards kbTell [player, "kb", "a_in_55_orders_LOG_0", "DIRECT"];
 	waitUntil {Edwards kbWasSaid [player, "kb", "a_in_55_orders_LOG_0", 9999]};
@@ -327,7 +348,8 @@ playMusic "EventTrack01_F_EPA"; // makes sure players are at camp rogain and pla
 	waitUntil {Edwards kbWasSaid [player, "kb", "a_in_55_orders_LOG_2", 9999]};
 	p0 kbTell [player, "kb", "a_in_55_orders_KER_1", "DIRECT"];
 	waitUntil {p0 kbWasSaid [player, "kb", "a_in_55_orders_KER_1", 9999]};
-	Edwards kbTell [player, "kb", "a_in_55_orders_LOG_3", "DIRECT"];
+	systemChat "test 1";
+	[] spawn {Edwards kbTell [player, "kb", "a_in_55_orders_LOG_3", "DIRECT"]};
 	waitUntil {Edwards kbWasSaid [player, "kb", "a_in_55_orders_LOG_3", 9999]}; // orders end
 	ordersRecieved = true;
 	p0 kbTell [player, "kb", "a_in_60_understood_KER_0", "DIRECT"];
