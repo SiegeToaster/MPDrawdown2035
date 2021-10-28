@@ -328,18 +328,16 @@ playMusic "EventTrack01_F_EPA"; // makes sure players are at camp rogain and pla
 	[] spawn {
 		private _effect = "#particlesource" createVehicleLocal position Edwards;
 		_effect attachTo [Edwards, [-0.1,0.4,0.0]];
-		sleep 0.8;
-		waitUntil {p0 kbWasSaid [player, "kb", "a_in_55_orders_KER_0", 9999]};
-
-		Edwards say3D "Acts_SittingJumpingSaluting_out";
-		sleep 2;
+		sleep 2.8;
 
 		_effect setParticleClass "DustMan";
 		sleep 0.8;
 
 		deleteVehicle _effect;
 	}; // creates dust particle and makes Edwards say "at ease"
-
+	waitUntil {player kbWasSaid [player, "kb", "a_in_55_orders_KER_0", 9999]};
+	Edwards say3D "Acts_SittingJumpingSaluting_out";
+	
 	Edwards kbTell [player, "kb", "a_in_55_orders_LOG_0", "DIRECT"];
 	waitUntil {Edwards kbWasSaid [player, "kb", "a_in_55_orders_LOG_0", 9999]};
 	Edwards kbTell [player, "kb", "a_in_55_orders_LOG_1", "DIRECT"];
@@ -348,8 +346,7 @@ playMusic "EventTrack01_F_EPA"; // makes sure players are at camp rogain and pla
 	waitUntil {Edwards kbWasSaid [player, "kb", "a_in_55_orders_LOG_2", 9999]};
 	p0 kbTell [player, "kb", "a_in_55_orders_KER_1", "DIRECT"];
 	waitUntil {p0 kbWasSaid [player, "kb", "a_in_55_orders_KER_1", 9999]};
-	systemChat "test 1";
-	[] spawn {Edwards kbTell [player, "kb", "a_in_55_orders_LOG_3", "DIRECT"]};
+	Edwards kbTell [player, "kb", "a_in_55_orders_LOG_3", "DIRECT"];
 	waitUntil {Edwards kbWasSaid [player, "kb", "a_in_55_orders_LOG_3", 9999]}; // orders end
 	ordersRecieved = true;
 	p0 kbTell [player, "kb", "a_in_60_understood_KER_0", "DIRECT"];
@@ -752,8 +749,6 @@ if (isServer) then {
 			_unit allowFleeing 0;
 		} forEach rangeAmbient
 	};
-
-	
 };
 
 [] spawn {

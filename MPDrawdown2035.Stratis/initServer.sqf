@@ -222,6 +222,7 @@ private _damageEH = Adams addEventHandler ["HandleDamage", {
 Adams setVariable ["_damageEH", _damageEH];
 {
 	_x addEventHandler ["Killed", {
+		// ToDo: wait until ALL players are dead until removing
 		Adams removeEventHandler ["HandleDamage", Adams getVariable "_damageEH"];
 	}];
 } forEach allPlayers;
