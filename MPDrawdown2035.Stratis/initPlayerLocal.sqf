@@ -793,6 +793,7 @@ if (isServer) then {
 
 Adams kbTell [player, "kb", "a_in_115_check_ICO_0", "DIRECT"];
 waitUntil {Adams kbWasSaid [player, "kb", "a_in_115_check_ICO_0", 9999]};
+waitUntil {xray kbWasSaid [player, "kb", "a_in_128_ambient_2_XRA_2", 9999]};
 Adams kbTell [player, "kb", "a_in_117_request_help_ICO_0", "SIDE"];
 waitUntil {Adams kbWasSaid [player, "kb", "a_in_117_request_help_ICO_0", 9999]};
 sleep 2;
@@ -926,6 +927,8 @@ if (isServer) then {
 		_x allowDamage true;
 	} forEach [plane1, plane1D];
 	if (!isEngineOn plane1) then { plane1 engineOn true; };
+	
+	Edwards allowDamage false;
 };
 assignTskReturn = true;
 Adams kbTell [player, "kb", "a_in_125_comply_ICO_0", "SIDE"];
@@ -1071,7 +1074,6 @@ if (isServer) then {
 	// BIS_campSetup
 	Edwards hideObjectGlobal true;
 	Edwards enableSimulationGlobal false;
-	Edwards allowDamage false;
 	Edwards setCaptive true;
 	{Edwards disableAI _x} forEach ["ANIM", "AUTOTARGET", "FSM", "MOVE", "TARGET"];
 	Edwards setPos [7093.7,5965.62,0.0014205];

@@ -12,7 +12,7 @@ class EditorData
 	};
 	class ItemIDProvider
 	{
-		nextID=1166;
+		nextID=1167;
 	};
 	class MarkerIDProvider
 	{
@@ -20,14 +20,14 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=370;
+		nextID=382;
 	};
 	class Camera
 	{
-		pos[]={5134.2412,266.72406,5668.9595};
-		dir[]={-0.66782278,-0.34229666,-0.66094303};
-		up[]={-0.24329022,0.93959194,-0.24078389};
-		aside[]={-0.70343626,-1.4901161e-008,0.71075833};
+		pos[]={4017.9927,171.98804,7021.5776};
+		dir[]={0.60118943,-0.24283439,-0.76131654};
+		up[]={0.1504941,0.9700678,-0.19057828};
+		aside[]={-0.78480762,-7.4505806e-009,-0.61973965};
 	};
 };
 binarizationWanted=0;
@@ -570,7 +570,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=269;
+		items=270;
 		class Item0
 		{
 			dataType="Group";
@@ -40705,6 +40705,20 @@ class Mission
 			type="EmptyDetector";
 			atlOffset=1.5258789e-005;
 		};
+		class Item269
+		{
+			dataType="Trigger";
+			position[]={4629.0186,131.66254,5291.2969};
+			class Attributes
+			{
+				condition="!(isNil ""findShelter"")";
+				sizeA=0;
+				sizeB=0;
+				isServerOnly=1;
+			};
+			id=1166;
+			type="EmptyDetector";
+		};
 	};
 	class Connections
 	{
@@ -41568,7 +41582,7 @@ class Mission
 			class Item85
 			{
 				linkID=85;
-				item0=965;
+				item0=963;
 				item1=1094;
 				class CustomData
 				{
@@ -41578,8 +41592,8 @@ class Mission
 			class Item86
 			{
 				linkID=86;
-				item0=963;
-				item1=1094;
+				item0=1166;
+				item1=965;
 				class CustomData
 				{
 					type="Sync";
