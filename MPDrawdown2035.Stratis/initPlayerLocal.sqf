@@ -75,12 +75,10 @@ if (isServer) then {
 Adams kbTell [player, "kb", "a_in_01_wave_ICO_0", "SIDE"]; // makes SSG Adams wave and say, "Over here, Kerry!"
 sleep 0.5;
 
-{
-	[1, nil, false] spawn BIS_fnc_cinemaBorder;
-	showHUD true; // turns off fake cinema borders
-	player switchMove "AmovPercMstpSlowWrflDnon";
-} remoteExec ["spawn"]; // makes players stop walking
-// no work
+[1, nil, false] spawn BIS_fnc_cinemaBorder;
+showHUD true; // turns off fake cinema borders
+player switchMove "AmovPercMstpSlowWrflDnon"; // makes players stop walking
+// doesn't work (maybe fixed)
 
 sleep 1;
 player hideObjectGlobal false; // players originally hidden becuase walk cutscene is in the same place and players would clip this makes players visible for each other again.
@@ -248,11 +246,10 @@ November kbTell [player, "kb", "a_in_40_landed_NOV_0", "SIDE"]; // end of heli f
 sleep 0.5;
 transportHeli lock false; // unlock heli
 transportHeli action ["EngineOff", transportHeli]; // turn off heli engine
-{
-	showHUD true;// remove fake cinema borders
-	[1, nil, false] spawn BIS_fnc_cinemaBorder;
-} remoteExec ["spawn"];
-// no work
+
+showHUD true;// remove fake cinema borders
+[1, nil, false] spawn BIS_fnc_cinemaBorder;
+// doesn't work (maybe fixed)
 sleep 1;
 
 // Make SSG Adams disembark
@@ -952,7 +949,11 @@ Adams kbTell [player, "kb", "a_in_130_planes_ICO_0", "DIRECT"];
 waitUntil {Adams kbWasSaid [player, "kb", "a_in_130_planes_ICO_0", 9999]};
 
 sleep 3;
-allPlayers joinSilent Adams;
+
+if (isServer) then {
+	allPlayers joinSilent Adams;
+};
+
 toCamp = true;
 {_x setCaptive false} forEach [Adams, player];
 
@@ -1475,7 +1476,7 @@ waitUntil {triggerActivated t_forestTrig};
 {_x setCaptive true} forEach ([Adams] + allPlayers);
 
 0 fadeMusic 0.4;
-playMusic "EventTrack02a_F_EPA"; // doesn't work
+playMusic "EventTrack02a_F_EPA"; // doesn't work (maybe fixed)
 
 sleep 8;
 if (isServer) then {enteredForest = true};
@@ -1487,8 +1488,8 @@ waitUntil {Adams kbWasSaid [player, "kb", "a_in_230_in_forest_ICO_0", 9999]};
 sleep 19;
 6 fadeSound 0;
 7 fadeMusic 0;
-titleCut ["", "BLACK OUT", 6]; // doesn't work
+titleCut ["", "BLACK OUT", 6]; // doesn't work (maybe fixed)
 
 sleep 8;
 
-endMission "A_in2_1"; // doesn't work
+endMission "A_in2_1"; // doesn't work (maybe fixed)

@@ -20,14 +20,14 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=382;
+		nextID=386;
 	};
 	class Camera
 	{
-		pos[]={4017.9927,171.98804,7021.5776};
-		dir[]={0.60118943,-0.24283439,-0.76131654};
-		up[]={0.1504941,0.9700678,-0.19057828};
-		aside[]={-0.78480762,-7.4505806e-009,-0.61973965};
+		pos[]={5344.8057,236.06953,5263.4219};
+		dir[]={0.31509933,-0.69052893,-0.65107566};
+		up[]={0.30081582,0.72329998,-0.62156504};
+		aside[]={-0.90013236,-2.1466985e-007,-0.43563524};
 	};
 };
 binarizationWanted=0;
@@ -18232,7 +18232,6 @@ class Mission
 						repeatable=1;
 						activationBy="ANY";
 						isRectangle=1;
-						isServerOnly=1;
 					};
 					id=860;
 					type="EmptyDetector";
@@ -18241,7 +18240,7 @@ class Mission
 				{
 					dataType="Trigger";
 					position[]={5231.4961,156.66226,5811.2661};
-					angle=5.9322686;
+					angle=5.9322696;
 					class Attributes
 					{
 						name="checkZone";
@@ -18252,7 +18251,6 @@ class Mission
 						repeatable=1;
 						activationType="NOT PRESENT";
 						activationBy="ANY";
-						isServerOnly=1;
 					};
 					id=861;
 					type="EmptyDetector";
@@ -31868,7 +31866,6 @@ class Mission
 				sizeA=4;
 				sizeB=4;
 				activationBy="ANYPLAYER";
-				isServerOnly=1;
 			};
 			id=822;
 			type="EmptyDetector";
@@ -33393,7 +33390,7 @@ class Mission
 		{
 			dataType="Trigger";
 			position[]={5327.0869,150.39301,5766.645};
-			angle=3.7724583;
+			angle=3.7724593;
 			class Attributes
 			{
 				name="checkZoneExt";
@@ -33402,7 +33399,6 @@ class Mission
 				sizeB=20;
 				repeatable=1;
 				activationBy="ANY";
-				isServerOnly=1;
 			};
 			id=866;
 			type="EmptyDetector";
@@ -37233,7 +37229,6 @@ class Mission
 				sizeB=10;
 				interuptable=1;
 				repeatable=1;
-				isServerOnly=1;
 			};
 			id=1026;
 			type="EmptyDetector";
@@ -37889,7 +37884,6 @@ class Mission
 				interuptable=1;
 				repeatable=1;
 				activationBy="ANY";
-				isServerOnly=1;
 			};
 			id=1052;
 			type="EmptyDetector";
@@ -40575,7 +40569,7 @@ class Mission
 		{
 			dataType="Trigger";
 			position[]={4611.1821,122.26193,4884.6802};
-			angle=0.92041665;
+			angle=0.92041683;
 			class Attributes
 			{
 				name="t_nearForestTrig";
@@ -40583,7 +40577,6 @@ class Mission
 				sizeB=300;
 				interuptable=1;
 				repeatable=1;
-				isServerOnly=1;
 			};
 			id=1155;
 			type="EmptyDetector";
@@ -40600,11 +40593,9 @@ class Mission
 				interuptable=1;
 				repeatable=1;
 				activationByOwner="MEMBER";
-				isServerOnly=1;
 			};
 			id=1156;
 			type="EmptyDetector";
-			atlOffset=7.6293945e-006;
 		};
 		class Item263
 		{
@@ -40618,7 +40609,6 @@ class Mission
 				interuptable=1;
 				repeatable=1;
 				isRectangle=1;
-				isServerOnly=1;
 			};
 			id=1157;
 			type="EmptyDetector";
