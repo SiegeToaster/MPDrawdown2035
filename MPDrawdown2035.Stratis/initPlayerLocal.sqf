@@ -75,9 +75,12 @@ if (isServer) then {
 Adams kbTell [player, "kb", "a_in_01_wave_ICO_0", "SIDE"]; // makes SSG Adams wave and say, "Over here, Kerry!"
 sleep 0.5;
 
-[1, nil, false] spawn BIS_fnc_cinemaBorder;
-showHUD true; // turns off fake cinema borders
-player switchMove "AmovPercMstpSlowWrflDnon"; // makes players stop walking
+{
+	[1, nil, false] spawn BIS_fnc_cinemaBorder;
+	showHUD true; // turns off fake cinema borders
+	player switchMove "AmovPercMstpSlowWrflDnon";
+} remoteExec ["spawn"]; // makes players stop walking
+// no work
 
 sleep 1;
 player hideObjectGlobal false; // players originally hidden becuase walk cutscene is in the same place and players would clip this makes players visible for each other again.
@@ -119,7 +122,7 @@ if (isServer) then {
 };
 
 sleep 4;
-[0, 1, false] spawn BIS_fnc_cinemaBorder; // spawns fake cinema borders
+[0, 1, false] remoteExec ["BIS_fnc_cinemaBorder"]; // spawns fake cinema borders
 clearRadio; // clears the chat
 
 sleep 4;
@@ -245,8 +248,11 @@ November kbTell [player, "kb", "a_in_40_landed_NOV_0", "SIDE"]; // end of heli f
 sleep 0.5;
 transportHeli lock false; // unlock heli
 transportHeli action ["EngineOff", transportHeli]; // turn off heli engine
-showHUD true;// remove fake cinema borders
-[1, nil, false] spawn BIS_fnc_cinemaBorder;
+{
+	showHUD true;// remove fake cinema borders
+	[1, nil, false] spawn BIS_fnc_cinemaBorder;
+} remoteExec ["spawn"];
+// no work
 sleep 1;
 
 // Make SSG Adams disembark
@@ -564,9 +570,15 @@ waitUntil {sleep 3; speed truck == 0};
 	checkInspector kbTell [player, "kb", "a_in_95_inspect_CHI_0", "DIRECT"];
 	waitUntil {checkInspector kbWasSaid [player, "kb", "a_in_95_inspect_CHI_0", 9999]};
 
+	if (isServer) then {
+		waitUntil {{driver truck == _x} forEach allPlayers};
+		p0 = driver truck;
+		publicVariable "p0";
+	};
+
 	sleep 0.5;
-	driver truck kbTell [player, "kb", "a_in_97_tense_KER_0", "VEHICLE"];
-	waitUntil {driver truck kbWasSaid [player, "kb", "a_in_97_tense_KER_0", 9999]};
+	p0 kbTell [player, "kb", "a_in_97_tense_KER_0", "VEHICLE"];
+	waitUntil {p0 kbWasSaid [player, "kb", "a_in_97_tense_KER_0", 9999]};
 	Adams kbTell [player, "kb", "a_in_97_tense_ICO_0", "VEHICLE"];
 	waitUntil {Adams kbWasSaid [player, "kb", "a_in_97_tense_ICO_0", 9999]};
 	Adams kbTell [player, "kb", "a_in_97_tense_ICO_1", "SIDE"];
@@ -940,7 +952,7 @@ Adams kbTell [player, "kb", "a_in_130_planes_ICO_0", "DIRECT"];
 waitUntil {Adams kbWasSaid [player, "kb", "a_in_130_planes_ICO_0", 9999]};
 
 sleep 3;
-[player] joinSilent Adams;
+allPlayers joinSilent Adams;
 toCamp = true;
 {_x setCaptive false} forEach [Adams, player];
 
@@ -1463,7 +1475,7 @@ waitUntil {triggerActivated t_forestTrig};
 {_x setCaptive true} forEach ([Adams] + allPlayers);
 
 0 fadeMusic 0.4;
-playMusic "EventTrack02a_F_EPA";
+playMusic "EventTrack02a_F_EPA"; // doesn't work
 
 sleep 8;
 if (isServer) then {enteredForest = true};
@@ -1475,8 +1487,8 @@ waitUntil {Adams kbWasSaid [player, "kb", "a_in_230_in_forest_ICO_0", 9999]};
 sleep 19;
 6 fadeSound 0;
 7 fadeMusic 0;
-titleCut ["", "BLACK OUT", 6];
+titleCut ["", "BLACK OUT", 6]; // doesn't work
 
 sleep 8;
 
-endMission "A_in2_1";
+endMission "A_in2_1"; // doesn't work
