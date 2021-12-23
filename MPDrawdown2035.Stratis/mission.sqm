@@ -20,14 +20,14 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=386;
+		nextID=398;
 	};
 	class Camera
 	{
-		pos[]={5344.8057,236.06953,5263.4219};
-		dir[]={0.31509933,-0.69052893,-0.65107566};
-		up[]={0.30081582,0.72329998,-0.62156504};
-		aside[]={-0.90013236,-2.1466985e-007,-0.43563524};
+		pos[]={2974.4666,203.31261,1878.6984};
+		dir[]={-0.49959764,-0.63677353,-0.58730394};
+		up[]={-0.41259423,0.7710489,-0.48502675};
+		aside[]={-0.76169223,1.1184602e-007,0.64794362};
 	};
 };
 binarizationWanted=0;
@@ -11391,7 +11391,7 @@ class Mission
 			class Attributes
 			{
 				lock="LOCKED";
-				init="call{this setGroupID [localize ""STR_A3_Group_November""]; {_x setCaptive true} forEach ([vehicle this] + units group this); this flyInHeight 0;}";
+				init="this setGroupID [localize ""STR_A3_Group_November""];" \n "{_x setCaptive true} forEach ([vehicle this] + units group this);" \n "this flyInHeight 0;" \n "this enableCopilot false;";
 				name="transportHeli";
 			};
 			id=512;
@@ -18240,7 +18240,7 @@ class Mission
 				{
 					dataType="Trigger";
 					position[]={5231.4961,156.66226,5811.2661};
-					angle=5.9322696;
+					angle=5.9322686;
 					class Attributes
 					{
 						name="checkZone";
@@ -33390,7 +33390,7 @@ class Mission
 		{
 			dataType="Trigger";
 			position[]={5327.0869,150.39301,5766.645};
-			angle=3.7724593;
+			angle=3.7724583;
 			class Attributes
 			{
 				name="checkZoneExt";
@@ -40569,7 +40569,7 @@ class Mission
 		{
 			dataType="Trigger";
 			position[]={4611.1821,122.26193,4884.6802};
-			angle=0.92041683;
+			angle=0.92041665;
 			class Attributes
 			{
 				name="t_nearForestTrig";
@@ -40596,6 +40596,7 @@ class Mission
 			};
 			id=1156;
 			type="EmptyDetector";
+			atlOffset=7.6293945e-006;
 		};
 		class Item263
 		{
