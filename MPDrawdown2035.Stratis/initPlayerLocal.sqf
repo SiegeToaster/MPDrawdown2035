@@ -1,3 +1,4 @@
+// may the Omnissiah bless and keep this code
 player createDiaryRecord ["Diary", [localize "STR_A3_Diary_Situation_title", 
 	format [
 		localize "STR_A3_A_in_Briefing_Situation_text",
@@ -21,10 +22,9 @@ _introVideo = ["A3\Missions_F_EPA\video\A_in_intro.ogv"] spawn BIS_fnc_playVideo
 waitUntil {scriptDone _introVideo || !(isNil "skipIntro")};
 
 if !(isNil "skipIntro") then {
-	{
-		hint "intro skipped";
-		[""] spawn BIS_fnc_playVideo; // skips intro video if skipIntro is made true in debug.
-	} forEach allPlayers; // not forEach you bafoon, remote Exec
+	publicVariable "skipIntro"; // fix local execution of `skipIntro = true`
+	hint "intro skipped";
+	[""] spawn BIS_fnc_playVideo; // skips intro video if skipIntro is made true in debug.
 };
 
 if (isServer) then {
@@ -46,8 +46,11 @@ _video = ["A3\Missions_F_EPA\video\A_in_quotation.ogv"] spawn BIS_fnc_playVideo;
 player switchMove "Acts_PercMwlkSlowWrflDf2"; // plays the quote video and music while player is walking
 
 waitUntil {scriptDone _video};
-sleep 2; // wait until 2 seconds after quote video is done.
+if !(isNil "skipIntro") then {
+	hintSilent ""; // removes hint from when video is skipped
+};
 
+sleep 2; // wait until 2 seconds after quote video is done.
 [ 
 	[
 		["2035-07-07 05:55", "align = 'right' size='1.0'"],
@@ -204,6 +207,7 @@ Adams kbTell [player, "kb", "a_in_35_lock_down_ICO_1", "SIDE"]; // roads closed 
 
 sleep 20;
 November kbTell [player, "kb", "a_in_40_landing_NOV_0", "SIDE"]; // landed start
+sleep 4; // plus 2 to account for first part
 November kbTell [player, "kb", "a_in_40_landing_NOV_1", "SIDE"]; // landed end
 
 sleep 12;
@@ -306,25 +310,30 @@ playMusic "EventTrack01_F_EPA"; // makes sure players are at camp rogain and pla
 		private _effect = "#particlesource" createVehicleLocal position Edwards;
 		_effect attachTo [Edwards, [-0.1,0.4,0.0]];
 
-		sleep 0.8;
-		Edwards say3D "Acts_SittingJumpingSaluting_out";
-
-		sleep 2;
+		sleep 2.8;
 		_effect setParticleClass "DustMan";
-
+		
 		sleep 0.8;
 		deleteVehicle _effect;
 	}; // creates dust particle and makes Edwards say "at ease"
-	
-	Edwards kbTell [player, "kb", "a_in_55_orders_LOG_0", "DIRECT"];
-	Edwards kbTell [player, "kb", "a_in_55_orders_LOG_1", "DIRECT"];
-	Edwards kbTell [player, "kb", "a_in_55_orders_LOG_2", "DIRECT"];
-	p0 kbTell [player, "kb", "a_in_55_orders_KER_1", "DIRECT"];
-	Edwards kbTell [player, "kb", "a_in_55_orders_LOG_3", "DIRECT"]; // orders end
 
-	// waitUntil {Edwards kbWasSaid [player, "kb", "a_in_55_orders_LOG_3", 9999]}; // this might still be needed to wait for the orders recieved variable
-	ordersRecieved = true;
-	p0 kbTell [player, "kb", "a_in_60_understood_KER_0", "DIRECT"]; // understood
+	if (isServer) then { // this piece of shit conversation can suck my dick holy shit
+		waitUntil {player kbWasSaid [player, "kb", "a_in_55_orders_KER_0", 9999]};
+		Edwards say3D "Acts_SittingJumpingSaluting_out";
+		
+		Edwards kbTell [player, "kb", "a_in_55_orders_LOG_0", "DIRECT"];
+		waitUntil {Edwards kbWasSaid [player, "kb", "a_in_55_orders_LOG_0", 9999]};
+		Edwards kbTell [player, "kb", "a_in_55_orders_LOG_1", "DIRECT"];
+		waitUntil {Edwards kbWasSaid [player, "kb", "a_in_55_orders_LOG_1", 9999]};
+		Edwards kbTell [player, "kb", "a_in_55_orders_LOG_2", "DIRECT"];
+		waitUntil {Edwards kbWasSaid [player, "kb", "a_in_55_orders_LOG_2", 9999]};
+		p0 kbTell [player, "kb", "a_in_55_orders_KER_1", "DIRECT"]; // p0 being inside of isServer might cause some issues (see 552)
+		waitUntil {p0 kbWasSaid [player, "kb", "a_in_55_orders_KER_1", 9999]};
+		Edwards kbTell [player, "kb", "a_in_55_orders_LOG_3", "DIRECT"];
+		waitUntil {Edwards kbWasSaid [player, "kb", "a_in_55_orders_LOG_3", 9999]}; // orders end
+		ordersRecieved = true;
+		p0 kbTell [player, "kb", "a_in_60_understood_KER_0", "DIRECT"];
+	};
 };
 
 Adams kbTell [player, "kb", "a_in_50_report_ICO_0", "SIDE"];
@@ -376,11 +385,11 @@ if (isServer) then {
 	// all players should be in truck here
 	p0 = driver truck;
 	publicVariable "p0";
-	truck lockCargo false;
+	truck lockCargo [0, false];
 	truck lock true;
 
 	group Adams addVehicle truck;
-	Adams assignAsCargoIndex [truck, 1]; // test to make sure index is correct (should be in front seat passenger)
+	Adams assignAsCargo truck;
 	[Adams] orderGetIn true;
 	Adams doWatch objNull;
 
@@ -415,6 +424,10 @@ if (isServer) then {
 	November kbTell [player, "kb", "a_in_70_fly_away_NOV_0", "SIDE"];
 	Adams kbTell [player, "kb", "a_in_70_fly_away_ICO_0", "SIDE"];
 	Adams kbTell [player, "kb", "a_in_73_great_service_ICO_0", "VEHICLE"]; // Conversation and helicopter getting out of the way.
+	// tell game to do dialog thing in vehicle chat
+	// game does it in side chat
+	// refuses to elaborate further
+	// doesn't leave because it's only like 1/3rd through the mission
 };
 
 waitUntil {isEngineOn truck};
@@ -497,28 +510,37 @@ if (isServer) then {
 
 sleep 0.5;
 checkOff kbTell [player, "kb", "a_in_90_stop_CHO_0", "DIRECT"];
+sleep 1;
 
 waitUntil {sleep 3; speed truck == 0};
 ["tsk_check", objNull] call BIS_fnc_taskSetDestination;
 
 [] spawn {
 	checkOff kbTell [player, "kb", "a_in_95_inspect_CHO_0", "DIRECT"]; // inspect
+	sleep 2; // 2 seconds is an educated guess at the time
 	checkInspector kbTell [player, "kb", "a_in_95_inspect_CHI_0", "DIRECT"];
 
 	if (isServer) then {
 		waitUntil {{driver truck == _x} forEach allPlayers};
 		p0 = driver truck;
 		publicVariable "p0";
+		sleep 1; // extra 0.5 added to account for the checkInspector kbTell
 	};
+	
+	p0 kbTell [player, "kb", "a_in_97_tense_KER_0", "VEHICLE"]; // I think this needs to be outside of isServer because of the locality of kbTell ands p0 is a "local" variable and whatever idfk tbh
 
-	sleep 0.5;
-	hint str name p0; // global execute?  p0 unit causing problemos
-	p0 kbTell [player, "kb", "a_in_97_tense_KER_0", "VEHICLE"]; // tense
-	Adams kbTell [player, "kb", "a_in_97_tense_ICO_0", "VEHICLE"];
-	Adams kbTell [player, "kb", "a_in_97_tense_ICO_1", "SIDE"];
-	Adams kbTell [player, "kb", "a_in_97_tense_ICO_2", "SIDE"];
-	Lacey kbTell [player, "kb", "a_in_97_tense_BRA_0", "SIDE"];
-	Adams kbTell [player, "kb", "a_in_97_tense_ICO_3", "VEHICLE"];
+	if (isServer) then {
+		waitUntil {p0 kbWasSaid [player, "kb", "a_in_97_tense_KER_0", 9999]};
+		Adams kbTell [player, "kb", "a_in_97_tense_ICO_0", "VEHICLE"];
+		waitUntil {Adams kbWasSaid [player, "kb", "a_in_97_tense_ICO_0", 9999]};
+		Adams kbTell [player, "kb", "a_in_97_tense_ICO_1", "SIDE"];
+		waitUntil {Adams kbWasSaid [player, "kb", "a_in_97_tense_ICO_1", 9999]};
+		Adams kbTell [player, "kb", "a_in_97_tense_ICO_2", "SIDE"];
+		waitUntil {Adams kbWasSaid [player, "kb", "a_in_97_tense_ICO_2", 9999]};
+		Lacey kbTell [player, "kb", "a_in_97_tense_BRA_0", "SIDE"];
+		waitUntil {Lacey kbWasSaid [player, "kb", "a_in_97_tense_BRA_0", 9999]};
+		Adams kbTell [player, "kb", "a_in_97_tense_ICO_3", "VEHICLE"];
+	};
 };
 
 if (isServer) then {
@@ -559,6 +581,7 @@ if (isServer) then {
 
 sleep 20;
 checkInspector kbTell [player, "kb", "a_in_100_clear_CHI_0", "DIRECT"]; // clear
+sleep 2; // double check how many seconds
 checkOff kbTell [player, "kb", "a_in_100_clear_CHO_0", "DIRECT"];
 
 sleep 2;
@@ -724,14 +747,14 @@ if (isServer) then {
 	Adams setVariable ["animEH", _animEH];
 };
 
-Adams kbTell [player, "kb", "a_in_115_check_ICO_0", "DIRECT"];
-waitUntil {!isNil "contactLostDone"}; //  this should wait for the contactLost convo to finish (but probably won't)
-// see note on 698
+Adams kbTell [player, "kb", "a_in_115_check_ICO_0", "DIRECT"]; // check
+sleep 3; // a_in_115_check_ICO_0 takes about 3 seconds
+waitUntil {!isNil "contactLostDone"}; //  this should wait for the contactLost convo to finish (but probably won't, see note on 705)
 Adams kbTell [player, "kb", "a_in_117_request_help_ICO_0", "SIDE"]; // request help
-sleep 2;
-Adams kbTell [player, "kb", "a_in_117_request_help_ICO_1", "SIDE"];
-sleep 3;
+sleep 9.5;
+Adams kbTell [player, "kb", "a_in_117_request_help_ICO_1", "SIDE"]; 
 
+sleep 11.5;
 if (isServer) then {
 	[] spawn {
 		{
@@ -859,8 +882,13 @@ if (isServer) then {
 
 assignTskReturn = true;
 Adams kbTell [player, "kb", "a_in_125_comply_ICO_0", "SIDE"]; // comply
-stopObserving = true;
+if (isServer) then { // FUCK KBTELL AND ITS BULLSHIT DOCUMENTATION
+	waitUntil {Adams kbWasSaid [player, "kb", "a_in_125_comply_ICO_0", 9999]};
+	stopObserving = true;
+	publicVariable "stopObserving";
+};
 
+waitUntil {!isNil "stopObserving"};
 sleep 2;
 Adams kbTell [player, "kb", "a_in_130_planes_ICO_0", "DIRECT"]; // planes
 
@@ -871,7 +899,7 @@ if (isServer) then {
 };
 
 toCamp = true;
-{_x setCaptive false} forEach [Adams, player];
+{_x setCaptive false} forEach [Adams, player]; // could relace to server-only execution with ...forEach ([Adams] + allPlayers);
 
 if (isServer) then {
 	[] spawn {
@@ -948,19 +976,38 @@ if (isServer) then {
 };
 
 waitUntil {!(isNil "p0")};
-hint str name p0;
+// this is the conversation that happens right after moving out from the ambush site
 Adams kbTell [player, "kb", "a_in_135_on_foot_ICO_0", "GROUP"]; // on foot
 p0 kbTell [player, "kb", "a_in_135_on_foot_KER_0", "GROUP"];
+if (isServer) then { // fuck kbTell
+	waitUntil {p0 kbWasSaid [player, "kb", "a_in_135_on_foot_KER_0", 9999]};
+	onFootConvo = true;
+	publicVariable "onFootConvo";
+};
+
+waitUntil {!(isNil "onFootConvo")};
 BHQ kbTell [player, "kb", "a_in_140_enemies_BHQ_0", "SIDE"]; // reinf
 evac kbTell [player, "kb", "a_in_127_ambient_1_EVA_0", "SIDE"]; // firefights
 evac kbTell [player, "kb", "a_in_127_ambient_1_EVA_1", "SIDE"];
 BHQ kbTell [player, "kb", "a_in_127_ambient_1_BHQ_0", "SIDE"];
+if (isServer) then {
+	waitUntil {BHQ kbWasSaid [player, "kb", "a_in_127_ambient_1_BHQ_0", 9999]};
+	firefightsConvo = true;
+	publicVariable "firefightsConvo";
+};
+
+waitUntil {!(isNil "firefightsConvo")};
 p0 kbTell [player, "kb", "a_in_137_wtf_KER_0", "GROUP"]; // wtf
 Adams kbTell [player, "kb", "a_in_137_wtf_ICO_0", "GROUP"];
 p0 kbTell [player, "kb", "a_in_137_wtf_KER_1", "GROUP"];
 Adams kbTell [player, "kb", "a_in_145_fubar_ICO_1", "GROUP"];
+if (isServer) then {
+	waitUntil {Adams kbWasSaid [player, "kb", "a_in_145_fubar_ICO_1", 9999]};
+	wtfConvo = true;
+	publicVariable "wtfConvo";
+};
 
-waitUntil {behaviour Adams == "COMBAT"};
+waitUntil {behaviour Adams == "COMBAT" && !(isNil "wtfConvo")};
 sleep 2;
 BHQ kbTell [player, "kb", "a_in_140_enemies_BHQ_1", "SIDE"]; // enemies
 BHQ kbTell [player, "kb", "a_in_140_enemies_BHQ_2", "SIDE"];
@@ -975,12 +1022,21 @@ if (isServer) then {
 
 sleep (5 + random 5);
 waitUntil {!(isNil "p0")};
+// this is the conversation right after defeating the forest group
 p0 kbTell [player, "kb", "a_in_145_fubar_KER_0", "GROUP"]; // FUBAR
 Adams kbTell [player, "kb", "a_in_145_fubar_ICO_0", "GROUP"];
 Adams kbTell [player, "kb", "a_in_137_wtf_ICO_1", "GROUP"];
+if (isServer) then {
+	waitUntil {Adams kbWasSaid [player, "kb", "a_in_137_wtf_ICO_1", 9999]};
+	FUBARConvo = true;
+	publicVariable "FUBARConvo";
+};
+
+waitUntil {!(isNil "FUBARConvo")};
 Adams kbTell [player, "kb", "a_in_155_contacts_ICO_0", "SIDE"]; // contacts
-sleep 2;
+sleep 7;
 Adams kbTell [player, "kb", "a_in_155_contacts_ICO_1", "SIDE"];
+sleep 3;
 
 if (isServer) then {
 	{if (alive _x) then {_x setDamage 1}} forEach rangeAmbient;
@@ -1045,12 +1101,18 @@ if (isServer) then {
 };
 
 Edwards kbTell [player, "kb", "a_in_160_evac_LOG_0", "SIDE"]; // evac
-sleep 0.5;
+sleep 4.5;
 BHQ kbTell [player, "kb", "a_in_160_evac_BHQ_0", "SIDE"];
 BHQ kbTell [player, "kb", "a_in_160_evac_BHQ_1", "SIDE"];
 BHQ kbTell [player, "kb", "a_in_160_evac_BHQ_2", "SIDE"];
 BHQ kbTell [player, "kb", "a_in_160_evac_BHQ_3", "SIDE"];
+if (isServer) then {
+	waitUntil {BHQ kbWasSaid [player, "kb", "a_in_160_evac_BHQ_3", 9999]};
+	evacConvo = true;
+	publicVariable "evacConvo";
+};
 
+waitUntil {!isNil("evacConvo")};
 {
 	[
 		_x,
@@ -1108,7 +1170,7 @@ waitUntil {triggerActivated t_overCampTrig};
 	};
 };
 
-waitUntil {{_x distance Adams < 10} forEach allPlayers};
+waitUntil {{_x distance Adams < 10} forEach allPlayers}; // might need a count allPlayers > 0
 enemyHeli2 setPosATL (enemyHeli2 getVariable ["pos", getPosATL enemyHeli2]);
 enemyHeli2 setDir (enemyHeli2 getVariable ["dir", direction enemyHeli2]);
 
@@ -1137,7 +1199,7 @@ if (isServer) then {
 };
 
 p0 kbTell [player, "kb", "a_in_170_over_camp_KER_0", "GROUP"]; // overCamp
-sleep 4;
+sleep 7;
 Adams kbTell [player, "kb", "a_in_170_over_camp_ICO_0", "GROUP"];
 toAA = true;
 
@@ -1263,7 +1325,7 @@ toEvac = true;
 Adams kbTell [player, "kb", "a_in_183_evac_confirmed_ICO_0", "GROUP"]; // evac confirmed
 Adams doWatch objNull;
 
-sleep 1;
+sleep 2.5;
 evac kbTell [player, "kb", "a_in_185_request_evac_EVA_0", "SIDE"]; // request evac
 Adams kbTell [player, "kb", "a_in_185_request_evac_ICO_0", "SIDE"];
 evac kbTell [player, "kb", "a_in_185_request_evac_EVA_1", "SIDE"];
@@ -1285,7 +1347,9 @@ if (isServer) then {
 
 sleep 1;
 Adams kbTell [player, "kb", "a_in_205_heli_dead_ICO_0", "GROUP"]; // heli dead
+sleep 1.5;
 Adams kbTell [player, "kb", "a_in_210_check_in_ICO_0", "SIDE"]; // check in
+sleep 2;
 
 if (isServer) then {
 	if (isNil "p0" || !(p0 in (call BIS_fnc_listPlayers))) then {
