@@ -20,14 +20,14 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=398;
+		nextID=402;
 	};
 	class Camera
 	{
-		pos[]={2974.4666,203.31261,1878.6984};
-		dir[]={-0.49959764,-0.63677353,-0.58730394};
-		up[]={-0.41259423,0.7710489,-0.48502675};
-		aside[]={-0.76169223,1.1184602e-007,0.64794362};
+		pos[]={5021.2817,238.71779,5906.4517};
+		dir[]={0.26110798,-0.70202702,0.66255617};
+		up[]={0.25739634,0.71215034,0.65313792};
+		aside[]={0.93036008,0,-0.3666473};
 	};
 };
 binarizationWanted=0;
@@ -31794,7 +31794,7 @@ class Mission
 			class Attributes
 			{
 				lock="LOCKED";
-				init="call{this setCaptive true; this lockCargo true; this allowCrewInImmobile true}";
+				init="this setCaptive true;" \n "truck lockCargo [0, true];" \n "this allowCrewInImmobile true;";
 				name="truck";
 			};
 			id=809;
@@ -32407,7 +32407,7 @@ class Mission
 			position[]={5026.9932,208.87927,5931.71};
 			class Attributes
 			{
-				condition="{driver truck == _x} forEach allPlayers";
+				condition="{_x in truck} count allPlayers == count allPlayers";
 				sizeA=0;
 				sizeB=0;
 				isServerOnly=1;

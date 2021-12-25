@@ -22,7 +22,6 @@ _introVideo = ["A3\Missions_F_EPA\video\A_in_intro.ogv"] spawn BIS_fnc_playVideo
 waitUntil {scriptDone _introVideo || !(isNil "skipIntro")};
 
 if !(isNil "skipIntro") then {
-	publicVariable "skipIntro"; // fix local execution of `skipIntro = true`
 	hint "intro skipped";
 	[""] spawn BIS_fnc_playVideo; // skips intro video if skipIntro is made true in debug.
 };
@@ -216,7 +215,7 @@ if (isServer) then {
 	rgnHeliGuide playMove "Acts_NavigatingChopper_Loop";
 };
 
-sleep 14;
+sleep 10;
 if (isServer) then {
 	rgnHeliGuide playMove "Acts_NavigatingChopper_Out";
 };
@@ -284,7 +283,6 @@ playMusic "EventTrack01_F_EPA"; // makes sure players are at camp rogain and pla
 
 [] spawn {
 	waitUntil {{_x distance Edwards < 5} count allPlayers > 0}; // waits until any player is within 5 meters of logi dude
-	// doesn't work properly: only p0 or host triggers it; possible fix with count, test!
 	{
 		if (_x in allPlayers) then {
 			p0 = _x;
@@ -293,6 +291,8 @@ playMusic "EventTrack01_F_EPA"; // makes sure players are at camp rogain and pla
 	} forEach (nearestObjects [Edwards, ["man"], 5]);
 
 	p0 kbTell [player, "kb", "a_in_55_orders_KER_0", "DIRECT"]; // orders start
+
+	sleep 1.5;
 	if (isServer) then {
 		detach Edwards; 
 		Edwards disableAI "ANIM";
@@ -310,36 +310,37 @@ playMusic "EventTrack01_F_EPA"; // makes sure players are at camp rogain and pla
 		private _effect = "#particlesource" createVehicleLocal position Edwards;
 		_effect attachTo [Edwards, [-0.1,0.4,0.0]];
 
-		sleep 2.8;
+		sleep 0.8;
+		Edwards say3D "Acts_SittingJumpingSaluting_out";
+
+		sleep 2;
 		_effect setParticleClass "DustMan";
 		
 		sleep 0.8;
 		deleteVehicle _effect;
-	}; // creates dust particle and makes Edwards say "at ease"
+	}; // creates dust particle and makes Edwards say "at ea
 
-	if (isServer) then { // this piece of shit conversation can suck my dick holy shit
-		waitUntil {player kbWasSaid [player, "kb", "a_in_55_orders_KER_0", 9999]};
-		Edwards say3D "Acts_SittingJumpingSaluting_out";
-		
-		Edwards kbTell [player, "kb", "a_in_55_orders_LOG_0", "DIRECT"];
-		waitUntil {Edwards kbWasSaid [player, "kb", "a_in_55_orders_LOG_0", 9999]};
-		Edwards kbTell [player, "kb", "a_in_55_orders_LOG_1", "DIRECT"];
-		waitUntil {Edwards kbWasSaid [player, "kb", "a_in_55_orders_LOG_1", 9999]};
-		Edwards kbTell [player, "kb", "a_in_55_orders_LOG_2", "DIRECT"];
-		waitUntil {Edwards kbWasSaid [player, "kb", "a_in_55_orders_LOG_2", 9999]};
-		p0 kbTell [player, "kb", "a_in_55_orders_KER_1", "DIRECT"]; // p0 being inside of isServer might cause some issues (see 552)
-		waitUntil {p0 kbWasSaid [player, "kb", "a_in_55_orders_KER_1", 9999]};
-		Edwards kbTell [player, "kb", "a_in_55_orders_LOG_3", "DIRECT"];
-		waitUntil {Edwards kbWasSaid [player, "kb", "a_in_55_orders_LOG_3", 9999]}; // orders end
-		ordersRecieved = true;
-		p0 kbTell [player, "kb", "a_in_60_understood_KER_0", "DIRECT"];
-	};
+	 // this piece of shit conversation can suck my dick holy shit
+	Edwards kbTell [player, "kb", "a_in_55_orders_LOG_0", "DIRECT"];
+	sleep 1;
+	Edwards kbTell [player, "kb", "a_in_55_orders_LOG_1", "DIRECT"];
+	sleep 2;
+	Edwards kbTell [player, "kb", "a_in_55_orders_LOG_2", "DIRECT"];
+	sleep 6;
+	p0 kbTell [player, "kb", "a_in_55_orders_KER_1", "DIRECT"];
+	sleep 1;
+	Edwards kbTell [player, "kb", "a_in_55_orders_LOG_3", "DIRECT"]; // orders end
+	sleep 4;
+
+	ordersRecieved = true;
+	publicVariable "ordersRecieved";
+	
+	p0 kbTell [player, "kb", "a_in_60_understood_KER_0", "DIRECT"];
 };
 
 Adams kbTell [player, "kb", "a_in_50_report_ICO_0", "SIDE"];
 Adams kbTell [player, "kb", "a_in_50_report_ICO_1", "SIDE"]; // SSG Adams tells kerry to report to logi officer and Lacey to make himself useful (aka report)
 
-p0 = (call BIS_fnc_listPlayers) select 0;
 if (isServer) then {
 	[] spawn {
 		waitUntil {!(isNil "readyToPiss")};
@@ -349,25 +350,31 @@ if (isServer) then {
 		{Adams disableAI _x} forEach ["ANIM", "AUTOTARGET", "FSM", "MOVE", "TARGET"];
 		Adams playMoveNow "Acts_AidlPercMstpSlowWrflDnon_pissing"; // disables AI and starts pissing animation
 		
+		waitUntil {!(isNil "p0")};
 		{Adams enableAI _x} forEach ["ANIM", "AUTOTARGET", "FSM", "MOVE", "TARGET"];
 		Adams reveal p0;
 		Adams doWatch p0;
-		backToTruck = true; // enables AI again, watches a random player, and moves near the truck
+		backToTruck = true; // enables AI again, watches p0, and moves near the truck
 	};
 };
 
 waitUntil {!isNil "ordersRecieved"};
 waitUntil {(p0 distance Adams <= 10) || p0 distance truck <= 10};
 if (isServer) then {
-	truck lock false; // only unlocks driver seat
+	truck lock false;
 };
 
 [] spawn {
 	Adams kbTell [player, "kb", "a_in_65_get_in_ICO_0", "SIDE"];
+	sleep 1;
 	p0 kbTell [player, "kb", "a_in_65_get_in_KER_0", "SIDE"];
+	sleep 3.5;
 	Adams kbTell [player, "kb", "a_in_65_get_in_ICO_1", "SIDE"];
+	sleep 2;
 	p0 kbTell [player, "kb", "a_in_65_get_in_KER_1", "SIDE"];
+	sleep 1;
 	Adams kbTell [player, "kb", "a_in_75_road_ICO_1", "SIDE"];
+	sleep 4;
 	updated = true; // ToDo: redo radio parameter to follow format found in missionConversations.sqf line 66-72
 
 	if (isServer) then {
@@ -380,32 +387,29 @@ if (isServer) then {
 	};	
 };
 
+waitUntil {{_x in truck} count allPlayers == count allPlayers};
+// all players should be in truck here
+p0 = driver truck;
+truck lockCargo [0, false];
+truck lock true; // mrk1
+toCheckpoint = true;
+
+group Adams addVehicle truck;
+Adams assignAsCargo truck;
+[Adams] orderGetIn true;
+Adams moveInCargo truck; // MAJOR TODO: make him walk to truck, this teleports him
+Adams doWatch objNull;
+
 if (isServer) then {
-	waitUntil {{_x in truck} count (call BIS_fnc_listPlayers) == count (call BIS_fnc_listPlayers)};
-	// all players should be in truck here
-	p0 = driver truck;
-	publicVariable "p0";
-	truck lockCargo [0, false];
-	truck lock true;
-
-	group Adams addVehicle truck;
-	Adams assignAsCargo truck;
-	[Adams] orderGetIn true;
-	Adams doWatch objNull;
-
 	[] spawn {
 		waitUntil {Adams in truck};
 		Adams setBehaviour "AWARE";
 		Adams forceSpeed -1;
-
-		waitUntil {{_x in truck} count (call BIS_fnc_listPlayers) == count (call BIS_fnc_listPlayers)};
 		allInTruck = true;
 	};
-
-	toCheckpoint = true;
 };
-waitUntil {!(isNil "p0")};
 
+waitUntil {!(isNil "p0")};
 [] spawn {
 	private _units = []; // array of all units, might just use allUnits
 	waitUntil {{!(alive _x)} count _units > 0 || !(isNil "outOfTruck")}; // double check once outOfTruck var set to make sure var is the same
@@ -415,19 +419,24 @@ waitUntil {!(isNil "p0")};
 sleep 1;
 waitUntil {!(isNil "updated")};
 
-if (isServer) then {
-	flyAway = true;
-	transportHeli flyInHeight 50;
-};
-
 [] spawn {
 	November kbTell [player, "kb", "a_in_70_fly_away_NOV_0", "SIDE"];
+	sleep 3;
 	Adams kbTell [player, "kb", "a_in_70_fly_away_ICO_0", "SIDE"];
+	sleep 1;
 	Adams kbTell [player, "kb", "a_in_73_great_service_ICO_0", "VEHICLE"]; // Conversation and helicopter getting out of the way.
 	// tell game to do dialog thing in vehicle chat
 	// game does it in side chat
 	// refuses to elaborate further
 	// doesn't leave because it's only like 1/3rd through the mission
+
+	if (isServer) then {
+		flyAway = true;
+		transportHeli flyInHeight 50;
+		waitUntil {(getPosATL transportHeli select 2) > 10};
+		heliClear = true;
+		publicVariable "heliClear";
+	};
 };
 
 waitUntil {isEngineOn truck};
@@ -442,7 +451,8 @@ musicEH = addMusicEventHandler ["MusicStop", {playMusic "radio_music"}];
 	playMusic ""; //plays radio music until the player gets out.
 };
 
-waitUntil {(getPosATL transportHeli select 2) > 10};
+waitUntil {!(isNil "heliClear")};
+
 Adams kbTell [player, "kb", "a_in_75_road_ICO_0", "VEHICLE"];
 
 [] spawn {
@@ -451,6 +461,7 @@ Adams kbTell [player, "kb", "a_in_75_road_ICO_0", "VEHICLE"];
 };
 
 waitUntil {((truck distance goatHerder) < 200) || !(isNil "approachingCheckpoint")};
+
 if (isNil "approachingCheckpoint") then {
 	[] spawn {
 		if (isServer) then {
@@ -467,10 +478,14 @@ if (isNil "approachingCheckpoint") then {
 	if (isServer) then {
 		goatHerder playMove "Acts_ShowingTheRightWay_in";
 	};
+
 	Adams kbTell [player, "kb", "a_in_76_turn_ICO_0", "VEHICLE"];
+	sleep 1.5;
 	Adams kbTell [player, "kb", "a_in_76_turn_ICO_1", "VEHICLE"];
+	sleep 4;
 	Adams kbTell [player, "kb", "a_in_76_turn_ICO_2", "VEHICLE"];
-	driver truck kbTell [player, "kb", "a_in_76_turn_KER_0", "VEHICLE"];
+	sleep 6;
+	p0 kbTell [player, "kb", "a_in_76_turn_KER_0", "VEHICLE"]; // doesn't work
 };
 
 waitUntil {(truck distance [5235.48,5812.21]) < 120};
@@ -517,30 +532,21 @@ waitUntil {sleep 3; speed truck == 0};
 
 [] spawn {
 	checkOff kbTell [player, "kb", "a_in_95_inspect_CHO_0", "DIRECT"]; // inspect
-	sleep 2; // 2 seconds is an educated guess at the time
+	sleep 1.5;
 	checkInspector kbTell [player, "kb", "a_in_95_inspect_CHI_0", "DIRECT"];
+	sleep 0.5;
 
-	if (isServer) then {
-		waitUntil {{driver truck == _x} forEach allPlayers};
-		p0 = driver truck;
-		publicVariable "p0";
-		sleep 1; // extra 0.5 added to account for the checkInspector kbTell
-	};
-	
-	p0 kbTell [player, "kb", "a_in_97_tense_KER_0", "VEHICLE"]; // I think this needs to be outside of isServer because of the locality of kbTell ands p0 is a "local" variable and whatever idfk tbh
-
-	if (isServer) then {
-		waitUntil {p0 kbWasSaid [player, "kb", "a_in_97_tense_KER_0", 9999]};
-		Adams kbTell [player, "kb", "a_in_97_tense_ICO_0", "VEHICLE"];
-		waitUntil {Adams kbWasSaid [player, "kb", "a_in_97_tense_ICO_0", 9999]};
-		Adams kbTell [player, "kb", "a_in_97_tense_ICO_1", "SIDE"];
-		waitUntil {Adams kbWasSaid [player, "kb", "a_in_97_tense_ICO_1", 9999]};
-		Adams kbTell [player, "kb", "a_in_97_tense_ICO_2", "SIDE"];
-		waitUntil {Adams kbWasSaid [player, "kb", "a_in_97_tense_ICO_2", 9999]};
-		Lacey kbTell [player, "kb", "a_in_97_tense_BRA_0", "SIDE"];
-		waitUntil {Lacey kbWasSaid [player, "kb", "a_in_97_tense_BRA_0", 9999]};
-		Adams kbTell [player, "kb", "a_in_97_tense_ICO_3", "VEHICLE"];
-	};
+	p0 kbTell [player, "kb", "a_in_97_tense_KER_0", "VEHICLE"];
+	sleep 2.5;
+	Adams kbTell [player, "kb", "a_in_97_tense_ICO_0", "VEHICLE"];
+	sleep 3;
+	Adams kbTell [player, "kb", "a_in_97_tense_ICO_1", "SIDE"];
+	sleep 4;
+	Adams kbTell [player, "kb", "a_in_97_tense_ICO_2", "SIDE"];
+	sleep 4;
+	Lacey kbTell [player, "kb", "a_in_97_tense_BRA_0", "SIDE"];
+	sleep 4;
+	Adams kbTell [player, "kb", "a_in_97_tense_ICO_3", "VEHICLE"];
 };
 
 if (isServer) then {
@@ -581,7 +587,7 @@ if (isServer) then {
 
 sleep 20;
 checkInspector kbTell [player, "kb", "a_in_100_clear_CHI_0", "DIRECT"]; // clear
-sleep 2; // double check how many seconds
+sleep 1;
 checkOff kbTell [player, "kb", "a_in_100_clear_CHO_0", "DIRECT"];
 
 sleep 2;
@@ -978,44 +984,37 @@ if (isServer) then {
 waitUntil {!(isNil "p0")};
 // this is the conversation that happens right after moving out from the ambush site
 Adams kbTell [player, "kb", "a_in_135_on_foot_ICO_0", "GROUP"]; // on foot
-p0 kbTell [player, "kb", "a_in_135_on_foot_KER_0", "GROUP"];
-if (isServer) then { // fuck kbTell
-	waitUntil {p0 kbWasSaid [player, "kb", "a_in_135_on_foot_KER_0", 9999]};
-	onFootConvo = true;
-	publicVariable "onFootConvo";
-};
-
-waitUntil {!(isNil "onFootConvo")};
+sleep 2.5;
+p0 kbTell [player, "kb", "a_in_135_on_foot_KER_0", "GROUP"]; // fucked
+sleep 1;
 BHQ kbTell [player, "kb", "a_in_140_enemies_BHQ_0", "SIDE"]; // reinf
+sleep 5;
 evac kbTell [player, "kb", "a_in_127_ambient_1_EVA_0", "SIDE"]; // firefights
+sleep 3.5;
 evac kbTell [player, "kb", "a_in_127_ambient_1_EVA_1", "SIDE"];
+sleep 1;
 BHQ kbTell [player, "kb", "a_in_127_ambient_1_BHQ_0", "SIDE"];
-if (isServer) then {
-	waitUntil {BHQ kbWasSaid [player, "kb", "a_in_127_ambient_1_BHQ_0", 9999]};
-	firefightsConvo = true;
-	publicVariable "firefightsConvo";
-};
-
-waitUntil {!(isNil "firefightsConvo")};
+sleep 2.5;
 p0 kbTell [player, "kb", "a_in_137_wtf_KER_0", "GROUP"]; // wtf
+sleep 2.5;
 Adams kbTell [player, "kb", "a_in_137_wtf_ICO_0", "GROUP"];
+sleep 4;
 p0 kbTell [player, "kb", "a_in_137_wtf_KER_1", "GROUP"];
+sleep 1;
 Adams kbTell [player, "kb", "a_in_145_fubar_ICO_1", "GROUP"];
-if (isServer) then {
-	waitUntil {Adams kbWasSaid [player, "kb", "a_in_145_fubar_ICO_1", 9999]};
-	wtfConvo = true;
-	publicVariable "wtfConvo";
-};
+sleep 2.5;
 
-waitUntil {behaviour Adams == "COMBAT" && !(isNil "wtfConvo")};
+waitUntil {behaviour Adams == "COMBAT"};
 sleep 2;
 BHQ kbTell [player, "kb", "a_in_140_enemies_BHQ_1", "SIDE"]; // enemies
+sleep 7;
 BHQ kbTell [player, "kb", "a_in_140_enemies_BHQ_2", "SIDE"];
+sleep 4;
 
 waitUntil {({alive _x} count units forestGroup) == 0};
 if (isServer) then {
-	if (isNil "p0" || !(p0 in (call BIS_fnc_listPlayers))) then {
-		p0 = selectRandom (call BIS_fnc_listPlayers);
+	if (isNil "p0" || !(p0 in allPlayers)) then {
+		p0 = selectRandom allPlayers;
 		publicVariable "p0";
 	};
 };
@@ -1024,15 +1023,11 @@ sleep (5 + random 5);
 waitUntil {!(isNil "p0")};
 // this is the conversation right after defeating the forest group
 p0 kbTell [player, "kb", "a_in_145_fubar_KER_0", "GROUP"]; // FUBAR
+sleep 2;
 Adams kbTell [player, "kb", "a_in_145_fubar_ICO_0", "GROUP"];
+sleep 2;
 Adams kbTell [player, "kb", "a_in_137_wtf_ICO_1", "GROUP"];
-if (isServer) then {
-	waitUntil {Adams kbWasSaid [player, "kb", "a_in_137_wtf_ICO_1", 9999]};
-	FUBARConvo = true;
-	publicVariable "FUBARConvo";
-};
-
-waitUntil {!(isNil "FUBARConvo")};
+sleep 3;
 Adams kbTell [player, "kb", "a_in_155_contacts_ICO_0", "SIDE"]; // contacts
 sleep 7;
 Adams kbTell [player, "kb", "a_in_155_contacts_ICO_1", "SIDE"];
@@ -1103,16 +1098,13 @@ if (isServer) then {
 Edwards kbTell [player, "kb", "a_in_160_evac_LOG_0", "SIDE"]; // evac
 sleep 4.5;
 BHQ kbTell [player, "kb", "a_in_160_evac_BHQ_0", "SIDE"];
+sleep 1.5;
 BHQ kbTell [player, "kb", "a_in_160_evac_BHQ_1", "SIDE"];
+sleep 5.5;
 BHQ kbTell [player, "kb", "a_in_160_evac_BHQ_2", "SIDE"];
+sleep 5;
 BHQ kbTell [player, "kb", "a_in_160_evac_BHQ_3", "SIDE"];
-if (isServer) then {
-	waitUntil {BHQ kbWasSaid [player, "kb", "a_in_160_evac_BHQ_3", 9999]};
-	evacConvo = true;
-	publicVariable "evacConvo";
-};
-
-waitUntil {!isNil("evacConvo")};
+sleep 3;
 {
 	[
 		_x,
@@ -1130,16 +1122,12 @@ waitUntil {!isNil("evacConvo")};
 ];
 {_x setMarkerColor "ColorIndependent"} forEach ["mrk_rogain", "mrk_airBase"];
 
-if (isServer) then {
-	if (isNil "p0" || !(p0 in (call BIS_fnc_listPlayers))) then {
-			p0 = selectRandom (call BIS_fnc_listPlayers);
-			publicVariable "p0";
-	};
-};
-
 p0 kbTell [player, "kb", "a_in_165_aa_KER_0", "GROUP"];
+sleep 1.5;
 Adams kbTell [player, "kb", "a_in_165_aa_ICO_0", "GROUP"];
+sleep 3.5;
 Adams kbTell [player, "kb", "a_in_165_aa_ICO_1", "GROUP"];
+sleep 3;
 
 waitUntil {triggerActivated t_overCampTrig};
 [] spawn {
@@ -1170,7 +1158,7 @@ waitUntil {triggerActivated t_overCampTrig};
 	};
 };
 
-waitUntil {{_x distance Adams < 10} forEach allPlayers}; // might need a count allPlayers > 0
+waitUntil {{_x distance Adams < 10} count allPlayers > 0};
 enemyHeli2 setPosATL (enemyHeli2 getVariable ["pos", getPosATL enemyHeli2]);
 enemyHeli2 setDir (enemyHeli2 getVariable ["dir", direction enemyHeli2]);
 
